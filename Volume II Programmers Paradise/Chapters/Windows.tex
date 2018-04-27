@@ -2,7 +2,30 @@
 \thispagestyle{fancy}
 \lstset{language=Bash, style=bash}
 
+\begin{fancybox}[Windows Key Combinations]{}	
+	Windows has various key combinations. These are used to do different things. For the purposes of this chart, the windows key will be represented by $\boxplus$.
+	\begin{center}
+		\begin{tabular}{l|l}
+			Key combination & Descriptions \\
+			\hline
+			$\boxplus$ + R & Opens a run window. \\
+			$\boxplus$ + m & Minimize all open windows. \\
+			$\boxplus$ + E & Opens the explorer window. \\
+			$\boxplus$ + UP & Minimize the currently opened window. \\
+			$\boxplus$ + F & Opens search for searching files and folders. \\
+			Alt + Tab & Change between open windows. \\
+			CTRL + ALT + Delete & Provides user options such as changing password. \\
+			CTRL + SHIFT + ESC & Opens Windows Task Manager. 
+		\end{tabular}
+	\end{center}
+\end{fancybox}
+
 To access the Windows 7 "God Mode" which is essentially a collection of administrator and troubleshooting features, create a folder with the following name:
 \begin{lstlisting}
 GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
 \end{lstlisting}
+
+To view system information, including RAM installed, graphics processor and more, run the following command
+\begin{lstlisting}
+dxdiag
+\end{lstlisting} 

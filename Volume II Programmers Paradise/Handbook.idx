@@ -11,16 +11,18 @@
 \indexentry{echo|hyperpage}{4}
 \indexentry{variables|hyperpage}{4}
 \indexentry{touch|hyperpage}{5}
-\indexentry{Input and Output|hyperpage}{7}
-\indexentry{Simulate Key Strokes|hyperpage}{7}
-\indexentry{Variable Types|hyperpage}{8}
-\indexentry{Vector|hyperpage}{8}
-\indexentry{Converting Between Types|hyperpage}{8}
-\indexentry{std::string to int|hyperpage}{8}
-\indexentry{stoi|hyperpage}{8}
-\indexentry{std::string to int|hyperpage}{8}
-\indexentry{stod|hyperpage}{8}
-\indexentry{Prime Number|hyperpage}{8}
-\indexentry{System Commands|hyperpage}{9}
-\indexentry{Sleep|hyperpage}{9}
-\indexentry{Plotting and Graphs|hyperpage}{11}
+\indexentry{Input and Output|hyperpage}{8}
+\indexentry{Simulate Key Strokes|hyperpage}{8}
+\indexentry{Variable Types|hyperpage}{9}
+\indexentry{Vector|hyperpage}{9}
+\indexentry{Converting Between Types|hyperpage}{9}
+\indexentry{std::string to int|hyperpage}{9}
+\indexentry{stoi|hyperpage}{9}
+\indexentry{std::string to int|hyperpage}{9}
+\indexentry{stod|hyperpage}{9}
+\indexentry{std::string to const char*|hyperpage}{9}
+\indexentry{c\_str()|hyperpage}{9}
+\indexentry{Prime Number|hyperpage}{10}
+\indexentry{System Commands|hyperpage}{10}
+\indexentry{Sleep|hyperpage}{10}
+\indexentry{Plotting and Graphs|hyperpage}{16}

@@ -138,6 +138,13 @@ std::string text = "3.1415";
 double number = std::stof(text);
 \end{lstlisting}
 
+\subsection*{std::string to const char*\index{std::string to const char*}}
+To convert a string to a const char* you can use the \textbf{c\_str()}\index{c\_str()} function:
+\begin{lstlisting}
+std::string str = "3.1415";
+const char* chr = str.c_str();
+\end{lstlisting}
+
 
 
 
@@ -177,7 +184,16 @@ bool isPrime(long num) {
 }
 \end{lstlisting}
 
+\subsection*{Trigonometric Identities}
+To perform calculations using trigonometric identities, you first must include cmath and then do so as follows. These trigonometric functions from cmath can be used as floats, doubles, or long doubles.
+\begin{lstlisting}
+#include <cmath>                        // Needed at start of file.
 
+float num = 0.05;                       // creating a number.
+float numS = std::sin(num);             // Calculates the sin of the number
+float numC = std::cos(num);             // Calculates the cos of the number
+float numT = std::tan(num);             // Calculates the tan of the number
+\end{lstlisting}
 
 
 
@@ -213,6 +229,14 @@ Sleep(50); //Makes the system sleep for 50 milliseconds.
 Sleep(5000); //Makes the system sleep for 50 seconds.
 \end{lstlisting}
 
+
+On a Windows specific program one can run a command directly from command prompt using the system function. The input variable to system is const char*.
+\begin{lstlisting}
+#include <windows.h>
+
+//system(const char* input)
+system("DATE");   // Runs the DATE command from windows command prompt.
+\end{lstlisting}
 
 
 

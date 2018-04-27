@@ -1,3 +1,210 @@
 \chapter{C\#}
 \thispagestyle{fancy}
 \lstset{language=[Sharp]C, style=sharpc}
+
+The language C\# is very similar to C++ and Java. All programming snippets listed in this section were tested and from a program created in Visual Studio 2013. Many of the functions written in this section depend on the Windows .Net application framework and may not function without that.
+
+\section{Useful Application Functions}
+
+Exit a program.
+\begin{lstlisting}
+//These are needed at the beginning of the file.
+using System;
+using System.Windows.Forms;
+
+//This exits the program
+public static void exitLOLA(){
+	if (System.Windows.Forms.Application.MessageLoop){
+		System.Windows.Forms.Application.Exit();     // WinForms app
+	} else {
+		System.Environment.Exit(1);     // Console app
+	}
+}
+\end{lstlisting} 
+
+The following will return the current Epoch time in seconds. This is useful for version control, random number generation, and more. Also, a demonstration of how ot set the current date as a string.
+\begin{lstlisting}
+//Sets the current date as a string.
+private static string today = System.DateTime.Today.ToString("d");
+
+//Returns the current epoch time in seconds (time passed since January 1, 1970).
+public static long getEpochTime(){
+	var epoch = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+	return (long)epoch;
+}
+\end{lstlisting}
+
+The following can be used to increase the size of a terminal window for a terminal application make in Visual Studio.
+\begin{lstlisting}
+//Doubles the length of the output terminal window if the resolution on the computer permits it.
+//Otherwise leaves it as the default.
+public static void setScreenSize_double(){
+	//determines the screen resolution to then determine the size of the output window.
+	int origWidth = Console.WindowWidth;
+	int origHeight = Console.WindowHeight;
+	int height;
+	int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+	
+	if (screenHeight < 1080){
+		height = origHeight;
+	} else {
+	height = origHeight * 2;
+	}
+	
+	//int height = origHeight;
+	Console.SetWindowSize(origWidth, height);       
+}
+\end{lstlisting}
+
+Get the directory path that the executable file is located in.
+\begin{lstlisting}
+//returns the path that the program executable file is in.
+public static string getProgramPath(){
+	string path = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+	return path;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+\section{Getting Windows System Information}
+
+Return the system name
+\begin{lstlisting}
+//Returns the user defined system name.
+public static string getSystemName() {
+	systemName = Environment.MachineName;
+	return systemName;
+}
+\end{lstlisting}
+
+Determines and returns whether a processor is 32 or 64 bits and returns the number of bits as an int.
+\begin{lstlisting}
+//Returns twhether the processor is 32 or 64-bit.
+public static int getBits(){
+	bool bitOS = Environment.Is64BitOperatingSystem;
+	if (bitOS){
+		bits = 64;
+		return bits;
+	} else {
+		bits = 32;
+		return bits;
+	}
+}
+\end{lstlisting}
+
+Returns the Full Operating System Name. Then, an alternate function to format the operating system name in a friendly manner.
+\begin{lstlisting}
+public static string getOSFullName() {
+	return new Microsoft.VisualBasic.Devices.ComputerInfo().OSFullName.ToString();
+}
+
+//Returns a 'friendly' string with the OS listed.
+public static string getFriendlyOS() {
+	OSversion = getOSFullName() + " " + getBits() + "-bit";
+	return OSversion;
+}
+\end{lstlisting}
+
+Returns the IPv4 address of a machine.
+\begin{lstlisting}
+//Returns the IPv4 that the user is using.
+public static string getIPv4address(){
+	if (IPv4address != null){
+		return IPv4address;
+	}  
+	IPAddress[] ipv4Addresses = Array.FindAll(Dns.GetHostEntry(string.Empty).AddressList, a => a.AddressFamily == AddressFamily.InterNetwork);
+	int i = 1;
+	try{                
+		IPv4address = ipv4Addresses[i].ToString();
+	}
+	catch (System.IndexOutOfRangeException){
+		i = 0;
+		IPv4address = ipv4Addresses[i].ToString();
+	}
+	return IPv4address;
+}
+
+\end{lstlisting}
+
+Determines CPU specs for a machine.
+\begin{lstlisting}
+//Sets the CPU specs for the machine.
+ManagementObject Mo = new ManagementObject("Win32_Processor.DeviceID='CPU0'");
+uint speed = (uint)(Mo["CurrentClockSpeed"]);
+string name = Mo["Name"].ToString();
+Mo.Dispose();
+int CPUspeed = Convert.ToInt32(speed);
+string CPUmodel = name;
+\end{lstlisting}
+
+Determines the model of a PC.
+\begin{lstlisting}
+string PCModel
+
+System.Management.SelectQuery query = new System.Management.SelectQuery(@"Select * from Win32_ComputerSystem");
+using (System.Management.ManagementObjectSearcher searcher = new System.Management.ManagementObjectSearcher(query))
+
+foreach (System.Management.ManagementObject Mo in searcher.Get()){
+	Mo.Get();
+	string Model = Mo["Model"].ToString();
+	//System.Console.WriteLine("{0}{1}", "...System Model: ", Mo["Model"]);
+	PCModel = Model;
+}
+if (PCModel == "System Product Name"){
+	PCModel = "unknown";
+}
+\end{lstlisting}
+
+Returns the installed RAM in a machine. Multiple methods are listed which give varied results depending on the environment.
+\begin{lstlisting}
+//This returns an estimate of the ram installed on a machine. 
+//It is keyed to take the total bytes of RAM and cnovert them to the nearest 2^n value.
+//This is the old function to determine RAM capacity. getInstalledRAM() returns a more accurate value.
+public static ulong getTotalPhysicalMemoryInBytes(){
+	return new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
+} 
+public static ulong getTotalVirtualMemoryInBytes(){
+	return new Microsoft.VisualBasic.Devices.ComputerInfo().TotalVirtualMemory;
+}
+
+//Returns the physically installed RAM.
+public static ulong getInstalledRAM(){
+	string Query = "SELECT Capacity FROM Win32_PhysicalMemory";
+	ManagementObjectSearcher searcher = new ManagementObjectSearcher(Query);
+	
+	UInt64 Capacity = 0;
+	foreach (ManagementObject WniPART in searcher.Get()){
+		Capacity += Convert.ToUInt64(WniPART.Properties["Capacity"].Value);
+	}
+	
+	return Capacity;
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
+
+\begin{lstlisting}
+
+\end{lstlisting}
