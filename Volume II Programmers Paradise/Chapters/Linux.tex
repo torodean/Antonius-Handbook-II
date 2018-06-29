@@ -97,6 +97,11 @@ sudo umount /dev/sdb1/ /mnt/      # example of mounting
 
 \section{Users and Groups}
 
+List all users
+\begin{lstlisting}
+cut -d: -f1 /etc/passwd
+\end{lstlisting}
+
 Create a new user
 \begin{lstlisting}
 sudo useradd [options] <USERNAME>             #Creates a user
