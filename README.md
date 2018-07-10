@@ -8,7 +8,7 @@ Volume I: Mathematical Mansion - This is designed to be a container for useful m
 Volume II: Programmers Paradise - This is designed as a container for programming syntax and useful scripts.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~~~~~~ Copywrite and Licensing Information ~~~~~~~~~~~~~~~
+~~~~~~~~~~~ Copyright and Licensing Information ~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copywrite 2016 Antonius Torode All rights reserved.
