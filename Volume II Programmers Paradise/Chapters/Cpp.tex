@@ -2,6 +2,72 @@
 \thispagestyle{fancy}
 \lstset{language=C++, style=cpp}
 
+
+
+
+\section{Basics of the Language}
+``The address of a variable can be obtained by preceding the name of a variable with an ampersand sign (\&), known as \textbf{address-of operator}. \ref{cpp:pointers}
+\begin{lstlisting}
+var = 314;       //Creates a variable and stores in in memory.
+address = &var;  //Returns the memory address of the stored variable.
+\end{lstlisting}
+
+``\textbf{Pointers} are said to `point to' the variable whose address they store.'' \ref{cpp:pointers} Proceeding a pointer with the dereference operator (*), which can be read as `value pointed to by' can be used to access a variable which stores the address of another variable (called a \textbf{pointer}).
+\begin{lstlisting}
+pointer = *address; //Sets pointer to the value of the variable that address points to.
+\end{lstlisting}
+
+A pointer must be declared using the type of the data the pointer points to.
+\begin{lstlisting}
+int * number;          //Creates number to point to an int.
+char * character;      //Creates character to point to a char.
+double * decimals;     //Creates decimals to point to a double.
+int array [20];        //Creates an empty array with 20 elements.
+number = &array[2];    //Sets number to point to the third memory slot of array.
+cout << *number;       //Prints the value stored in array[2].
+\end{lstlisting}
+
+\textbf{Incrementing pointers}. ``When adding one to a pointer, the pointer is made to point to the following element of the same type, and, therefore, the size in bytes of the type it points to is added to the pointer.''
+\begin{lstlisting}
+char *mychar;   //Creates mychar to point to a char.
+short *myshort; //Creates myshort to point to a short.
+long *mylong;   //Creates mylong to point to a long.
+
+++mychar;       //Would increment to the next memory slot.
+++myshort;      //Would increment two memory slots.
+++mylong;       //Would increment four memory slots.
+
+*p++   // same as *(p++): increment pointer, and dereference unincremented address
+*++p   // same as *(++p): increment pointer, and dereference incremented address
+++*p   // same as ++(*p): dereference pointer, and increment the value it points to
+(*p)++ // dereference pointer, and post-increment the value it points to 
+\end{lstlisting}
+
+Within C++, you can use operations with \textbf{pointers to functions} which is typically used when calling a function with another function as a parameter. An example follows as \ref{cpp:pointers}:
+\begin{lstlisting}
+int addition (int a, int b){ return a+b; }
+int subtraction (int a, int b){ return a-b; }
+
+int operation (int x, int y, int (*functocall)(int,int)){
+	int g;
+	g = (*functocall)(x,y);
+	return g;
+}
+
+int main (){
+	int m,n;
+	int (*minus)(int,int) = subtraction;  //minus is a pointer to a function that has two parameters of type int.
+	
+	m = operation (7, 5, addition);
+	n = operation (20, m, minus);
+	cout << n;
+	return 0;
+}
+\end{lstlisting}
+
+
+
+
 \section{Basic Input and Output\index{Input and Output}}
 To output text via a terminal you can use:
 \begin{lstlisting}
@@ -15,6 +81,9 @@ std::string input = "";
 std::cout << "Enter some text: ";
 std::getline(std::cin, input);
 \end{lstlisting}
+
+
+
 
 \subsection{Simulate Key Strokes (Windows Only)\index{Simulate Key Strokes}}
 

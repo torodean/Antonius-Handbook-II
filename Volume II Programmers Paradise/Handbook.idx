@@ -1,28 +1,28 @@
 \indexentry{System Related Commands|hyperpage}{2}
 \indexentry{Networking|hyperpage}{3}
 \indexentry{ifconfig|hyperpage}{3}
-\indexentry{traceroute|hyperpage}{3}
-\indexentry{dig|hyperpage}{3}
+\indexentry{traceroute|hyperpage}{4}
+\indexentry{dig|hyperpage}{4}
 \indexentry{telnet|hyperpage}{4}
 \indexentry{nslookup|hyperpage}{4}
 \indexentry{netstat|hyperpage}{4}
 \indexentry{nmap|hyperpage}{4}
 \indexentry{IPv6|hyperpage}{4}
 \indexentry{echo|hyperpage}{4}
-\indexentry{variables|hyperpage}{4}
+\indexentry{variables|hyperpage}{5}
 \indexentry{touch|hyperpage}{5}
-\indexentry{Input and Output|hyperpage}{8}
-\indexentry{Simulate Key Strokes|hyperpage}{8}
-\indexentry{Variable Types|hyperpage}{9}
-\indexentry{Vector|hyperpage}{9}
-\indexentry{Converting Between Types|hyperpage}{9}
-\indexentry{std::string to int|hyperpage}{9}
-\indexentry{stoi|hyperpage}{9}
-\indexentry{std::string to int|hyperpage}{9}
-\indexentry{stod|hyperpage}{9}
-\indexentry{std::string to const char*|hyperpage}{9}
-\indexentry{c\_str()|hyperpage}{9}
-\indexentry{Prime Number|hyperpage}{10}
-\indexentry{System Commands|hyperpage}{10}
-\indexentry{Sleep|hyperpage}{10}
-\indexentry{Plotting and Graphs|hyperpage}{16}
+\indexentry{Input and Output|hyperpage}{9}
+\indexentry{Simulate Key Strokes|hyperpage}{9}
+\indexentry{Variable Types|hyperpage}{10}
+\indexentry{Vector|hyperpage}{10}
+\indexentry{Converting Between Types|hyperpage}{10}
+\indexentry{std::string to int|hyperpage}{10}
+\indexentry{stoi|hyperpage}{10}
+\indexentry{std::string to int|hyperpage}{10}
+\indexentry{stod|hyperpage}{10}
+\indexentry{std::string to const char*|hyperpage}{11}
+\indexentry{c\_str()|hyperpage}{11}
+\indexentry{Prime Number|hyperpage}{11}
+\indexentry{System Commands|hyperpage}{11}
+\indexentry{Sleep|hyperpage}{11}
+\indexentry{Plotting and Graphs|hyperpage}{17}
