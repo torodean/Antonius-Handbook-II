@@ -64,7 +64,15 @@ chmod a+x /location/of/FILE # Makes a file executable
 ./FILE                      # Executes a file.
 \end{lstlisting}
 
+
+
 \section{Files and Storage}
+
+To find a file within a folder or its subfolders, you can use the \textbf{find} command.
+\begin{lstlisting}
+find -name "fileName.txt"  # Finds a file named fileName.txt
+find -name "file*"  # Finds a file containing "file" in its name.
+\end{lstlisting}
 
 Copy a file or directory to a different computer
 \begin{lstlisting}
@@ -78,6 +86,13 @@ scp -rv <File Path> username@computer:"<path to copy to>"
 Show information about the file system on which each FILE resides, or all file systems by default.
 \begin{lstlisting}
 df 
+\end{lstlisting}
+
+Retrieve the Disk Usage (file sizes) of a directory or its contents.
+\begin{lstlisting}
+du        # List the size of the subdirectories.
+du -sh    # List the size of the directory in a human readable format.
+du -ah    # Lists the size of all files in the directory.
 \end{lstlisting}
 
 List information about File(s) (in the current directory by default).
@@ -99,6 +114,16 @@ sudo mount /dev/sdb1/ /mnt/       # example of mounting
 sudo umount <DEVICE TO MOUNT> <MOUNT POINT>
 sudo umount /dev/sdb1/ /mnt/      # example of mounting
 \end{lstlisting}
+
+
+To open a pdf via terminal, most generic desktop environments support
+\begin{lstlisting}
+xdg-open filename.pdf
+\end{lstlisting}
+
+
+
+
 
 \section{Users and Groups}
 
