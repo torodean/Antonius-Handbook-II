@@ -1,4 +1,11 @@
 \indexentry{System Related Commands|hyperpage}{2}
+\indexentry{cd|hyperpage}{2}
+\indexentry{find|hyperpage}{3}
+\indexentry{mount|hyperpage}{3}
+\indexentry{unmount|hyperpage}{3}
+\indexentry{pdf|hyperpage}{3}
+\indexentry{useradd|hyperpage}{3}
+\indexentry{su|hyperpage}{3}
 \indexentry{Networking|hyperpage}{4}
 \indexentry{ifconfig|hyperpage}{4}
 \indexentry{traceroute|hyperpage}{4}
@@ -11,10 +18,14 @@
 \indexentry{echo|hyperpage}{5}
 \indexentry{variables|hyperpage}{5}
 \indexentry{touch|hyperpage}{5}
+\indexentry{address|hyperpage}{8}
+\indexentry{pointer|hyperpage}{8}
+\indexentry{template|hyperpage}{9}
 \indexentry{Input and Output|hyperpage}{9}
 \indexentry{Simulate Key Strokes|hyperpage}{10}
 \indexentry{Variable Types|hyperpage}{11}
 \indexentry{Vector|hyperpage}{11}
+\indexentry{vector|hyperpage}{11}
 \indexentry{Converting Between Types|hyperpage}{11}
 \indexentry{std::string to int|hyperpage}{11}
 \indexentry{stoi|hyperpage}{11}
@@ -23,6 +34,21 @@
 \indexentry{std::string to const char*|hyperpage}{11}
 \indexentry{c\_str()|hyperpage}{11}
 \indexentry{Prime Number|hyperpage}{12}
+\indexentry{prime|hyperpage}{12}
 \indexentry{System Commands|hyperpage}{12}
 \indexentry{Sleep|hyperpage}{12}
+\indexentry{sleep|hyperpage}{12}
+\indexentry{git|hyperpage}{14}
+\indexentry{clone|hyperpage}{14}
+\indexentry{log|hyperpage}{14}
+\indexentry{status|hyperpage}{14}
+\indexentry{add|hyperpage}{14}
+\indexentry{commit|hyperpage}{14}
+\indexentry{diff|hyperpage}{14}
+\indexentry{push|hyperpage}{14}
+\indexentry{add|hyperpage}{14}
+\indexentry{branch|hyperpage}{14}
+\indexentry{checkout|hyperpage}{14}
+\indexentry{merge|hyperpage}{14}
+\indexentry{mergetool|hyperpage}{14}
 \indexentry{Plotting and Graphs|hyperpage}{18}

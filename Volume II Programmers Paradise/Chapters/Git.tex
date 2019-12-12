@@ -1,0 +1,64 @@
+\chapter{Git\index{git}}
+\thispagestyle{fancy}
+\lstset{language=Bash, style=bash}
+
+\begin{fancybox}[Git Resources]{}	
+	Various git resources exist for use of or with git.
+	\begin{center}
+		\begin{tabular}{l|l}
+			Description & Source \\
+			\hline
+			Main git website & https://git-scm.com/ \\
+			git book & https://git-scm.com/book/en/v2
+		\end{tabular}
+	\end{center}
+\end{fancybox}
+
+Some basic commands used by git include cloning repositories with the \textbf{clone}\index{clone} command, checking the \textbf{log}\index{log} of previous changes, and checking the \textbf{status}\index{status} of current files.
+\begin{lstlisting}
+git clone https://github.com/torodean/Antonius-Handbook-II.git
+
+git log         # Prints a list of the commits and their messages.
+git log --stat  # Shows individual file changes along with the log.
+
+git status      # Checks which state current files are in.
+\end{lstlisting}
+
+To record changes to a git repository, you will primarily use the \textbf{add}\index{add}, \textbf{commit}\index{commit}, \textbf{diff}\index{diff}, and \textbf{push}\index{push} commands. The \textbf{add}\index{add} command can be thought of to ``add precisely this content to the next commit''. 
+\begin{lstlisting}
+git add -A             # Stages all files to be committed.
+git add textFile.txt   # Stages a text file named 'textFile'.
+git rm textFile.txt    # Removes a text file from staging.
+
+git diff               # Shows unstaged changes.
+git diff --cached      # Shows staged changes.
+
+git commit             # Commits changes and asks for commit message.
+git commit -m "text"   # Commits changes with a string as the commit message.
+git commit -v          # includes the diff output into the commit.
+
+git push               # Updates remote references using local references.
+\end{lstlisting}
+
+
+The \textbf{branch}\index{branch} command is used to create a new branch. The \textbf{checkout}\index{checkout} command is used to change the working branch.
+\begin{lstlisting}
+git branch                # Lists all branches.
+git branch --merged       # See merged to current branches.
+git branch -v             # See last commit on each branch.
+
+git branch issue087       # Creates a branch issue087.
+git checkout issue087     # Changes to the branch issue087.
+git branch -d issue087    # Deletes the branch issue087.
+
+git checkout -b issue087  # Does both of the above commands in one line.
+\end{lstlisting}
+
+The \textbf{merge}\index{merge} command is used to combine multiple branches after work on them is finished. To assist with merge conflicts, you can use \textbf{mergetool}\index{mergetool}.
+\begin{lstlisting}
+git checkout master      # Changes to the master branch.
+git merge issue087       # Attempts to merge master and issue087.
+
+git mergetool            # Starts mergetool to assist with merge conflicts.
+\end{lstlisting}
+

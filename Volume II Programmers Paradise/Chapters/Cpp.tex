@@ -31,13 +31,13 @@
 
 
 \section{Basics of the Language}
-``The address of a variable can be obtained by preceding the name of a variable with an ampersand sign (\&), known as \textbf{address-of operator}. \ref{cpp:pointers}
+``The address\index{address} of a variable can be obtained by preceding the name of a variable with an ampersand sign (\&), known as \textbf{address-of operator}. \cite{cpp:pointers}
 \begin{lstlisting}
 var = 314;       //Creates a variable and stores in in memory.
 address = &var;  //Returns the memory address of the stored variable.
 \end{lstlisting}
 
-``\textbf{Pointers} are said to `point to' the variable whose address they store.'' \ref{cpp:pointers} Proceeding a pointer with the dereference operator (*), which can be read as `value pointed to by' can be used to access a variable which stores the address of another variable (called a \textbf{pointer}).
+``\textbf{Pointers}\index{pointer} are said to `point to' the variable whose address they store.'' \cite{cpp:pointers} Proceeding a pointer with the dereference operator (*), which can be read as `value pointed to by' can be used to access a variable which stores the address of another variable (called a \textbf{pointer}).
 \begin{lstlisting}
 pointer = *address; //Sets pointer to the value of the variable that address points to.
 \end{lstlisting}
@@ -68,7 +68,7 @@ long *mylong;   //Creates mylong to point to a long.
 (*p)++ // dereference pointer, and post-increment the value it points to 
 \end{lstlisting}
 
-Within C++, you can use operations with \textbf{pointers to functions} which is typically used when calling a function with another function as a parameter. An example follows as \ref{cpp:pointers}:
+Within C++, you can use operations with \textbf{pointers to functions} which is typically used when calling a function with another function as a parameter. An example follows as \cite{cpp:pointers}:
 \begin{lstlisting}
 int addition (int a, int b){ return a+b; }
 int subtraction (int a, int b){ return a-b; }
@@ -90,7 +90,7 @@ int main (){
 }
 \end{lstlisting}
 
-\textbf{Templates} can be used for defining classes that support multiple types. 
+\textbf{Templates}\index{template} can be used for defining classes that support multiple types. 
 \begin{lstlisting}
 template<class type>
 class className{   //Creates a class named ClassName
@@ -208,7 +208,7 @@ void leftclick(){
 
 \section{Variable Types\index{Variable Types}}
 
-Creating and using a vector\index{Vector}.
+Creating and using a vector\index{Vector}\index{vector}.
 \begin{lstlisting}
 #include <vector>
 
@@ -281,7 +281,7 @@ const char* chr = str.c_str();
 \section{Mathematical Commands}
 
 \subsection*{Prime Number\index{Prime Number}}
-A simple brute for method to determines if a number of type long is prime or not.
+A simple brute for method to determines if a number of type long is \textbf{prime}\index{prime} or not.
 \begin{lstlisting}
 bool isPrime(long num) {  
 	int c = 0;   //c is a counter for how many numbers can divide evenly into num
@@ -327,7 +327,7 @@ float numT = std::tan(num);             // Calculates the tan of the number
 \section{System Commands\index{System Commands}}
 
 \subsection*{Sleep\index{Sleep}}
-Make the thread sleep for some amount of time using the std::chrono to determine the duration \cite{cpp:chrono}.
+Make the thread \textbf{sleep}\index{sleep} for some amount of time using the std::chrono to determine the duration \cite{cpp:chrono}.
 \begin{lstlisting}
 #include <thread>
 #include <chrono>

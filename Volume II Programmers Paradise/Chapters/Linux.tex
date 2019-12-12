@@ -6,12 +6,12 @@ Linux is a broad subcategory that encompass a large family of free and open sour
 
 \section{System Related Commands\index{System Related Commands}}
 
-Retreive information and valid arguments for a command.
+Retrieve information and valid arguments for a command.
 \begin{lstlisting}
 COMMAND --help   # COMMAND must be a valid command such as cd, ls, etc...
 \end{lstlisting}
 
-Changing directory via terminal
+Changing directory via terminal via the \textbf{cd}\index{cd} command.
 \begin{lstlisting}
 cd /directory # Changes the directory to the subdirectory /directory
 cd ..         # Goes back one directory
@@ -32,7 +32,7 @@ To search the results of a command for a string of characters one can use the gr
 ps aux | grep "firefox"
 \end{lstlisting}
 
-Restore power/battery icon if it disappears.
+Restore power/battery icon if it disappears on a laptop.
 \begin{lstlisting}
 /usr/lib/x86_64-linux-gnu/indicator-power/indicator-power-service &disown 
 \end{lstlisting}
@@ -49,7 +49,7 @@ sudo systemctl restart network-manager.service
 
 Turn off LCD display.
 \begin{lstlisting}
-xset dpms force off //turns off display.
+xset dpms force off  // Turns off display.
 \end{lstlisting}
 
 Change or view the host name of a computer with the hostname file.
@@ -68,7 +68,7 @@ chmod a+x /location/of/FILE # Makes a file executable
 
 \section{Files and Storage}
 
-To find a file within a folder or its subfolders, you can use the \textbf{find} command.
+To find a file within a folder or its sub-folders, you can use the \textbf{find}\index{find} command.
 \begin{lstlisting}
 find -name "fileName.txt"  # Finds a file named fileName.txt
 find -name "file*"  # Finds a file containing "file" in its name.
@@ -107,7 +107,7 @@ List all of the block devices (hence partitions) detected by the machine
 lsblk
 \end{lstlisting}
 
-Mount and unmount a partition
+\textbf{Mount}\index{mount} and \textbf{unmount}\index{unmount} a partition
 \begin{lstlisting}
 sudo mount <DEVICE TO MOUNT> <MOUNT POINT>
 sudo mount /dev/sdb1/ /mnt/       # example of mounting
@@ -116,7 +116,7 @@ sudo umount /dev/sdb1/ /mnt/      # example of mounting
 \end{lstlisting}
 
 
-To open a pdf via terminal, most generic desktop environments support
+To open a \textbf{pdf}\index{pdf} via terminal, most generic desktop environments support
 \begin{lstlisting}
 xdg-open filename.pdf
 \end{lstlisting}
@@ -132,20 +132,20 @@ List all users
 cut -d: -f1 /etc/passwd
 \end{lstlisting}
 
-Create a new user
+Create a new user using the \textbf{useradd}\index{useradd} command.
 \begin{lstlisting}
-sudo useradd [options] <USERNAME>             #Creates a user
-sudo useradd -e 2016-02-05 <NAME>             #Creates a user that expites on a day.
-sudo useradd <USERNAME> -G <GROUPNAME>        #Adds a user to a group upon creation.
-useradd --help                                #See full useradd options.
+sudo useradd [options] <USERNAME>             # Creates a user
+sudo useradd -e 2016-02-05 <NAME>             # Creates a user that expites on a day.
+sudo useradd <USERNAME> -G <GROUPNAME>        # Adds a user to a group upon creation.
+useradd --help                                # See full useradd options.
 \end{lstlisting}
 
-Change a users password
+Change a users password using passwd.
 \begin{lstlisting}
 passwd <USERNAME>
 \end{lstlisting}
 
-Change the user in terminal
+Change the user in terminal using the \textbf{su}\index{su} command.
 \begin{lstlisting}
 su - <USERNAME>
 \end{lstlisting}

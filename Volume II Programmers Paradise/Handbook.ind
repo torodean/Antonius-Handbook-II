@@ -1,53 +1,82 @@
 \begin{theindex}
 
-  \item Converting Between Types, \hyperpage{8}
+  \item add, \hyperpage{14}
 
   \indexspace
 
-  \item dig, \hyperpage{3}
+  \item branch, \hyperpage{14}
 
   \indexspace
 
-  \item echo, \hyperpage{4}
+  \item c\_str(), \hyperpage{11}
+  \item checkout, \hyperpage{14}
+  \item clone, \hyperpage{14}
+  \item commit, \hyperpage{14}
+  \item Converting Between Types, \hyperpage{11}
 
   \indexspace
 
-  \item ifconfig, \hyperpage{3}
-  \item Input and Output, \hyperpage{7}
+  \item diff, \hyperpage{14}
+  \item dig, \hyperpage{4}
+
+  \indexspace
+
+  \item echo, \hyperpage{5}
+
+  \indexspace
+
+  \item git, \hyperpage{14}
+
+  \indexspace
+
+  \item ifconfig, \hyperpage{4}
+  \item Input and Output, \hyperpage{9}
   \item IPv6, \hyperpage{4}
 
   \indexspace
 
+  \item log, \hyperpage{14}
+
+  \indexspace
+
+  \item merge, \hyperpage{14}
+  \item mergetool, \hyperpage{14}
+
+  \indexspace
+
   \item netstat, \hyperpage{4}
-  \item Networking, \hyperpage{3}
+  \item Networking, \hyperpage{4}
   \item nmap, \hyperpage{4}
   \item nslookup, \hyperpage{4}
 
   \indexspace
 
-  \item Plotting and Graphs, \hyperpage{11}
-  \item Prime Number, \hyperpage{8}
+  \item Plotting and Graphs, \hyperpage{18}
+  \item Prime Number, \hyperpage{12}
+  \item push, \hyperpage{14}
 
   \indexspace
 
-  \item Simulate Key Strokes, \hyperpage{7}
-  \item Sleep, \hyperpage{9}
-  \item std::string to int, \hyperpage{8}
-  \item stod, \hyperpage{8}
-  \item stoi, \hyperpage{8}
-  \item System Commands, \hyperpage{9}
+  \item Simulate Key Strokes, \hyperpage{10}
+  \item Sleep, \hyperpage{12}
+  \item status, \hyperpage{14}
+  \item std::string to const char*, \hyperpage{11}
+  \item std::string to int, \hyperpage{11}
+  \item stod, \hyperpage{11}
+  \item stoi, \hyperpage{11}
+  \item System Commands, \hyperpage{12}
   \item System Related Commands, \hyperpage{2}
 
   \indexspace
 
   \item telnet, \hyperpage{4}
   \item touch, \hyperpage{5}
-  \item traceroute, \hyperpage{3}
+  \item traceroute, \hyperpage{4}
 
   \indexspace
 
-  \item Variable Types, \hyperpage{8}
-  \item variables, \hyperpage{4}
-  \item Vector, \hyperpage{8}
+  \item Variable Types, \hyperpage{11}
+  \item variables, \hyperpage{5}
+  \item Vector, \hyperpage{11}
 
 \end{theindex}
