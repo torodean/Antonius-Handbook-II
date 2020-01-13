@@ -272,3 +272,13 @@ echo "I will create you a file called ${USER_NAME}_file"
 # The quotations prevent multiple files from being called to touch.
 touch "${USER_NAME}_file"
 \end{lstlisting}
+
+
+
+The \textbf{mkfifo}\index{mkfifo} command is used to create a new named pipe. A pipe is used to store the output of one program to be used in another.
+\begin{lstlisting}
+mkfifo namedPipe   # Creates a pip named "namedPipe".
+ls > namedPipe     # Feeds the output of ls into namedPipe.
+cat < namedPipe    # Feeds namedPipe into cat and displays the data from ls.
+mkfifo namedPipe2 -m700  # Modifies the permissions of a created pipe.
+\end{lstlisting}
