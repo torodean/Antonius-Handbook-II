@@ -3,7 +3,7 @@
 \lstset{language=Bash, style=bash}
 
 \begin{fancybox}[Git Resources]{}	
-	Various git resources exist for use of or with git.
+	Various git resources exist for use of or with git (an open source, distributed version-control system).
 	\begin{center}
 		\begin{tabular}{l|l}
 			Description & Source \\
@@ -14,7 +14,24 @@
 	\end{center}
 \end{fancybox}
 
-Some basic commands used by git include cloning repositories with the \textbf{clone}\index{clone} command, checking the \textbf{log}\index{log} of previous changes, and checking the \textbf{status}\index{status} of current files.
+To turn an existing directory into a git repository you can use the \textbf{git init}\index{init} command,
+\begin{lstlisting}
+git init   # Makes the current directory a git repository.
+\end{lstlisting}
+
+Git contains some basic \textbf{configuration}\index{config} that can be set for all the local repositories.
+\begin{lstlisting}
+# Sets the name you want attached to your commit transactions.
+git config --global user.name "[name]"
+
+# Sets the email you want attached to your commit transactions.
+git config --global user.email "[email address]"
+
+# Enables helpful colorization of command line output.
+git config --global color.ui auto
+\end{lstlisting}
+
+Some basic commands used by git include cloning repositories with the \textbf{clone}\index{clone} (a local version of a repository, including all commits and branches) command, checking the \textbf{log}\index{log} of previous changes, and checking the \textbf{status}\index{status} of current files.
 \begin{lstlisting}
 git clone https://github.com/torodean/Antonius-Handbook-II.git
 
@@ -24,7 +41,14 @@ git log --stat  # Shows individual file changes along with the log.
 git status      # Checks which state current files are in.
 \end{lstlisting}
 
-To record changes to a git repository, you will primarily use the \textbf{add}\index{add}, \textbf{commit}\index{commit}, \textbf{diff}\index{diff}, and \textbf{push}\index{push} commands. The \textbf{add}\index{add} command can be thought of to ``add precisely this content to the next commit''. 
+To \textbf{synchronize}\index{fetch}\index{merge}\index{pull} your local repository with the remote repository.
+\begin{lstlisting}
+git fetch    # Downloads all history from the remote tracking branches.
+git merge    # Combines remote tracking branch into current local branch. 
+git pull     # A combination of git fetch and git merge.
+\end{lstlisting}
+
+To record changes to a git repository, you will primarily use the \textbf{add}\index{add}, \textbf{commit}\index{commit} (a Git object, a snapshot of your entire repository compressed into a SHA), \textbf{diff}\index{diff}, and \textbf{push}\index{push} commands. The \textbf{add}\index{add} command can be thought of to ``add precisely this content to the next commit''. 
 \begin{lstlisting}
 git add -A             # Stages all files to be committed.
 git add textFile.txt   # Stages a text file named 'textFile'.
@@ -41,7 +65,7 @@ git push               # Updates remote references using local references.
 \end{lstlisting}
 
 
-The \textbf{branch}\index{branch} command is used to create a new branch. The \textbf{checkout}\index{checkout} command is used to change the working branch.
+The \textbf{branch}\index{branch} (a lightweight movable pointer to a commit) command is used to create a new branch. The \textbf{checkout}\index{checkout} command is used to change the working branch.
 \begin{lstlisting}
 git branch                # Lists all branches.
 git branch --merged       # See merged to current branches.
@@ -60,5 +84,20 @@ git checkout master      # Changes to the master branch.
 git merge issue087       # Attempts to merge master and issue087.
 
 git mergetool            # Starts mergetool to assist with merge conflicts.
+\end{lstlisting}
+
+Using the fork command, one can create a copy of a repository owned by a different user.
+\begin{lstlisting}
+git fork [URL]
+\end{lstlisting}
+
+Sometimes a file or type of file(s) are desired to be ignored by git and not push to the repository. This cane be done by creating a special file named \textbf{.gitignore}\index{gitignore}.
+\begin{lstlisting}
+# Example of a .gitignore file. This file tells git to ignore the following types of files.
+*.aux
+*.log
+*.synctex.gz
+*.toc
+*.o
 \end{lstlisting}
 

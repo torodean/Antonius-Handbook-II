@@ -20,36 +20,47 @@
 \indexentry{touch|hyperpage}{5}
 \indexentry{mkfifo|hyperpage}{5}
 \indexentry{address|hyperpage}{8}
-\indexentry{pointer|hyperpage}{8}
+\indexentry{pointer|hyperpage}{9}
 \indexentry{template|hyperpage}{9}
-\indexentry{Input and Output|hyperpage}{9}
-\indexentry{Simulate Key Strokes|hyperpage}{10}
-\indexentry{Variable Types|hyperpage}{11}
-\indexentry{Vector|hyperpage}{11}
-\indexentry{vector|hyperpage}{11}
+\indexentry{Input and Output|hyperpage}{10}
+\indexentry{Variable Types|hyperpage}{10}
+\indexentry{Vector|hyperpage}{10}
+\indexentry{vector|hyperpage}{10}
 \indexentry{Converting Between Types|hyperpage}{11}
 \indexentry{std::string to int|hyperpage}{11}
 \indexentry{stoi|hyperpage}{11}
 \indexentry{std::string to int|hyperpage}{11}
 \indexentry{stod|hyperpage}{11}
-\indexentry{std::string to const char*|hyperpage}{11}
-\indexentry{c\_str()|hyperpage}{11}
+\indexentry{std::string to const char*|hyperpage}{12}
+\indexentry{c\_str()|hyperpage}{12}
 \indexentry{Prime Number|hyperpage}{12}
 \indexentry{prime|hyperpage}{12}
 \indexentry{System Commands|hyperpage}{12}
 \indexentry{Sleep|hyperpage}{12}
 \indexentry{sleep|hyperpage}{12}
-\indexentry{git|hyperpage}{14}
-\indexentry{clone|hyperpage}{14}
-\indexentry{log|hyperpage}{14}
-\indexentry{status|hyperpage}{14}
-\indexentry{add|hyperpage}{14}
-\indexentry{commit|hyperpage}{14}
-\indexentry{diff|hyperpage}{14}
-\indexentry{push|hyperpage}{14}
-\indexentry{add|hyperpage}{14}
-\indexentry{branch|hyperpage}{14}
-\indexentry{checkout|hyperpage}{14}
-\indexentry{merge|hyperpage}{14}
-\indexentry{mergetool|hyperpage}{14}
-\indexentry{Plotting and Graphs|hyperpage}{18}
+\indexentry{Simulate Key Strokes|hyperpage}{13}
+\indexentry{little endian|hyperpage}{14}
+\indexentry{big endian|hyperpage}{14}
+\indexentry{Make|hyperpage}{15}
+\indexentry{CMake|hyperpage}{15}
+\indexentry{CMakeLists|hyperpage}{15}
+\indexentry{git|hyperpage}{17}
+\indexentry{init|hyperpage}{17}
+\indexentry{config|hyperpage}{17}
+\indexentry{clone|hyperpage}{17}
+\indexentry{log|hyperpage}{17}
+\indexentry{status|hyperpage}{17}
+\indexentry{fetch|hyperpage}{17}
+\indexentry{merge|hyperpage}{17}
+\indexentry{pull|hyperpage}{17}
+\indexentry{add|hyperpage}{17}
+\indexentry{commit|hyperpage}{17}
+\indexentry{diff|hyperpage}{17}
+\indexentry{push|hyperpage}{17}
+\indexentry{add|hyperpage}{17}
+\indexentry{branch|hyperpage}{18}
+\indexentry{checkout|hyperpage}{18}
+\indexentry{merge|hyperpage}{18}
+\indexentry{mergetool|hyperpage}{18}
+\indexentry{gitignore|hyperpage}{18}
+\indexentry{Plotting and Graphs|hyperpage}{22}

@@ -1,0 +1,85 @@
+\chapter{Make/CMake\index{Make}\index{CMake}}
+\thispagestyle{fancy}
+\lstset{language=Bash, style=bash}
+
+\section{CMake}
+
+A poorly constructed and hard to follow yet fairly comprehensive example of how to use CMake and CMakeLists.txt files can be found at the following link (which is where much of the information in this section is derived from).
+\begin{lstlisting}
+https://cmake.org/cmake/help/latest/guide/tutorial/index.html
+\end{lstlisting}
+
+A basic project with CMake will contain an executable built from source code. To use CMake this project must contain a \textbf{CMakeLists.txt}\index{CMakeLists} file containing the following.
+\begin{lstlisting}
+cmake_minimum_required( VERSION 3.14 )
+
+# Set the project name and version.
+project( ProjectName VERSION 1.001)
+
+# Add an executable.
+add_executable( Main main.cpp )
+
+# Create a binary tree to search for include files.
+target_include_directories(Tutorial PUBLIC
+"${PROJECT_BINARY_DIR}"
+)
+\end{lstlisting}
+
+To define and enable support for a specific \textbf{C++ standard}, you can use the following.
+\begin{lstlisting}
+# Specify the C++ standard to use.
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+\end{lstlisting}
+
+To add a \textbf{library} in a subdirectory and use that library in the main level, you must define where the library is in the main level CMakeLists.txt file.
+\begin{lstlisting}
+# Add the LibraryName library.
+add_subdirectory( LibraryDirectory )
+
+# Links this Main file to the desired target library.
+target_link_libraries( Main PUBLIC LibraryName )
+
+# Add the binary tree to the search path for include files so that we will find LibraryName.h
+target_include_directories( Main PUBLIC
+	"${PROJECT_BINARY_DIR}"
+	"${PROJECT_SOURCE_DIR}/LibraryDirectory"
+)
+\end{lstlisting}
+
+In the directory containing the library, a CMakeLists.txt file must also exist and contain the following.
+\begin{lstlisting}
+# Defines the file as a library.
+add_library( LibraryName LibraryName.cpp)
+\end{lstlisting}
+
+To create \textbf{optional arguments} that can be turned on and off, one can use the \textbf{option} command.
+\begin{lstlisting}
+# Creates a variable USE_MYLIBRARY and set it to on.
+option( USE_MYLIBRARY "Use my library with this project" ON )
+\end{lstlisting}
+
+Variables like the above can be used as follows.
+\begin{lstlisting}
+if( USE_MYLIBRARY )
+	add_subdirectory(MathFunctions)
+	list(APPEND EXTRA_LIBS LibraryName)
+	list(APPEND EXTRA_INCLUDES "${PROJECT_SOURCE_DIR}/LibraryDirectory")
+endif()
+
+# add the executable
+add_executable( Main main.cpp )
+
+target_link_libraries( Main PUBLIC ${EXTRA_LIBS} )
+
+# Add the binary tree to the search path for include files.
+target_include_directories( Main PUBLIC
+	"${PROJECT_BINARY_DIR}"
+	 ${EXTRA_INCLUDES}
+)
+\end{lstlisting}
+
+The use of variables defined in CMake can be defined in the source code using
+\begin{lstlisting}
+#cmakedefine USE_MYLIBRARY
+\end{lstlisting}

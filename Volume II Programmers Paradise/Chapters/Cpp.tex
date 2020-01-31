@@ -31,6 +31,26 @@
 
 
 \section{Basics of the Language}
+
+The C++ main function is designed by default to pass in arguments when a program is ran. The argument passign is set up as follows.
+\begin{lstlisting}
+int main(int argc, char *argv[])
+{
+	// argc would represent how many arguments were passed to the program.
+	// argv[] is an array of each argument with the first element being the program name.
+	for (int i=0;i<argc;i++) std::cout << argv[i] << std::endl; //Prints the arguments.
+	return 0;
+}
+
+// So for example if I had HelloWorld.cpp as the above and ran using
+// ./HelloWorld argument1 argument2 argument3
+// we would get an output of 
+/some/file/path/HelloWorld
+argument1
+argument2
+argument3
+\end{lstlisting}
+
 ``The address\index{address} of a variable can be obtained by preceding the name of a variable with an ampersand sign (\&), known as \textbf{address-of operator}. \cite{cpp:pointers}
 \begin{lstlisting}
 var = 314;       //Creates a variable and stores in in memory.
@@ -116,11 +136,16 @@ type className<type>::getMax(){ return a>b ? a:b; }
 
 
 
+
+
 \section{Basic Input and Output\index{Input and Output}}
 To output text via a terminal you can use:
 \begin{lstlisting}
-std::string text = "Hello World!";
-std::cout << text << std::endl; //std::endl is equivalent to the new-line character.
+uint32_t number = 0x123456         // A hexadecimal number.
+std::string text = "Hello World!"; // A string.
+
+std::cout << text << std::endl;    // std::endl is equivalent to the new-line character.
+std::cout << std::hex << number;   // Prints a number in hexadecimal format.
 \end{lstlisting}
 
 To get input as a user in the type of a std::string, you can use:
@@ -129,77 +154,6 @@ std::string input = "";
 std::cout << "Enter some text: ";
 std::getline(std::cin, input);
 \end{lstlisting}
-
-
-
-
-\subsection{Simulate Key Strokes (Windows Only)\index{Simulate Key Strokes}}
-
-First the correct files must be included and an event must be setup.
-\begin{lstlisting}
-#define WINVER 0x0500
-#include <windows.h> 
-
-INPUT ip;
-
-ip.type = INPUT_KEYBOARD; // Set up a generic keyboard event.    
-ip.ki.wScan = 0; // hardware scan code for key                                   
-ip.ki.time = 0;
-ip.ki.dwExtraInfo = 0;
-\end{lstlisting}
-
-After this, functions can be setup to simulate various keys based on the specific key codes, two examples of such are
-\begin{lstlisting}
-void space(){ 
-	// Press the "space" key.  
-	ip.ki.wVk = VK_SPACE; // virtual-key code for the "space" key.                                                                                
-	ip.ki.dwFlags = 0; // 0 for key press                                                                                                        
-	SendInput(1, &ip, sizeof(INPUT));
-	
-	// Release the "space" key                                                                                                                   
-	ip.ki.wVk = VK_SPACE; // virtual-key code for the "space" key.                                                                                
-	ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release                                                                          
-	SendInput(1, &ip, sizeof(INPUT));
-	Sleep(50);
-}
-
-void one(){ 
-	// Press the "1" key.    
-	ip.ki.wVk = 0x31; // virtual-key code for the "1" key.                                          
-	ip.ki.dwFlags = 0; // 0 for key press                                                                                                        
-	SendInput(1, &ip, sizeof(INPUT));
-	
-	// Release the "1" key.                                                                                                                    
-	ip.ki.wVk = 0x31; // virtual-key code for the "1" key.                                                                                      
-	ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release.                                                                          
-	SendInput(1, \&ip, sizeof(INPUT));
-	Sleep(50);
-}
-\end{lstlisting}
-
-A similar method can be used to simulate mouse clicks. And example for left click follows
-\begin{lstlisting}
-void leftclick(){
-	INPUT ip={0};
-	// left down                                                                                                                                   
-	ip.type = INPUT_MOUSE;
-	ip.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
-	SendInput(1,&Input,sizeof(INPUT));
-	
-	// left up                                                                                                                                     
-	ZeroMemory(&Input,sizeof(INPUT));
-	ip.type = INPUT_MOUSE;
-	ip.mi.dwFlags = MOUSEEVENTF_LEFTUP;
-	SendInput(1,&Input,sizeof(INPUT));
-	Sleep(50);
-}
-\end{lstlisting}
-
-
-
-
-
-
 
 
 
@@ -214,6 +168,7 @@ Creating and using a vector\index{Vector}\index{vector}.
 
 int size1 = 5;
 int size2 = 6;
+uint32_t number = 0x345678;  //Creates a 32 bit unsigned integer and sets it in hexadecimal.
 
 //Creates a vector named V1 containing int's with a size of 5 and sets each element to 0. 
 std::vector<int> V1(size1, 0); 
@@ -232,6 +187,51 @@ V2[0][3] = 3.1415; //Sets the 4th element in the first row of V2 to 3.1415.
 
 
 
+\section{Class Structures}
+In C++ a Class is an object that can contain variables and functions all defined within the object to be used in various ways.
+\begin{lstlisting}
+// This creates a class named ParentClass.
+class ParentClass{
+	// The public members of a class are accessible to anything outside of the class.
+	public:
+		ParentClass();  // Constructor for the ParentClass.
+		~ParentClass(); // De-constructor for the ParentClass.
+		int notSoSpecialInt = 13; // Creates an integer.
+};
+
+// This creates a class named ChildClass and inherits the public features of another class ParentClass.
+class ChildClass : public ParentClass {
+	// The public members of a class are accessible to anything outside of the class.
+	public:
+		// Creates a public method to return notSoSpecialInt.
+		int getNotSoSpecialInt() { return notSoSpecialInt; }; 
+		// Creates a public method to return secretInt.
+		int getSecretInt() { return secretInt; };  
+		
+	// The protected members of a class are accessible to this class and any class that inherits this one.
+	protected:
+		void hello();      // Creates a protected method hello() that is not defined.
+		
+	// The private members of a class are only accessible to this class.
+	private:
+		int secretInt = 2; // Creates a private integer secretInt.
+};
+
+// This defines the hello method within the ChildClass class.
+void ChildClass::hello() {
+	std::cout << "Hello!" << std::endl;
+}
+
+
+
+int main() {
+	ChildClass child;  // Creates an object of ChildClass named child.
+	
+	int number = child.secretInt();    // ERROR: This would not work because secretInt is private;
+	int number = child.getSecretInt(); // SUCCESS: This works becase getSecretInt() is public.
+	return 0;
+}
+\end{lstlisting}
 
 
 
@@ -362,6 +362,90 @@ system("DATE");   // Runs the DATE command from windows command prompt.
 
 
 
+
+
+\subsection{Simulate Key Strokes (Windows Only)\index{Simulate Key Strokes}}
+
+First the correct files must be included and an event must be setup.
+\begin{lstlisting}
+#define WINVER 0x0500
+#include <windows.h> 
+
+INPUT ip;
+
+ip.type = INPUT_KEYBOARD; // Set up a generic keyboard event.    
+ip.ki.wScan = 0; // hardware scan code for key                                   
+ip.ki.time = 0;
+ip.ki.dwExtraInfo = 0;
+\end{lstlisting}
+
+After this, functions can be setup to simulate various keys based on the specific key codes, two examples of such are
+\begin{lstlisting}
+void space(){ 
+// Press the "space" key.  
+ip.ki.wVk = VK_SPACE; // virtual-key code for the "space" key.                                                                                
+ip.ki.dwFlags = 0; // 0 for key press                                                                                                        
+SendInput(1, &ip, sizeof(INPUT));
+
+// Release the "space" key                                                                                                                   
+ip.ki.wVk = VK_SPACE; // virtual-key code for the "space" key.                                                                                
+ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release                                                                          
+SendInput(1, &ip, sizeof(INPUT));
+Sleep(50);
+}
+
+void one(){ 
+// Press the "1" key.    
+ip.ki.wVk = 0x31; // virtual-key code for the "1" key.                                          
+ip.ki.dwFlags = 0; // 0 for key press                                                                                                        
+SendInput(1, &ip, sizeof(INPUT));
+
+// Release the "1" key.                                                                                                                    
+ip.ki.wVk = 0x31; // virtual-key code for the "1" key.                                                                                      
+ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release.                                                                          
+SendInput(1, \&ip, sizeof(INPUT));
+Sleep(50);
+}
+\end{lstlisting}
+
+A similar method can be used to simulate mouse clicks. And example for left click follows
+\begin{lstlisting}
+void leftclick(){
+INPUT ip={0};
+// left down                                                                                                                                   
+ip.type = INPUT_MOUSE;
+ip.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+SendInput(1,&Input,sizeof(INPUT));
+
+// left up                                                                                                                                     
+ZeroMemory(&Input,sizeof(INPUT));
+ip.type = INPUT_MOUSE;
+ip.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+SendInput(1,&Input,sizeof(INPUT));
+Sleep(50);
+}
+\end{lstlisting}
+
+
+
+
+
+\section{Compiler/Processor specific}
+The order of bytes within a binary representation of a number can be either \textbf{little endian}\index{little endian} or \textbf{big endian}\index{big endian}. In some cases, it is important to know this. Below is a function that will return the endianness of the machine you are compiling on.
+\begin{lstlisting}
+bool is_big_endian(){
+	union { uint32_t i; char c[4]; } bint = {0x01020304};
+	return bint.c[0] == 1;
+}
+
+#if BYTE_ORDER == BIG_ENDIAN
+// Use big endian code here.
+#endif
+
+#if BYTE_ORDER == LITTLE_ENDIAN
+	// Use little endian code here.
+#endif
+\end{lstlisting}
 
 
 
