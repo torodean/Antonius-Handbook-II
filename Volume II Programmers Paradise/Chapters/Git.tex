@@ -9,7 +9,8 @@
 			Description & Source \\
 			\hline
 			Main git website & https://git-scm.com/ \\
-			git book & https://git-scm.com/book/en/v2
+			git book & https://git-scm.com/book/en/v2 \\
+			git reference & https://git-scm.com/docs/
 		\end{tabular}
 	\end{center}
 \end{fancybox}
@@ -65,6 +66,8 @@ git push               # Updates remote references using local references.
 \end{lstlisting}
 
 
+
+
 The \textbf{branch}\index{branch} (a lightweight movable pointer to a commit) command is used to create a new branch. The \textbf{checkout}\index{checkout} command is used to change the working branch.
 \begin{lstlisting}
 git branch                # Lists all branches.
@@ -101,3 +104,38 @@ Sometimes a file or type of file(s) are desired to be ignored by git and not pus
 *.o
 \end{lstlisting}
 
+\subsection{Advanced Git}
+
+A useful tool is \textbf{stash}\index{stash} (code must be staged to be stashed), which lets you save code without making a commit \cite{git}\cite{git: Advanced}.
+\begin{lstlisting}
+git stash        # Makes a temporary local save of your repository.
+git stash list   # Show's a list of stashes that have been made.
+git stash apply  # Reapplies the content of a stash.
+git stash branch # Carry over stashed commits to new branch.
+git drop         # Used to remove stashes individually.
+git stash clear  # Used to remove all stashes.
+
+git checkout .   # Resets all uncommitted code.
+\end{lstlisting}
+
+The \textbf{reset}\index{reset} tool is used for accidental commits or reversing commits \cite{git}\cite{git: Advanced}.
+\begin{lstlisting}
+git reset                  # Lets you modify your repository before doing a commit.
+git reset --soft HEAD~NUM. # Resets the most recent $NUM of commits.
+git reset --hard HEAD~NUM  # Erases your last $NUM of commits.
+\end{lstlisting}
+
+The \textbf{bisect}\index{bisect} tool will present you with the details of a commit when compared with another. By referencing a good commit and a bad commit, git will traverse between the two and ask you which ones are good and which ones are bad and then you can display the differences after the process is finished \cite{git}\cite{git: Advanced}.
+\begin{lstlisting}
+git bisect        # Allows you to hunt for bad commits.
+git bisect start  # Tells git that there is a bad commit.
+git bisect bad    # Tells git which commit is bad.
+git bisect good   # Tells git which commit is good.
+git show          # Show the commit to indentify the issue.
+\end{lstlisting}
+
+The \textbf{squash}\index{squash} and \textbf{rebase}\index{rebase} tools are used to combine commits. The rebase tool can be dangerous as it could potentially permanently delete files. It is recommended to view the documentation before using it \cite{git}\cite{git: Advanced}.
+\begin{lstlisting}
+git squash   # Allows you to combine multiple commits.
+git rebase   # Allows for applying changes from one branch onto another.
+\end{lstlisting}
