@@ -1,22 +1,29 @@
 \begin{theindex}
 
-  \item add, \hyperpage{14}
+  \item add, \hyperpage{17}
+  \item address, \hyperpage{8}
 
   \indexspace
 
-  \item branch, \hyperpage{14}
+  \item big endian, \hyperpage{14}
+  \item bisect, \hyperpage{18}
+  \item branch, \hyperpage{18}
 
   \indexspace
 
-  \item c\_str(), \hyperpage{11}
-  \item checkout, \hyperpage{14}
-  \item clone, \hyperpage{14}
-  \item commit, \hyperpage{14}
+  \item c\_str(), \hyperpage{12}
+  \item cd, \hyperpage{2}
+  \item checkout, \hyperpage{18}
+  \item clone, \hyperpage{17}
+  \item CMake, \hyperpage{15}
+  \item CMakeLists, \hyperpage{15}
+  \item commit, \hyperpage{17}
+  \item config, \hyperpage{17}
   \item Converting Between Types, \hyperpage{11}
 
   \indexspace
 
-  \item diff, \hyperpage{14}
+  \item diff, \hyperpage{17}
   \item dig, \hyperpage{4}
 
   \indexspace
@@ -25,22 +32,33 @@
 
   \indexspace
 
-  \item git, \hyperpage{14}
+  \item fetch, \hyperpage{17}
+  \item find, \hyperpage{3}
+
+  \indexspace
+
+  \item git, \hyperpage{17}
+  \item gitignore, \hyperpage{18}
 
   \indexspace
 
   \item ifconfig, \hyperpage{4}
-  \item Input and Output, \hyperpage{9}
+  \item init, \hyperpage{17}
+  \item Input and Output, \hyperpage{10}
   \item IPv6, \hyperpage{4}
 
   \indexspace
 
-  \item log, \hyperpage{14}
+  \item little endian, \hyperpage{14}
+  \item log, \hyperpage{17}
 
   \indexspace
 
-  \item merge, \hyperpage{14}
-  \item mergetool, \hyperpage{14}
+  \item Make, \hyperpage{15}
+  \item merge, \hyperpage{17, 18}
+  \item mergetool, \hyperpage{18}
+  \item mkfifo, \hyperpage{5}
+  \item mount, \hyperpage{3}
 
   \indexspace
 
@@ -51,32 +69,51 @@
 
   \indexspace
 
-  \item Plotting and Graphs, \hyperpage{18}
+  \item pdf, \hyperpage{3}
+  \item Plotting and Graphs, \hyperpage{23}
+  \item pointer, \hyperpage{9}
+  \item prime, \hyperpage{12}
   \item Prime Number, \hyperpage{12}
-  \item push, \hyperpage{14}
+  \item pull, \hyperpage{17}
+  \item push, \hyperpage{17}
 
   \indexspace
 
-  \item Simulate Key Strokes, \hyperpage{10}
+  \item rebase, \hyperpage{19}
+  \item reset, \hyperpage{18}
+
+  \indexspace
+
+  \item Simulate Key Strokes, \hyperpage{13}
   \item Sleep, \hyperpage{12}
-  \item status, \hyperpage{14}
-  \item std::string to const char*, \hyperpage{11}
+  \item sleep, \hyperpage{12}
+  \item stash, \hyperpage{18}
+  \item status, \hyperpage{17}
+  \item std::string to const char*, \hyperpage{12}
   \item std::string to int, \hyperpage{11}
   \item stod, \hyperpage{11}
   \item stoi, \hyperpage{11}
+  \item su, \hyperpage{3}
   \item System Commands, \hyperpage{12}
   \item System Related Commands, \hyperpage{2}
 
   \indexspace
 
   \item telnet, \hyperpage{4}
+  \item template, \hyperpage{9}
   \item touch, \hyperpage{5}
   \item traceroute, \hyperpage{4}
 
   \indexspace
 
-  \item Variable Types, \hyperpage{11}
+  \item unmount, \hyperpage{3}
+  \item useradd, \hyperpage{3}
+
+  \indexspace
+
+  \item Variable Types, \hyperpage{10}
   \item variables, \hyperpage{5}
-  \item Vector, \hyperpage{11}
+  \item Vector, \hyperpage{10}
+  \item vector, \hyperpage{10}
 
 \end{theindex}
