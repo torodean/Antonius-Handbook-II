@@ -179,7 +179,6 @@ std::vector< std::vector<double>> V2(size1, std::vector<double>(size2, 0));
 V1[0] = 8; //Sets the first element in V1 to 8.
 
 V2[0][3] = 3.1415; //Sets the 4th element in the first row of V2 to 3.1415.
-
 \end{lstlisting}
 
 
@@ -188,7 +187,7 @@ V2[0][3] = 3.1415; //Sets the 4th element in the first row of V2 to 3.1415.
 
 
 \section{Class Structures}
-In C++ a Class is an object that can contain variables and functions all defined within the object to be used in various ways.
+In C++ a \textbf{Class} is an object that can contain variables and functions all defined within the object to be used in various ways.
 \begin{lstlisting}
 // This creates a class named ParentClass.
 class ParentClass{
@@ -252,7 +251,7 @@ int number = std::stoi(text);
 To convert a string to a double you can use the \textbf{stod}\index{stod} function:
 \begin{lstlisting}
 std::string text = "3.1415";
-double number = std::stof(text);
+double number = std::stod(text);
 \end{lstlisting}
 
 \subsection*{std::string to const char*\index{std::string to const char*}}

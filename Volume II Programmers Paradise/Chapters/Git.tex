@@ -138,3 +138,10 @@ The \textbf{rebase}\index{rebase} tool is used to combine commits. The rebase to
 \begin{lstlisting}
 git rebase   # Allows for applying changes from one branch onto another.
 \end{lstlisting}
+
+To view and change the url that the git repository is using to update, you can use the 
+textbf{git remote} command.
+\begin{lstlisting}
+git remote -v  # Lists the remote url of the repository.
+git remote set-url origin <NEW-URL>  # Change the url of the repo.
+\end{lstlisting}
