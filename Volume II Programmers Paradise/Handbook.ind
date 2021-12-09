@@ -1,63 +1,72 @@
 \begin{theindex}
 
-  \item add, \hyperpage{17}
-  \item address, \hyperpage{8}
+  \item add, \hyperpage{18}
+  \item address, \hyperpage{9}
+  \item arithmetic, \hyperpage{6}
 
   \indexspace
 
-  \item big endian, \hyperpage{14}
-  \item bisect, \hyperpage{18}
-  \item branch, \hyperpage{18}
+  \item big endian, \hyperpage{15}
+  \item bisect, \hyperpage{19}
+  \item branch, \hyperpage{19}
 
   \indexspace
 
-  \item c\_str(), \hyperpage{12}
+  \item c\_str(), \hyperpage{13}
   \item cd, \hyperpage{2}
-  \item checkout, \hyperpage{18}
-  \item clone, \hyperpage{17}
-  \item CMake, \hyperpage{15}
-  \item CMakeLists, \hyperpage{15}
-  \item commit, \hyperpage{17}
-  \item config, \hyperpage{17}
-  \item Converting Between Types, \hyperpage{11}
+  \item checkout, \hyperpage{19}
+  \item chmod, \hyperpage{5}
+  \item chown, \hyperpage{6}
+  \item clone, \hyperpage{18}
+  \item CMake, \hyperpage{16}
+  \item CMakeLists, \hyperpage{16}
+  \item commit, \hyperpage{18}
+  \item config, \hyperpage{18}
+  \item Converting Between Types, \hyperpage{12}
 
   \indexspace
 
-  \item diff, \hyperpage{17}
+  \item delimiter, \hyperpage{25}
+  \item diff, \hyperpage{18}
   \item dig, \hyperpage{4}
 
   \indexspace
 
   \item echo, \hyperpage{5}
+  \item export, \hyperpage{6}
 
   \indexspace
 
-  \item fetch, \hyperpage{17}
+  \item fetch, \hyperpage{18}
   \item find, \hyperpage{3}
 
   \indexspace
 
-  \item git, \hyperpage{17}
-  \item gitignore, \hyperpage{18}
+  \item git, \hyperpage{18}
+  \item gitignore, \hyperpage{19}
+
+  \indexspace
+
+  \item head, \hyperpage{3}
 
   \indexspace
 
   \item ifconfig, \hyperpage{4}
-  \item init, \hyperpage{17}
-  \item Input and Output, \hyperpage{10}
+  \item init, \hyperpage{18}
+  \item Input and Output, \hyperpage{11}
   \item IPv6, \hyperpage{4}
 
   \indexspace
 
-  \item little endian, \hyperpage{14}
-  \item log, \hyperpage{17}
+  \item little endian, \hyperpage{15}
+  \item log, \hyperpage{18}
 
   \indexspace
 
-  \item Make, \hyperpage{15}
-  \item merge, \hyperpage{17, 18}
-  \item mergetool, \hyperpage{18}
-  \item mkfifo, \hyperpage{5}
+  \item Make, \hyperpage{16}
+  \item merge, \hyperpage{18, 19}
+  \item mergetool, \hyperpage{19}
+  \item mkfifo, \hyperpage{6}
   \item mount, \hyperpage{3}
 
   \indexspace
@@ -70,38 +79,40 @@
   \indexspace
 
   \item pdf, \hyperpage{3}
-  \item Plotting and Graphs, \hyperpage{23}
-  \item pointer, \hyperpage{9}
-  \item prime, \hyperpage{12}
-  \item Prime Number, \hyperpage{12}
-  \item pull, \hyperpage{17}
-  \item push, \hyperpage{17}
+  \item Plotting and Graphs, \hyperpage{25}
+  \item pointer, \hyperpage{10}
+  \item prime, \hyperpage{13}
+  \item Prime Number, \hyperpage{13}
+  \item pull, \hyperpage{18}
+  \item push, \hyperpage{18}
 
   \indexspace
 
-  \item rebase, \hyperpage{19}
-  \item reset, \hyperpage{18}
+  \item rebase, \hyperpage{20}
+  \item reset, \hyperpage{19}
 
   \indexspace
 
-  \item Simulate Key Strokes, \hyperpage{13}
-  \item Sleep, \hyperpage{12}
-  \item sleep, \hyperpage{12}
-  \item stash, \hyperpage{18}
-  \item status, \hyperpage{17}
-  \item std::string to const char*, \hyperpage{12}
-  \item std::string to int, \hyperpage{11}
-  \item stod, \hyperpage{11}
-  \item stoi, \hyperpage{11}
-  \item su, \hyperpage{3}
-  \item System Commands, \hyperpage{12}
+  \item services, \hyperpage{7}
+  \item Simulate Key Strokes, \hyperpage{14}
+  \item Sleep, \hyperpage{13}
+  \item sleep, \hyperpage{13}
+  \item stash, \hyperpage{19}
+  \item status, \hyperpage{18}
+  \item std::string to const char*, \hyperpage{13}
+  \item std::string to int, \hyperpage{12}
+  \item stod, \hyperpage{12}
+  \item stoi, \hyperpage{12}
+  \item su, \hyperpage{4}
+  \item System Commands, \hyperpage{13}
   \item System Related Commands, \hyperpage{2}
 
   \indexspace
 
+  \item tail, \hyperpage{3}
   \item telnet, \hyperpage{4}
-  \item template, \hyperpage{9}
-  \item touch, \hyperpage{5}
+  \item template, \hyperpage{10}
+  \item touch, \hyperpage{6}
   \item traceroute, \hyperpage{4}
 
   \indexspace
@@ -111,9 +122,13 @@
 
   \indexspace
 
-  \item Variable Types, \hyperpage{10}
-  \item variables, \hyperpage{5}
-  \item Vector, \hyperpage{10}
-  \item vector, \hyperpage{10}
+  \item Variable Types, \hyperpage{11}
+  \item variables, \hyperpage{6}
+  \item Vector, \hyperpage{11}
+  \item vector, \hyperpage{11}
+
+  \indexspace
+
+  \item wc, \hyperpage{6}
 
 \end{theindex}

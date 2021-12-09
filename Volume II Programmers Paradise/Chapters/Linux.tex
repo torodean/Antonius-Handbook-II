@@ -95,11 +95,15 @@ du -sh    # List the size of the directory in a human readable format.
 du -ah    # Lists the size of all files in the directory.
 \end{lstlisting}
 
-List information about File(s) (in the current directory by default).
+List information about File(s) (in the current directory by default). You can specify the number of entries you want listed using the \idx{head} and \idx{tail} commands.
 \begin{lstlisting}
-ls        # list all items in a directory
-ls -1     # list all items in a directory (one item per line)
-ls -lh    # list all items in a directory with size, owner, and date modified
+ls			# list all items in a directory
+ls -1		# list all items in a directory (one item per line)
+ls -lh		# list all items in a directory with size, owner, and date modified
+ls -lhrt	# Useful ls output
+
+ls -lhrt | head -4	 # Outputs only the first four entires
+ls -lhrt | tail -4	 # Outputs only the last four entires
 \end{lstlisting}
 
 List all of the block devices (hence partitions) detected by the machine
@@ -233,10 +237,50 @@ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
 
 \section{Shell Scripting}
 
-To create a shell script you must create a new text file and save it as a '.sh' file. The file should start with the directory to the proper shell which is generally the default below. The first line (starting with '\#!') is not a comment, but instead is treated by Unix as "which shell do I use to run this code." In our case, the Bourne shell will be used \cite{linux: shell scripting}.
+To create a shell script you must create a new text file and save it as a '.sh' file. The file should start with the directory to the proper shell which is generally the default below. The first line (starting with a shebang '\#!') is not a comment, but instead is treated by Unix as "which shell do I use to run this code." In our case, the Bourne shell will be used \cite{linux: shell scripting}. Furthermore, to create a shell application that has parameters, with a help screen to explain those parameters, you can apply the following template.
 \begin{lstlisting}
 #!/bin/sh
 # This is a comment!
+
+# This creates a method to print the usage of the script
+usage()
+{
+	cat << EOF
+purpose: This explains the purpose of the script
+Usage:   $0 [opts]
+
+OPTIONS:
+	-h         Display this help message
+	-f <file>  File to input
+	-v         Boolean-type flag as parameter
+	
+EOF
+
+
+# This parses the arguments input to the script. The ":" specifies a parameter is expected with the input flag.
+while getopts "hf:v" OPTION; do
+	case $OPTION in
+		h)	usage			# Calls out usage method.
+			exit 0			# Exits with error code 1 => success.
+			;;				# Ends the specified case
+		f)	fileInput=$OPTARG
+			;;
+		v)	verboseMode=1	# Sets verboseMode to true.
+			;;
+		*)	echo "Invalid option entered: -$OPTARG" >&2
+			usage
+			exit 2			# Exits with error code 2 => fail.
+			;;
+	esac					# completes out case statement
+done
+
+# This checks if a flag was used.
+if [[ $verboseMode ]]; then
+	echo "Verbose mode is activated!"
+elif [[ ! $verboseMode ]]; then
+	echo "Verbose mode is disabled!"
+fi
+}
 \end{lstlisting}
 
 To print text one can use the \textbf{echo}\index{echo} command as follows.
@@ -244,24 +288,34 @@ To print text one can use the \textbf{echo}\index{echo} command as follows.
 #!/bin/sh
 echo Hello World
 echo "Hello World"
+echo -e "In order to print newline characters, use the e option!\n"
 \end{lstlisting}
 
-To make a file executable, the \textbf{chmod} command can be used and is typically used as follows.
+To make a file executable, or change the permissions in general the \textbf{chmod}\index{chmod} command can be used and is typically used as follows.
 \begin{lstlisting}
-chmod a+rx <SCRIPTNAME>.sh
+chmod a+x <SCRIPTNAME>.sh					 # Make a script executable.
+chmod -R 775 filesToChangePermissionsOf.ext  # Change the permissions of some file.
 \end{lstlisting}
 
-Shell script \textbf{variables}\index{variables} are created by use of the equal sign. spaces in lines containing variables need to be avoided. To reference a variable, the '\$' character is used. Quotations are used to avoid ambiguities with spaces.
+To modify the ownership of files you can specify the owner and group of a file(s) using \idx{chown}
+\begin{lstlisting}
+chown username:group file.txt   # Change the owner and group of a file.
+chown -R :group folder          # Change only the group of some folder and its sub-folders.         
+\end{lstlisting}
+
+Shell script \idx{variables} are created by use of the equal sign. spaces in lines containing variables need to be avoided. To reference a variable, the '\$' character is used. Quotations are used to avoid ambiguities with spaces.
 \begin{lstlisting}
 #!/bin/sh
 MY_VARIABLE="Hello World"    # Creates a variable.
 echo $MY_VARIABLE            # Prints the variable.
 \end{lstlisting}
 
+To use a variable within a terminal session, you can use \idx{export} it to store it for that session.
+\begin{lstlisting}
+export PATH="$PATH:/home/user/.local/bin/" # Appends the PATH variable with a string
+\end{lstlisting}
 
-
-
-The \textbf{touch}\index{touch} command can be used to create a new empty file.
+The \idx{touch} command can be used to create a new empty file.
 \begin{lstlisting}
 #!/bin/sh
 echo "What is your name?"
@@ -272,6 +326,32 @@ echo "I will create you a file called ${USER_NAME}_file"
 # The quotations prevent multiple files from being called to touch.
 touch "${USER_NAME}_file"
 \end{lstlisting}
+
+To determine the total number of files of a given file patter, you can use the \idx{wc} command to count the output of an ls command. To save the output of a script or command, you must enclose it within the correct elements of `\$()' such as below.
+\begin{lstlisting}
+totalFiles=$(ls -l $filePattern 2> /dev/null | wc -l)
+\end{lstlisting}
+
+To perform \idx{arithmetic} within shell scripts, you must use double parenthesis.
+\begin{lstlisting}
+firstVar=4
+secondVar=7
+addedVar=$(($firstVar+$secondVar))
+\end{lstlisting}
+
+To create a \idx{for loop} in shell, you can do so like the following:
+\begin{lstlisting}
+i=1
+for file in $filePattern; do
+	[[ ! -e $file ]] && continue
+	echo "I see file number $i: $file"
+	((i++))
+done
+\end{lstlisting}
+
+
+
+
 
 
 
