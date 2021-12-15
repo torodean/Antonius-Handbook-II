@@ -237,6 +237,18 @@ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
 
 \section{Shell Scripting}
 
+\subsection{Redirecting program output}
+
+When outputting to a file, there is an append and an overwrite operator.
+\begin{lstlisting}
+command > output.txt    // Writes output to output.txt
+command >> output.txt   // Appends output to output.txt
+\end{lstlisting}
+To redirect all output from a program (including stdout and stderr), you can use 
+\begin{lstlisting}
+command -args > output.txt 2>&1
+\end{lstlisting}
+
 To create a shell script you must create a new text file and save it as a '.sh' file. The file should start with the directory to the proper shell which is generally the default below. The first line (starting with a shebang '\#!') is not a comment, but instead is treated by Unix as "which shell do I use to run this code." In our case, the Bourne shell will be used \cite{linux: shell scripting}. Furthermore, to create a shell application that has parameters, with a help screen to explain those parameters, you can apply the following template.
 \begin{lstlisting}
 #!/bin/sh
@@ -364,3 +376,10 @@ ls > namedPipe     # Feeds the output of ls into namedPipe.
 cat < namedPipe    # Feeds namedPipe into cat and displays the data from ls.
 mkfifo namedPipe2 -m700  # Modifies the permissions of a created pipe.
 \end{lstlisting}
+
+\subsection{emacs}
+\textbf{Emacs}\index{emacs} is a powerful text editor. You can open a document through emacs using the following. The ``-nw" flag indicates no GUI window should open (open in terminal).
+\begin{lstlisting}
+emacs doc.txt -nw
+\end{lstlisting}
+To toggle \textbf{read-only mode} use C-x C-q.
