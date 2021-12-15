@@ -11,7 +11,7 @@ Volume II: Programmers Paradise - This is designed as a container for programmin
 ~~~~~~~~~~~ Copyright and Licensing Information ~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Copywrite 2016 Antonius Torode All rights reserved.
+Copywrite 2021 Antonius Torode All rights reserved.
 
 This work may be distributed and/or modified under the conditions of Antonius’ General Purpose License (AGPL).
 
@@ -31,7 +31,7 @@ Github Repository: https://github.com/torodean/Antonius-Handbook-II
 
 For Citation purposes you can use the following with the version used replaced in the :
 
-Torode, A. "Antonius’ Handbook" Michigan State University – Department of Physics & Astronomy. 2016, Student. Volume ## Version: #.###
+Torode, A. "Antonius’ Handbook" 2021. Volume ## Version: #.###. "https://torodean.github.io/AHandbook.html"
 
 
 
