@@ -10,6 +10,18 @@ https://docs.python.org/3/
 https://docs.python.org/2/
 \end{lstlisting}
 
+
+\section{Imports and libraries}
+
+On Linux, there's a site-packages folder that imported libraries are all in. These are located in the following directories for python versions 2.7 and 3.6 respectively.
+
+\begin{itemize}
+	\item /usr/lib/python2.7/site-packages
+	\item /usr/lib/python3.6/site-packages
+\end{itemize}
+
+I believe you only have specify the path from that folder on. For example, an app that uses the import program.script.interface as interface will have the interface.py file installed to usr/lib/python3.6/site-packages/program/scripts.
+
 \section{Basics of Python}
 
 Import floating point division which allows python 2 compatibility when using division with doubles. Include this at the beginning of the script.
