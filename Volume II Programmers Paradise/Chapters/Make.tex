@@ -20,9 +20,7 @@ project( ProjectName VERSION 1.001)
 add_executable( Main main.cpp )
 
 # Create a binary tree to search for include files.
-target_include_directories(Tutorial PUBLIC
-"${PROJECT_BINARY_DIR}"
-)
+target_include_directories( Tutorial PUBLIC "${PROJECT_BINARY_DIR}" )
 \end{lstlisting}
 
 To define and enable support for a specific \textbf{C++ standard}, you can use the following.
@@ -82,4 +80,29 @@ target_include_directories( Main PUBLIC
 The use of variables defined in CMake can be defined in the source code using
 \begin{lstlisting}
 #cmakedefine USE_MYLIBRARY
+\end{lstlisting}
+
+You can also define a variable for use within a C++ file as follows
+\begin{lstlisting}
+# CMakeList code here:
+project(MIA VERSION 0.300)
+add_definitions ( -DMIAVERSION=\"${VERSION}\" )
+
+// C++ code then looks like this:
+#ifdef MIAVERSION
+	#define MIA_VERSION_VALUE MIAVERSION
+#else
+	#define MIA_VERSION_VALUE "Unknown"
+#endif
+std::string Configurator::ProgramVariables::MIA_VERSION = MIA_VERSION_VALUE;
+\end{lstlisting}
+
+To prevent needing a full relative file path in a cpp file include, you can use include the directory within the CMakeList file from that directory.
+\begin{lstlisting}
+# CMake code:
+include_directories(some/relative/path)
+
+// C++ code
+// #include "some/relative/path/file.hpp" // No longer needed
+#include "file.hpp" // This replaces it
 \end{lstlisting}

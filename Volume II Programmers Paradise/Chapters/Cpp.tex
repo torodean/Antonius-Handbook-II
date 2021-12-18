@@ -449,6 +449,16 @@ bool is_big_endian(){
 #endif
 \end{lstlisting}
 
+To define specific code to use on windows vs linux you can use the following
+\begin{lstlisting}
+// This checks for windows or Cygwin.
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined _WIN32 || defined _WIN64 || defined __CYGWIN__
+	// Windows only code here...
+#elif __linux__
+	// Linux only code here...
+#endif
+\end{lstlisting}
+
 
 
 %\section{Qt Specific}

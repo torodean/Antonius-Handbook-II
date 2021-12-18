@@ -17,7 +17,7 @@
 \indexentry{netstat|hyperpage}{4}
 \indexentry{nmap|hyperpage}{4}
 \indexentry{IPv6|hyperpage}{4}
-\indexentry{echo|hyperpage}{5}
+\indexentry{echo|hyperpage}{6}
 \indexentry{chmod|hyperpage}{6}
 \indexentry{chown|hyperpage}{6}
 \indexentry{variables|hyperpage}{6}
@@ -26,7 +26,8 @@
 \indexentry{wc|hyperpage}{6}
 \indexentry{arithmetic|hyperpage}{6}
 \indexentry{for loop|hyperpage}{6}
-\indexentry{mkfifo|hyperpage}{6}
+\indexentry{mkfifo|hyperpage}{7}
+\indexentry{emacs|hyperpage}{7}
 \indexentry{services|hyperpage}{8}
 \indexentry{address|hyperpage}{10}
 \indexentry{pointer|hyperpage}{11}
@@ -38,15 +39,15 @@
 \indexentry{Converting Between Types|hyperpage}{13}
 \indexentry{std::string to int|hyperpage}{13}
 \indexentry{stoi|hyperpage}{13}
-\indexentry{std::string to int|hyperpage}{13}
-\indexentry{stod|hyperpage}{13}
+\indexentry{std::string to int|hyperpage}{14}
+\indexentry{stod|hyperpage}{14}
 \indexentry{std::string to const char*|hyperpage}{14}
 \indexentry{c\_str()|hyperpage}{14}
 \indexentry{Prime Number|hyperpage}{14}
 \indexentry{prime|hyperpage}{14}
-\indexentry{System Commands|hyperpage}{14}
-\indexentry{Sleep|hyperpage}{14}
-\indexentry{sleep|hyperpage}{14}
+\indexentry{System Commands|hyperpage}{15}
+\indexentry{Sleep|hyperpage}{15}
+\indexentry{sleep|hyperpage}{15}
 \indexentry{Simulate Key Strokes|hyperpage}{15}
 \indexentry{little endian|hyperpage}{16}
 \indexentry{big endian|hyperpage}{16}
