@@ -1,6 +1,45 @@
-\chapter{HTML}
+\chapter{HTML\index{HTML}}
 \thispagestyle{fancy}
 \lstset{language=html, style=htmlstyle}
 
-\idx{HTML} (Hypertext Markup Language) is a fundamental language for creating and structuring web pages. It consists of tags that define the structure and content of a document, allowing developers to organize text, images, links, and other media elements. HTML documents are hierarchical, with a tree-like structure where each element is nested within others, forming a Document Object Model (DOM). Developers can manipulate the DOM using JavaScript to dynamically update content and interact with users. HTML5, the latest version of HTML, introduced new features like semantic elements (e.g., <header>, <footer>) and multimedia support (e.g., <video>, <audio>), enhancing the capabilities for building modern web applications. Understanding HTML is essential for web developers to create accessible, well-structured, and responsive websites.
+\idx{HTML} (Hypertext Markup Language) is a fundamental language for creating and structuring web pages. It consists of tags that define the structure and content of a document, allowing developers to organize text, images, links, and other media elements. HTML documents are hierarchical, with a tree-like structure where each element is nested within others, forming a Document Object Model (DOM). Developers can manipulate the DOM using JavaScript to dynamically update content and interact with users. HTML5, the latest version of HTML, introduced new features like semantic elements (e.g., $<$header$>$, $<$footer$>$) and multimedia support (e.g., $<$video$>$, $<$audio$>$), enhancing the capabilities for building modern web applications. Understanding HTML is essential for web developers to create accessible, well-structured, and responsive websites.
+
+\section{Hello world}
+
+The below HTML is a basic example of an HTML document structure. It should be saved with a `.html' extension. It starts with the document type declaration ($<$!DOCTYPE html$>$), indicating that it is an HTML5 document. Inside the $<$html$>$ element, the \idx{lang} attribute specifies the language of the document (English in this case). The document contains a $<$head$>$ section where \idx{metadata} and resources for the document are defined. In this example, it includes the \idx{character set} ($<$meta charset="UTF-8"$>$), and the title of the document ($<$title$>$Hello, World!$<$/title$>$). The main content of the document is contained within the $<$body$>$ element. In this example, it includes a heading ($<$h1$>$) displaying the text "Hello, World!", followed by a paragraph ($<$p$>$) with the text "This is a simple HTML file."
+
+\begin{lstlisting}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, World!</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is a simple HTML file.</p>
+</body>
+</html>
+\end{lstlisting}
+
+\section{HTML Basics}
+
+HTML \idx{comments} are enclosed within `$<$!--` and `--$>$` tags. Anything between these tags is treated as a comment and is ignored by the web browser when rendering the page. Comments can span multiple lines and can be placed anywhere within the HTML document. Here's an example of an HTML comment:
+\begin{lstlisting}
+<!-- This is a comment. It will not be displayed in the browser. -->
+\end{lstlisting}
+
+To add a \idx{stylesheet} to an HTML document (for css or other elements), add a link within the head element.
+\begin{lstlisting}
+<head>		
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">		
+		
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/vendors/bootstrap/bootstrap.min.css">
+	
+	<!-- main css -->
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+\end{lstlisting}
 

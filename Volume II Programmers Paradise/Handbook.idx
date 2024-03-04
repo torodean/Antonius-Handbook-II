@@ -116,32 +116,51 @@
 \indexentry{remote flag|hyperpage}{26}
 \indexentry{HEAD|hyperpage}{26}
 \indexentry{.gitmodules|hyperpage}{26}
-\indexentry{HTML|hyperpage}{33}
-\indexentry{CSS|hyperpage}{34}
-\indexentry{PHP|hyperpage}{35}
-\indexentry{Python|hyperpage}{37}
-\indexentry{function|hyperpage}{38}
-\indexentry{def|hyperpage}{38}
-\indexentry{Methods|hyperpage}{38}
-\indexentry{Classes|hyperpage}{38}
-\indexentry{\_\_init\_\_()|hyperpage}{38}
-\indexentry{delimiter|hyperpage}{39}
-\indexentry{split()|hyperpage}{39}
-\indexentry{whitespace|hyperpage}{39}
-\indexentry{strip()|hyperpage}{39}
-\indexentry{lstrip()|hyperpage}{39}
-\indexentry{rstrip()|hyperpage}{39}
-\indexentry{join()|hyperpage}{39}
-\indexentry{lower()|hyperpage}{39}
-\indexentry{upper()|hyperpage}{39}
-\indexentry{format()|hyperpage}{39}
-\indexentry{f-string|hyperpage}{39}
-\indexentry{any()|hyperpage}{40}
-\indexentry{any()|hyperpage}{40}
-\indexentry{+ operator|hyperpage}{40}
-\indexentry{extend()|hyperpage}{40}
-\indexentry{len()|hyperpage}{40}
-\indexentry{Plotting and Graphs|hyperpage}{40}
-\indexentry{Pytest|hyperpage}{41}
-\indexentry{Pytest|hyperpage}{41}
-\indexentry{assert|hyperpage}{41}
+\indexentry{LaTeX|hyperpage}{27}
+\indexentry{TeX Live|hyperpage}{27}
+\indexentry{MiKTeX|hyperpage}{27}
+\indexentry{comments|hyperpage}{27}
+\indexentry{package|hyperpage}{27}
+\indexentry{titles|hyperpage}{27}
+\indexentry{subtitles|hyperpage}{27}
+\indexentry{authors|hyperpage}{27}
+\indexentry{subtitle|hyperpage}{28}
+\indexentry{author|hyperpage}{28}
+\indexentry{hyperlinking|hyperpage}{29}
+\indexentry{C\#|hyperpage}{30}
+\indexentry{Java|hyperpage}{34}
+\indexentry{HTML|hyperpage}{35}
+\indexentry{HTML|hyperpage}{35}
+\indexentry{lang|hyperpage}{35}
+\indexentry{metadata|hyperpage}{35}
+\indexentry{character set|hyperpage}{35}
+\indexentry{comments|hyperpage}{35}
+\indexentry{stylesheet|hyperpage}{35}
+\indexentry{CSS|hyperpage}{37}
+\indexentry{PHP|hyperpage}{38}
+\indexentry{Python|hyperpage}{40}
+\indexentry{function|hyperpage}{41}
+\indexentry{def|hyperpage}{41}
+\indexentry{Methods|hyperpage}{41}
+\indexentry{Classes|hyperpage}{41}
+\indexentry{\_\_init\_\_()|hyperpage}{41}
+\indexentry{delimiter|hyperpage}{42}
+\indexentry{split()|hyperpage}{42}
+\indexentry{whitespace|hyperpage}{42}
+\indexentry{strip()|hyperpage}{42}
+\indexentry{lstrip()|hyperpage}{42}
+\indexentry{rstrip()|hyperpage}{42}
+\indexentry{join()|hyperpage}{42}
+\indexentry{lower()|hyperpage}{42}
+\indexentry{upper()|hyperpage}{42}
+\indexentry{format()|hyperpage}{42}
+\indexentry{f-string|hyperpage}{42}
+\indexentry{any()|hyperpage}{43}
+\indexentry{any()|hyperpage}{43}
+\indexentry{+ operator|hyperpage}{43}
+\indexentry{extend()|hyperpage}{43}
+\indexentry{len()|hyperpage}{43}
+\indexentry{Plotting and Graphs|hyperpage}{43}
+\indexentry{Pytest|hyperpage}{44}
+\indexentry{Pytest|hyperpage}{44}
+\indexentry{assert|hyperpage}{44}

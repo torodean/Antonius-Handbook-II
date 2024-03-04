@@ -1,5 +1,5 @@
 %%Version Number
-\newcommand{\Version}{0.020}
+\newcommand{\Version}{0.025}
 %%Version
 
 %%% Page formatting
@@ -40,35 +40,36 @@
 
 %%Different lstlisting formats go here
 
-% Define Python style
-\lstdefinestyle{pythonstyle}{
-	language=Python,
-	basicstyle=\ttfamily\small,
-	numbers=left,
-	numberstyle=\tiny\color{gray},
-	frame=single,
-	rulecolor=\color{black},
-	keywordstyle=\color{blue},
-	commentstyle=\color{green!40!black},
-	stringstyle=\color{red},
-	breaklines=true,
-	tabsize=4,
-	captionpos=b,
-	extendedchars=true,
-	inputencoding=utf8,
-	showspaces=false,
-	showstringspaces=false,
-	xleftmargin=\parindent,
-	xrightmargin=\parindent
+% Define the custom terminal style
+\lstdefinestyle{terminalstyle}{
+    language=bash,                   % Set the language to Bash
+    basicstyle=\ttfamily\color{white}, % Use a monospaced font and white text
+    backgroundcolor=\color{black},   % Background color
+    frame=tb,                        % Top and bottom frame lines
+    framerule=0.5pt,                 % Frame rule width
+    xleftmargin=10pt,                % Left margin
+    xrightmargin=10pt,               % Right margin
+    rulecolor=\color{black!20},       % Frame color
+    showstringspaces=false,          % Don't show spaces in strings
+    upquote=true,                    % Use straight quotes
+    commentstyle=\color{green},      % Comments are green
+    keywordstyle=\color{orange!60},  % Keywords
+    numbers=left,                    % Line numbers on the left
+    numberstyle=\tiny\color{black!90},   % Line number style
+    captionpos=b,                    % Caption position (bottom)
+    breaklines=true,                 % Automatically break long lines
+	postbreak=\mbox{\textcolor{green}{$\hookrightarrow$}\space}, % Line continuation symbol
 }
 
+% Define a bash/shell style.
 \lstdefinestyle{shellstyle}{
-	language=sh,                   % Set the language to Shell
+	language=sh,                    % Set the language to Shell
 	basicstyle=\ttfamily,           % Use a monospaced font
 	backgroundcolor=\color{gray!10},% Background color
 	keywordstyle=\color{blue},      % Keywords are blue
 	commentstyle=\color{green!40!black}, % Comments are green
 	stringstyle=\color{red},        % Strings are red
+    rulecolor=\color{black},        % Frame color
 	breakatwhitespace=false,        % Don't break lines at whitespace
 	breaklines=true,                % Automatically break long lines
 	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % Line continuation symbol
@@ -83,36 +84,15 @@
 	xrightmargin=0pt,               % Right margin
 }
 
-% Define the custom terminal style
-\lstdefinestyle{terminalstyle}{
-    language=bash,                   % Set the language to Bash
-    basicstyle=\ttfamily\color{white}, % Use a monospaced font and white text
-    backgroundcolor=\color{black},   % Background color
-    frame=tb,                        % Top and bottom frame lines
-    framerule=0.5pt,                 % Frame rule width
-    xleftmargin=10pt,                % Left margin
-    xrightmargin=10pt,               % Right margin
-    rulecolor=\color{blue!70},       % Frame color
-    showstringspaces=false,          % Don't show spaces in strings
-    upquote=true,                    % Use straight quotes
-    commentstyle=\color{green},      % Comments are green
-    keywordstyle=\color{white},      % Keywords are white
-    numbers=left,                    % Line numbers on the left
-    numberstyle=\tiny\color{gray},   % Line number style
-    captionpos=b,                    % Caption position (bottom)
-    breaklines=true,                 % Automatically break long lines
-	postbreak=\mbox{\textcolor{green}{$\hookrightarrow$}\space}, % Line continuation symbol
-}
-
-
-% Define C++ style
-\lstdefinestyle{cppstyle}{
-	language=C++,
+% Define Python style
+\lstdefinestyle{pythonstyle}{
+	language=Python,
 	basicstyle=\ttfamily\small,
 	numbers=left,
 	numberstyle=\tiny\color{gray},
 	frame=single,
-	rulecolor=\color{black},
+	rulecolor=\color{orange},
+    backgroundcolor=\color{orange!05},
 	keywordstyle=\color{blue},
 	commentstyle=\color{green!40!black},
 	stringstyle=\color{red},
@@ -127,11 +107,109 @@
 	xrightmargin=\parindent
 }
 
+
+% Define C++ style
+\lstdefinestyle{cppstyle}{
+	language=C++,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	rulecolor=\color{black!30},
+	backgroundcolor=\color{gray!05},% Background color
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=\parindent,
+	xrightmargin=\parindent
+}
+
+% Define dark green color
+\definecolor{darkgreen}{RGB}{0,100,0}
+
+% Define Makefile style
+\lstdefinestyle{makestyle}{
+	language=make,
+	basicstyle=\ttfamily\small,
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	frame=single,
+	backgroundcolor=\color{darkgreen!05},
+	rulecolor=\color{darkgreen},
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!40!black},
+	stringstyle=\color{red},
+	breaklines=true,
+	tabsize=4,
+	captionpos=b,
+	extendedchars=true,
+	inputencoding=utf8,
+	showspaces=false,
+	showstringspaces=false,
+	xleftmargin=\parindent,
+	xrightmargin=\parindent
+}
+
+% Define Git style
+\lstdefinestyle{gitstyle}{
+    language=bash, % Assuming Git commands are written in a bash-like language
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+	backgroundcolor=\color{blue!05},
+    rulecolor=\color{blue},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!40!black},
+    stringstyle=\color{red},
+    breaklines=true,
+    tabsize=4,
+    captionpos=b,
+    extendedchars=true,
+    inputencoding=utf8,
+    showspaces=false,
+    showstringspaces=false,
+    xleftmargin=\parindent,
+    xrightmargin=\parindent
+}
+
+% Define C# style
+\lstdefinestyle{csharpstyle}{
+    language=[Sharp]C,
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    rulecolor=\color{purple},
+    backgroundcolor=\color{purple!05},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!40!black},
+    stringstyle=\color{red},
+    breaklines=true,
+    tabsize=4,
+    captionpos=b,
+    extendedchars=true,
+    inputencoding=utf8,
+    showspaces=false,
+    showstringspaces=false,
+    xleftmargin=\parindent,
+    xrightmargin=\parindent
+}
+
 % Define Java style
 \lstdefinestyle{javastyle}{
     language=Java,
     basicstyle=\ttfamily,
     keywordstyle=\color{blue},
+	rulecolor=\color{red!80},
+    backgroundcolor=\color{red!05},
     commentstyle=\color{green!70!black},
     stringstyle=\color{red},
     numbers=left,
@@ -165,7 +243,8 @@
 \lstdefinestyle{jsstyle}{
     language=JavaScript,
     basicstyle=\ttfamily,
-    backgroundcolor=\color{black!5},
+	rulecolor=\color{red!80},
+    backgroundcolor=\color{red!05},
     keywordstyle=\color{blue},
     commentstyle=\color{green!70!black},
     stringstyle=\color{red},
@@ -180,72 +259,6 @@
     showstringspaces=false,
 }
 
-% Define Makefile style
-\lstdefinestyle{makestyle}{
-	language=make,
-	basicstyle=\ttfamily\small,
-	numbers=left,
-	numberstyle=\tiny\color{gray},
-	frame=single,
-	rulecolor=\color{black},
-	keywordstyle=\color{blue},
-	commentstyle=\color{green!40!black},
-	stringstyle=\color{red},
-	breaklines=true,
-	tabsize=4,
-	captionpos=b,
-	extendedchars=true,
-	inputencoding=utf8,
-	showspaces=false,
-	showstringspaces=false,
-	xleftmargin=\parindent,
-	xrightmargin=\parindent
-}
-
-% Define Git style
-\lstdefinestyle{gitstyle}{
-    language=bash, % Assuming Git commands are written in a bash-like language
-    basicstyle=\ttfamily\small,
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    frame=single,
-    rulecolor=\color{black},
-    keywordstyle=\color{blue},
-    commentstyle=\color{green!40!black},
-    stringstyle=\color{red},
-    breaklines=true,
-    tabsize=4,
-    captionpos=b,
-    extendedchars=true,
-    inputencoding=utf8,
-    showspaces=false,
-    showstringspaces=false,
-    xleftmargin=\parindent,
-    xrightmargin=\parindent
-}
-
-% Define C# style
-\lstdefinestyle{csharpstyle}{
-    language=[Sharp]C,
-    basicstyle=\ttfamily\small,
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    frame=single,
-    rulecolor=\color{black},
-    keywordstyle=\color{blue},
-    commentstyle=\color{green!40!black},
-    stringstyle=\color{red},
-    breaklines=true,
-    tabsize=4,
-    captionpos=b,
-    extendedchars=true,
-    inputencoding=utf8,
-    showspaces=false,
-    showstringspaces=false,
-    xleftmargin=\parindent,
-    xrightmargin=\parindent
-}
-
 % Define HTML style
 \lstdefinestyle{htmlstyle}{
     language=HTML,
@@ -254,6 +267,7 @@
     numberstyle=\tiny\color{gray},
     frame=single,
     rulecolor=\color{black},
+    backgroundcolor=\color{yellow!05},
     keywordstyle=\color{blue},
     commentstyle=\color{green!40!black},
     stringstyle=\color{red},
@@ -284,7 +298,8 @@
     numbers=left,
     numberstyle=\tiny\color{gray},
     frame=single,
-    rulecolor=\color{black},
+    rulecolor=\color{brown},
+    backgroundcolor=\color{yellow!05},
     breaklines=true,
     tabsize=4,
     captionpos=b,
@@ -325,7 +340,8 @@
     numbers=left,
     numberstyle=\tiny\color{gray},
     frame=single,
-    rulecolor=\color{black},
+    rulecolor=\color{brown},
+    backgroundcolor=\color{brown!05},
     keywordstyle=\color{blue},
     commentstyle=\color{green!40!black},
     stringstyle=\color{red},

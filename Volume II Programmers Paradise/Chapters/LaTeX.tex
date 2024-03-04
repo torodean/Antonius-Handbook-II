@@ -1,5 +1,177 @@
-\chapter{\LaTeX}
+\chapter{\LaTeX \index{LaTeX}}
 \thispagestyle{fancy}
 \lstset{language=tex, style=latexstyle}
 
 LaTeX is a typesetting system widely used in technical and scientific documentation, renowned for its exceptional typesetting quality and support for complex mathematical equations and symbols. Programmers often leverage LaTeX to produce high-quality documents, reports, articles, and presentations with precise formatting and layout control. Its markup language allows for the creation of structured documents using plain text, enabling version control and collaboration using tools like Git. LaTeX's extensive package ecosystem offers additional functionality for generating bibliographies, tables, graphics, and custom document layouts, making it a preferred choice for programmers seeking precise and professional document production capabilities.
+
+\begin{urlbox}
+For a repository of pre-made LaTeX templates, see:
+
+\url{https://github.com/torodean/Antonius-Templates}
+\end{urlbox}
+
+\section{Hello World}
+
+To use this LaTeX document, you need to have a LaTeX distribution installed on your system, such as \idx{TeX Live} or \idx{MiKTeX}. Save the code in a file with a .tex extension, for example, hello\_world.tex. Then, compile the document using a LaTeX compiler. This will generate a PDF output containing the "Hello, World!" message. You can view the PDF using any PDF viewer application. This example serves as a basic introduction to creating LaTeX documents and demonstrates the simplicity of LaTeX syntax for generating formatted text.
+
+\begin{lstlisting}
+% Defines the type of document (article, report, book, etc.)
+\documentclass{article}
+
+\begin{document}    % Begins the document environment
+Hello, World!       % Displays the text "Hello, World!"
+\end{document}      % Ends the document environment
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+\section{\LaTeX Basics}
+
+To add \idx{comments} in LaTeX, the percent sign is used on the line of the comment.
+
+\begin{lstlisting}
+% This is a LaTeX comment
+\end{lstlisting}
+
+To include a \idx{package} in LaTeX, the \lstinline|\usepackage{}| command will import code from a LaTeX package. the package must be installed on the machine you are trying to import from.
+\begin{lstlisting}
+\usepackage{multicol}
+\end{lstlisting}
+
+
+
+
+
+
+\subsection{LaTeX Titles}
+
+In LaTeX, you can add \idx{titles}, \idx{subtitles}, and \idx{authors} to your documents using specific commands. These titles are typically placed at the beginning of the document and help provide context and information about the content of the document. To add a title to your document, you can use the \lstinline|\title{}| command. Inside the curly braces, you specify the title of your document. For example:
+\begin{lstlisting}
+\title{My LaTeX Document}
+\end{lstlisting}
+
+If you want to include a \idx{subtitle}, you can use the \lstinline|\subtitle{}| command. For example:
+\begin{lstlisting}
+\subtitle{A Beginner's Guide}
+\end{lstlisting}
+
+To specify the \idx{author}(s) of the document, you can use the \lstinline|\author{}| command. Multiple authors can be separated by the \lstinline|\and| command. For example:
+\begin{lstlisting}
+\author{John Doe \and Jane Smith}
+\end{lstlisting}
+
+Once you have defined the title, subtitle, and author(s), you can use the \lstinline|\maketitle| command to generate the title page. This command should be placed after the \lstinline|\begin{document}| command. The \lstinline|\maketitle| command will format and display the title, subtitle, and author(s) according to the document class and style settings.
+\begin{lstlisting}
+\maketitle
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{LaTeX elements}
+
+
+
+
+
+
+\subsubsection{Quotations}
+
+For a simple, fancy, and nice looking quotation box, the following environment can be defined.
+\begin{lstlisting}
+% Required packages.
+\usepackage{fontawesome5}
+\usepackage{tcolorbox}
+
+% Create a custom color.
+\definecolor{lightpurple}{RGB}{220,180,240}
+
+% Create a custom quotation box environment.
+\newenvironment{quotationbox}{
+	\begin{tcolorbox}[
+		colback=lightpurple!10,  % Very light purple background color of the box
+		colframe=lightpurple!50, % Border color of the box
+		arc=0pt,                 % Adjust the corner radius of the box
+		boxrule=1pt,             % Border thickness
+		title={\faQuoteLeft\ Quotation},  % The quotation icon and title
+		fonttitle=\bfseries,     % Font style for the title
+		coltitle=blue!50!black,  % Color for the title text
+		colbacktitle=yellow!20,  % Background color for the title
+		attach title to upper={\par},
+		boxsep=0pt,              % Adjust the space between the content and box
+		]
+	}{
+	\end{tcolorbox}
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+\subsubsection{URLs}
+
+For a simple, fancy, and nice looking url box, the following environment can be defined.
+\begin{lstlisting}
+% Required packages.
+\usepackage{fontawesome5}
+\usepackage{tcolorbox}
+
+% Create a custom url box environment.
+\newenvironment{urlbox}{
+	\begin{tcolorbox}[
+		colback=blue!10,        % Very light green background color of the box
+		colframe=blue!50,       % Border color of the box
+		arc=0pt,                % Adjust the corner radius of the box
+		boxrule=1pt,            % Border thickness
+		title={URL},            % The lightbulb icon and title
+		fonttitle=\bfseries,    % Font style for the title
+		coltitle=blue!50!black, % Color for the title text
+		colbacktitle=yellow!20, % Background color for the title
+		attach title to upper={\par},
+		boxsep=0pt,             % Adjust the space between the content and box
+		]
+	}{
+	\end{tcolorbox}
+}
+\end{lstlisting}
+
+For automatic \idx{hyperlinking}, the hyperref package can be used.
+
+\begin{lstlisting}
+\usepackage[unicode]{hyperref}
+
+\url{www.duckduckgo.com}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
