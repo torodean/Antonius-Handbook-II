@@ -1,134 +1,179 @@
 \begin{theindex}
 
-  \item add, \hyperpage{18}
-  \item address, \hyperpage{9}
-  \item arithmetic, \hyperpage{6}
+  \item .gitmodules, \hyperpage{25}
 
   \indexspace
 
-  \item big endian, \hyperpage{15}
-  \item bisect, \hyperpage{19}
-  \item branch, \hyperpage{19}
+  \item add, \hyperpage{23}
+  \item address, \hyperpage{12}
+  \item apt, \hyperpage{2}
+  \item arithmetic, \hyperpage{9}
 
   \indexspace
 
-  \item c\_str(), \hyperpage{13}
+  \item backuppc, \hyperpage{5}
+  \item big endian, \hyperpage{19}
+  \item bisect, \hyperpage{24}
+  \item branch, \hyperpage{23}
+
+  \indexspace
+
+  \item c\_str(), \hyperpage{16}
   \item cd, \hyperpage{2}
-  \item checkout, \hyperpage{19}
-  \item chmod, \hyperpage{5}
-  \item chown, \hyperpage{6}
-  \item clone, \hyperpage{18}
-  \item CMake, \hyperpage{16}
-  \item CMakeLists, \hyperpage{16}
-  \item commit, \hyperpage{18}
-  \item config, \hyperpage{18}
-  \item Converting Between Types, \hyperpage{12}
+  \item Changing directory, \hyperpage{2}
+  \item checkout, \hyperpage{23}
+  \item chgrp, \hyperpage{5}
+  \item chmod, \hyperpage{5}, \hyperpage{8}
+  \item chown, \hyperpage{5}, \hyperpage{8}
+  \item clone, \hyperpage{22}
+  \item CMake, \hyperpage{20}
+  \item CMakeLists, \hyperpage{20}
+  \item commit, \hyperpage{23}
+  \item config, \hyperpage{22}
+  \item Converting Between Types, \hyperpage{16}
+  \item current directory, \hyperpage{2}
 
   \indexspace
 
-  \item delimiter, \hyperpage{25}
-  \item diff, \hyperpage{18}
-  \item dig, \hyperpage{4}
+  \item delimiter, \hyperpage{35}
+  \item diff, \hyperpage{23}
+  \item dnf, \hyperpage{2}
+  \item Domain Information Groper, \hyperpage{6}
 
   \indexspace
 
-  \item echo, \hyperpage{5}
-  \item export, \hyperpage{6}
+  \item echo, \hyperpage{8}
+  \item Emacs, \hyperpage{9}
+  \item export, \hyperpage{8}
 
   \indexspace
 
-  \item fetch, \hyperpage{18}
-  \item find, \hyperpage{3}
+  \item fetch, \hyperpage{22}
+  \item find, \hyperpage{4}
+  \item for loop, \hyperpage{9}
 
   \indexspace
 
-  \item git, \hyperpage{18}
-  \item gitignore, \hyperpage{19}
+  \item git, \hyperpage{22}
+  \item Git Submodules, \hyperpage{24}
+  \item gitignore, \hyperpage{23}
 
   \indexspace
 
-  \item head, \hyperpage{3}
+  \item HEAD, \hyperpage{25}
+  \item head, \hyperpage{4}
+  \item htop, \hyperpage{2}
 
   \indexspace
 
-  \item ifconfig, \hyperpage{4}
-  \item init, \hyperpage{18}
-  \item Input and Output, \hyperpage{11}
-  \item IPv6, \hyperpage{4}
+  \item ifconfig, \hyperpage{6}
+  \item ifdown, \hyperpage{6}
+  \item ifup, \hyperpage{6}
+  \item init, \hyperpage{22}
+  \item Input and Output, \hyperpage{14}
+  \item iotop, \hyperpage{2}
+  \item IPv6, \hyperpage{6}
 
   \indexspace
 
-  \item little endian, \hyperpage{15}
-  \item log, \hyperpage{18}
+  \item little endian, \hyperpage{19}
+  \item log, \hyperpage{22}
 
   \indexspace
 
-  \item Make, \hyperpage{16}
-  \item merge, \hyperpage{18, 19}
-  \item mergetool, \hyperpage{19}
-  \item mkfifo, \hyperpage{6}
-  \item mount, \hyperpage{3}
+  \item Make, \hyperpage{20}
+  \item merge, \hyperpage{22, 23}
+  \item mergetool, \hyperpage{23}
+  \item mkfifo, \hyperpage{9}
+  \item Mount, \hyperpage{5}
+  \item mount, \hyperpage{5}
 
   \indexspace
 
-  \item netstat, \hyperpage{4}
-  \item Networking, \hyperpage{4}
-  \item nmap, \hyperpage{4}
-  \item nslookup, \hyperpage{4}
+  \item netstat, \hyperpage{6}
+  \item Networking, \hyperpage{6}
+  \item nmap, \hyperpage{6}
+  \item nslookup, \hyperpage{6}
 
   \indexspace
 
-  \item pdf, \hyperpage{3}
-  \item Plotting and Graphs, \hyperpage{25}
-  \item pointer, \hyperpage{10}
-  \item prime, \hyperpage{13}
-  \item Prime Number, \hyperpage{13}
-  \item pull, \hyperpage{18}
-  \item push, \hyperpage{18}
+  \item pdf, \hyperpage{5}
+  \item Plotting and Graphs, \hyperpage{35}
+  \item pointer, \hyperpage{13}
+  \item prime, \hyperpage{16}
+  \item Prime Number, \hyperpage{16}
+  \item pull, \hyperpage{22}
+  \item push, \hyperpage{23}
 
   \indexspace
 
-  \item rebase, \hyperpage{20}
-  \item reset, \hyperpage{19}
+  \item read-only mode, \hyperpage{9}
+  \item rebase, \hyperpage{24}
+  \item Remote Connections, \hyperpage{3}
+  \item remote flag, \hyperpage{25}
+  \item reset, \hyperpage{24}
+  \item rsync, \hyperpage{3}, \hyperpage{5}
 
   \indexspace
 
-  \item services, \hyperpage{7}
-  \item Simulate Key Strokes, \hyperpage{14}
-  \item Sleep, \hyperpage{13}
-  \item sleep, \hyperpage{13}
-  \item stash, \hyperpage{19}
-  \item status, \hyperpage{18}
-  \item std::string to const char*, \hyperpage{13}
-  \item std::string to int, \hyperpage{12}
-  \item stod, \hyperpage{12}
-  \item stoi, \hyperpage{12}
-  \item su, \hyperpage{4}
-  \item System Commands, \hyperpage{13}
+  \item scp, \hyperpage{3}
+  \item screen, \hyperpage{4}
+  \item Secure Shell, \hyperpage{3}
+  \item services, \hyperpage{10}
+  \item sftp, \hyperpage{3}
+  \item shebang, \hyperpage{7}
+  \item Simulate Key Strokes, \hyperpage{18}
+  \item Sleep, \hyperpage{17}
+  \item sleep, \hyperpage{17}
+  \item SSH, \hyperpage{3}
+  \item stash, \hyperpage{24}
+  \item status, \hyperpage{22}
+  \item std::string to const char*, \hyperpage{16}
+  \item std::string to int, \hyperpage{16}
+  \item stderr, \hyperpage{7}
+  \item stdout, \hyperpage{7}
+  \item stod, \hyperpage{16}
+  \item stoi, \hyperpage{16}
+  \item su, \hyperpage{5}
+  \item submodules, \hyperpage{24}
+  \item System Commands, \hyperpage{17}
   \item System Related Commands, \hyperpage{2}
 
   \indexspace
 
-  \item tail, \hyperpage{3}
-  \item telnet, \hyperpage{4}
-  \item template, \hyperpage{10}
-  \item touch, \hyperpage{6}
-  \item traceroute, \hyperpage{4}
+  \item tail, \hyperpage{4}
+  \item tar, \hyperpage{5}
+  \item telnet, \hyperpage{6}
+  \item template, \hyperpage{14}
+  \item tmux, \hyperpage{4}
+  \item top, \hyperpage{2}
+  \item touch, \hyperpage{8}
+  \item traceroute, \hyperpage{6}
 
   \indexspace
 
-  \item unmount, \hyperpage{3}
-  \item useradd, \hyperpage{3}
+  \item unmount, \hyperpage{5}
+  \item useradd, \hyperpage{5}
 
   \indexspace
 
-  \item Variable Types, \hyperpage{11}
-  \item variables, \hyperpage{6}
-  \item Vector, \hyperpage{11}
-  \item vector, \hyperpage{11}
+  \item Variable Types, \hyperpage{14}
+  \item variables, \hyperpage{8}
+  \item Vector, \hyperpage{14}
+  \item vector, \hyperpage{14}
+  \item VNC, \hyperpage{4}
 
   \indexspace
 
-  \item wc, \hyperpage{6}
+  \item wc, \hyperpage{9}
+
+  \indexspace
+
+  \item X11 forwarding, \hyperpage{3}
+  \item XRDP, \hyperpage{4}
+
+  \indexspace
+
+  \item yum, \hyperpage{2}
 
 \end{theindex}

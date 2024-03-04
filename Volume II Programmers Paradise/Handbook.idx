@@ -1,82 +1,147 @@
 \indexentry{System Related Commands|hyperpage}{2}
+\indexentry{apt|hyperpage}{2}
+\indexentry{yum|hyperpage}{2}
+\indexentry{dnf|hyperpage}{2}
+\indexentry{top|hyperpage}{2}
+\indexentry{htop|hyperpage}{2}
+\indexentry{iotop|hyperpage}{2}
+\indexentry{Changing directory|hyperpage}{2}
 \indexentry{cd|hyperpage}{2}
-\indexentry{find|hyperpage}{3}
-\indexentry{head|hyperpage}{3}
-\indexentry{tail|hyperpage}{3}
-\indexentry{mount|hyperpage}{3}
-\indexentry{unmount|hyperpage}{3}
-\indexentry{pdf|hyperpage}{3}
-\indexentry{useradd|hyperpage}{3}
-\indexentry{su|hyperpage}{4}
-\indexentry{Networking|hyperpage}{4}
-\indexentry{ifconfig|hyperpage}{4}
-\indexentry{traceroute|hyperpage}{4}
-\indexentry{dig|hyperpage}{4}
-\indexentry{telnet|hyperpage}{4}
-\indexentry{nslookup|hyperpage}{4}
-\indexentry{netstat|hyperpage}{4}
-\indexentry{nmap|hyperpage}{4}
-\indexentry{IPv6|hyperpage}{4}
-\indexentry{echo|hyperpage}{6}
-\indexentry{chmod|hyperpage}{6}
-\indexentry{chown|hyperpage}{6}
-\indexentry{variables|hyperpage}{6}
-\indexentry{export|hyperpage}{6}
-\indexentry{touch|hyperpage}{6}
-\indexentry{wc|hyperpage}{6}
-\indexentry{arithmetic|hyperpage}{6}
-\indexentry{for loop|hyperpage}{6}
-\indexentry{mkfifo|hyperpage}{7}
-\indexentry{emacs|hyperpage}{7}
-\indexentry{services|hyperpage}{8}
-\indexentry{address|hyperpage}{10}
-\indexentry{pointer|hyperpage}{11}
-\indexentry{template|hyperpage}{11}
-\indexentry{Input and Output|hyperpage}{12}
-\indexentry{Variable Types|hyperpage}{12}
-\indexentry{Vector|hyperpage}{12}
-\indexentry{vector|hyperpage}{12}
-\indexentry{Converting Between Types|hyperpage}{13}
-\indexentry{std::string to int|hyperpage}{13}
-\indexentry{stoi|hyperpage}{13}
-\indexentry{std::string to int|hyperpage}{14}
-\indexentry{stod|hyperpage}{14}
-\indexentry{std::string to const char*|hyperpage}{14}
-\indexentry{c\_str()|hyperpage}{14}
-\indexentry{Prime Number|hyperpage}{14}
-\indexentry{prime|hyperpage}{14}
-\indexentry{System Commands|hyperpage}{15}
-\indexentry{Sleep|hyperpage}{15}
-\indexentry{sleep|hyperpage}{15}
-\indexentry{Simulate Key Strokes|hyperpage}{15}
-\indexentry{little endian|hyperpage}{16}
-\indexentry{big endian|hyperpage}{16}
-\indexentry{Make|hyperpage}{17}
-\indexentry{CMake|hyperpage}{17}
-\indexentry{CMakeLists|hyperpage}{17}
-\indexentry{git|hyperpage}{19}
-\indexentry{init|hyperpage}{19}
-\indexentry{config|hyperpage}{19}
-\indexentry{clone|hyperpage}{19}
-\indexentry{log|hyperpage}{19}
-\indexentry{status|hyperpage}{19}
-\indexentry{fetch|hyperpage}{19}
-\indexentry{merge|hyperpage}{19}
-\indexentry{pull|hyperpage}{19}
-\indexentry{add|hyperpage}{19}
-\indexentry{commit|hyperpage}{19}
-\indexentry{diff|hyperpage}{19}
-\indexentry{push|hyperpage}{19}
-\indexentry{add|hyperpage}{19}
-\indexentry{branch|hyperpage}{20}
-\indexentry{checkout|hyperpage}{20}
-\indexentry{merge|hyperpage}{20}
-\indexentry{mergetool|hyperpage}{20}
-\indexentry{gitignore|hyperpage}{20}
-\indexentry{stash|hyperpage}{20}
-\indexentry{reset|hyperpage}{20}
-\indexentry{bisect|hyperpage}{20}
-\indexentry{rebase|hyperpage}{21}
-\indexentry{SQL|hyperpage}{22}
-\indexentry{delimiter|hyperpage}{27}
-\indexentry{Plotting and Graphs|hyperpage}{27}
+\indexentry{current directory|hyperpage}{2}
+\indexentry{Remote Connections|hyperpage}{3}
+\indexentry{SSH|hyperpage}{3}
+\indexentry{Secure Shell|hyperpage}{3}
+\indexentry{SSH|hyperpage}{3}
+\indexentry{scp|hyperpage}{3}
+\indexentry{sftp|hyperpage}{3}
+\indexentry{X11 forwarding|hyperpage}{3}
+\indexentry{rsync|hyperpage}{3}
+\indexentry{VNC|hyperpage}{4}
+\indexentry{XRDP|hyperpage}{4}
+\indexentry{tmux|hyperpage}{4}
+\indexentry{screen|hyperpage}{4}
+\indexentry{find|hyperpage}{4}
+\indexentry{find|hyperpage}{4}
+\indexentry{head|hyperpage}{4}
+\indexentry{tail|hyperpage}{4}
+\indexentry{Mount|hyperpage}{5}
+\indexentry{mount|hyperpage}{5}
+\indexentry{unmount|hyperpage}{5}
+\indexentry{pdf|hyperpage}{5}
+\indexentry{tar|hyperpage}{5}
+\indexentry{rsync|hyperpage}{5}
+\indexentry{backuppc|hyperpage}{5}
+\indexentry{useradd|hyperpage}{5}
+\indexentry{su|hyperpage}{5}
+\indexentry{chmod|hyperpage}{5}
+\indexentry{chown|hyperpage}{5}
+\indexentry{chgrp|hyperpage}{5}
+\indexentry{Networking|hyperpage}{6}
+\indexentry{ifconfig|hyperpage}{6}
+\indexentry{traceroute|hyperpage}{6}
+\indexentry{Domain Information Groper|hyperpage}{6}
+\indexentry{telnet|hyperpage}{6}
+\indexentry{nslookup|hyperpage}{6}
+\indexentry{netstat|hyperpage}{6}
+\indexentry{nmap|hyperpage}{6}
+\indexentry{ifup|hyperpage}{6}
+\indexentry{ifdown|hyperpage}{6}
+\indexentry{IPv6|hyperpage}{6}
+\indexentry{stdout|hyperpage}{7}
+\indexentry{stderr|hyperpage}{7}
+\indexentry{shebang|hyperpage}{7}
+\indexentry{echo|hyperpage}{8}
+\indexentry{chmod|hyperpage}{8}
+\indexentry{chown|hyperpage}{8}
+\indexentry{variables|hyperpage}{8}
+\indexentry{export|hyperpage}{8}
+\indexentry{touch|hyperpage}{8}
+\indexentry{wc|hyperpage}{9}
+\indexentry{arithmetic|hyperpage}{9}
+\indexentry{for loop|hyperpage}{9}
+\indexentry{mkfifo|hyperpage}{9}
+\indexentry{Emacs|hyperpage}{9}
+\indexentry{read-only mode|hyperpage}{9}
+\indexentry{services|hyperpage}{10}
+\indexentry{address|hyperpage}{13}
+\indexentry{pointer|hyperpage}{13}
+\indexentry{template|hyperpage}{14}
+\indexentry{Input and Output|hyperpage}{14}
+\indexentry{Variable Types|hyperpage}{15}
+\indexentry{Vector|hyperpage}{15}
+\indexentry{vector|hyperpage}{15}
+\indexentry{Converting Between Types|hyperpage}{16}
+\indexentry{std::string to int|hyperpage}{16}
+\indexentry{stoi|hyperpage}{16}
+\indexentry{std::string to int|hyperpage}{16}
+\indexentry{stod|hyperpage}{16}
+\indexentry{std::string to const char*|hyperpage}{16}
+\indexentry{c\_str()|hyperpage}{16}
+\indexentry{Prime Number|hyperpage}{17}
+\indexentry{prime|hyperpage}{17}
+\indexentry{System Commands|hyperpage}{17}
+\indexentry{Sleep|hyperpage}{17}
+\indexentry{sleep|hyperpage}{17}
+\indexentry{Simulate Key Strokes|hyperpage}{18}
+\indexentry{little endian|hyperpage}{19}
+\indexentry{big endian|hyperpage}{19}
+\indexentry{Make|hyperpage}{20}
+\indexentry{CMake|hyperpage}{20}
+\indexentry{CMakeLists|hyperpage}{20}
+\indexentry{git|hyperpage}{23}
+\indexentry{init|hyperpage}{23}
+\indexentry{config|hyperpage}{23}
+\indexentry{clone|hyperpage}{23}
+\indexentry{log|hyperpage}{23}
+\indexentry{status|hyperpage}{23}
+\indexentry{fetch|hyperpage}{23}
+\indexentry{merge|hyperpage}{23}
+\indexentry{pull|hyperpage}{23}
+\indexentry{add|hyperpage}{24}
+\indexentry{commit|hyperpage}{24}
+\indexentry{diff|hyperpage}{24}
+\indexentry{push|hyperpage}{24}
+\indexentry{add|hyperpage}{24}
+\indexentry{branch|hyperpage}{24}
+\indexentry{checkout|hyperpage}{24}
+\indexentry{merge|hyperpage}{24}
+\indexentry{mergetool|hyperpage}{24}
+\indexentry{gitignore|hyperpage}{24}
+\indexentry{stash|hyperpage}{25}
+\indexentry{reset|hyperpage}{25}
+\indexentry{bisect|hyperpage}{25}
+\indexentry{rebase|hyperpage}{25}
+\indexentry{Git Submodules|hyperpage}{25}
+\indexentry{submodules|hyperpage}{25}
+\indexentry{remote flag|hyperpage}{26}
+\indexentry{HEAD|hyperpage}{26}
+\indexentry{.gitmodules|hyperpage}{26}
+\indexentry{HTML|hyperpage}{33}
+\indexentry{CSS|hyperpage}{34}
+\indexentry{PHP|hyperpage}{35}
+\indexentry{Python|hyperpage}{37}
+\indexentry{function|hyperpage}{38}
+\indexentry{def|hyperpage}{38}
+\indexentry{Methods|hyperpage}{38}
+\indexentry{Classes|hyperpage}{38}
+\indexentry{\_\_init\_\_()|hyperpage}{38}
+\indexentry{delimiter|hyperpage}{39}
+\indexentry{split()|hyperpage}{39}
+\indexentry{whitespace|hyperpage}{39}
+\indexentry{strip()|hyperpage}{39}
+\indexentry{lstrip()|hyperpage}{39}
+\indexentry{rstrip()|hyperpage}{39}
+\indexentry{join()|hyperpage}{39}
+\indexentry{lower()|hyperpage}{39}
+\indexentry{upper()|hyperpage}{39}
+\indexentry{format()|hyperpage}{39}
+\indexentry{f-string|hyperpage}{39}
+\indexentry{any()|hyperpage}{40}
+\indexentry{any()|hyperpage}{40}
+\indexentry{+ operator|hyperpage}{40}
+\indexentry{extend()|hyperpage}{40}
+\indexentry{len()|hyperpage}{40}
+\indexentry{Plotting and Graphs|hyperpage}{40}
+\indexentry{Pytest|hyperpage}{41}
+\indexentry{Pytest|hyperpage}{41}
+\indexentry{assert|hyperpage}{41}

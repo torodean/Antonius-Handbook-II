@@ -1,6 +1,8 @@
 \chapter{Git\index{git}}
 \thispagestyle{fancy}
-\lstset{language=Bash, style=bash}
+\lstset{language=bash, style=gitstyle}
+
+Git is a distributed version control system designed for software development, enabling programmers to manage and track changes to their code base efficiently. Utilizing a decentralized architecture, Git allows developers to work collaboratively on projects, facilitating concurrent development and seamless merging of code changes. With features such as branching, tagging, and commit history, Git empowers programmers to maintain code integrity, experiment with new features, and revert changes when necessary. Its robust branching model facilitates the creation of feature branches for code development, enabling developers to isolate changes and merge them back into the main code base effortlessly. Overall, Git serves as an indispensable tool for programmers, offering a reliable and scalable solution for version control in software development projects.
 
 \begin{fancybox}[Git Resources]{}	
 	Various git resources exist for use of or with git (an open source, distributed version-control system).
@@ -14,6 +16,8 @@
 		\end{tabular}
 	\end{center}
 \end{fancybox}
+
+\subsection{Basic Git}
 
 To turn an existing directory into a git repository you can use the \textbf{git init}\index{init} command,
 \begin{lstlisting}
@@ -104,6 +108,13 @@ Sometimes a file or type of file(s) are desired to be ignored by git and not pus
 *.o
 \end{lstlisting}
 
+
+
+
+
+
+
+
 \subsection{Advanced Git}
 
 A useful tool is \textbf{stash}\index{stash} (code must be staged to be stashed), which lets you save code without making a commit \cite{git}\cite{git: Advanced}.
@@ -144,4 +155,43 @@ textbf{git remote} command.
 \begin{lstlisting}
 git remote -v  # Lists the remote url of the repository.
 git remote set-url origin <NEW-URL>  # Change the url of the repo.
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Git Submodules\index{Git Submodules}}
+
+Git submodules are a feature in Git that allows developers to include one Git repository as a subdirectory within another Git repository. This enables the management of dependencies and external libraries within a project, allowing for modular and organized codebases. With Git submodules, developers can easily incorporate external code repositories into their projects while maintaining version control and tracking changes across multiple repositories. This provides a convenient way to reuse code, collaborate with external teams, and manage complex project dependencies effectively. However, it's important to note that working with Git submodules requires understanding of their workflow and potential complexities, making them a powerful but nuanced tool for managing project dependencies in software development.
+
+\myindent For a project containing git \idx{submodules}. When cloned (by default), the submodule repo's and containing files will not be cloned. Only a reference to the submodule commit will be cloned. To clone the submodule's files along with the repo, use
+\begin{lstlisting}
+git clone --recurse-submodules <project-path>
+\end{lstlisting}
+
+If you have cloned a repository and would like to update submodule files after the fact, you can use
+\begin{lstlisting}
+git submodule update --init --recursive
+\end{lstlisting}
+
+In a repository containing a submodule, the submodule is always pointing to a specific commit for that submodule. This commit may not be the latest of the submodule. To update all submodules to their latest commits, you can use the \idx{remote flag}. After doing this to update submodules, changes will appear in the top level git reposity - as the submodule commit pointers have changed. These changes will need committed to the git repo.
+\begin{lstlisting}
+git submodule update --init --recursive --remote
+\end{lstlisting}
+
+By default, each submodule will be in a detached \idx{HEAD} state. To commit changes to a submodule, you must first change to a branch and then commit the changes. The top level repository contains a \idx{.gitmodules} file that contains information on which branch the git repo will use for each submodule
+\begin{lstlisting}
+# Example .gitmodules file
+[submodule "submodule_name"]
+    path = submodule_path
+    url = submodule_url
+    branch = submodule_branch
 \end{lstlisting}

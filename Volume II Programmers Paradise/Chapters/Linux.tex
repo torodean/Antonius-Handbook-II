@@ -1,6 +1,6 @@
 \chapter{Linux}
 \thispagestyle{fancy}
-\lstset{language=Bash, style=bash}
+\lstset{language=Bash, style=terminalstyle}
 
 Linux is a broad subcategory that encompass a large family of free and open sourced operating systems. Installing, setting up, and using a linux based operating system is the perfect way for anyone to gain knowledge, understanding, and practice of how a computer system truly works. Unlike the end user experience with Windows and Mac OS, linux has a much higher capability for customization and a higher degree of freedom. With that said, linux is not necessarily more user friendly to the new or average computer user, however it is free in most cases!
 
@@ -11,13 +11,30 @@ Retrieve information and valid arguments for a command. This works with many com
 COMMAND --help   # COMMAND must be a valid command such as cd, ls, etc...
 \end{lstlisting}
 
-\textbf{Changing directory} via terminal via the \textbf{cd}\index{cd} command.
+Installing and updating packages using package managers such as \idx{apt}, \idx{yum}, or \idx{dnf}.
+\begin{lstlisting}
+sudo apt update           # Updates the list of available packages (APT)
+sudo apt upgrade          # Upgrades installed packages to their latest versions (APT)
+sudo yum update           # Updates the list of available packages (Yum)
+sudo yum upgrade          # Upgrades installed packages to their latest versions (Yum)
+sudo dnf update           # Updates the list of available packages (DNF)
+sudo dnf upgrade          # Upgrades installed packages to their latest versions (DNF)
+\end{lstlisting}
+
+Monitoring system resource usage using tools like \idx{top}, \idx{htop}, and \idx{iotop}.
+\begin{lstlisting}
+top           # Displays dynamic real-time information about running processes
+htop          # An interactive process viewer
+iotop         # Displays I/O usage by processes in real-time
+\end{lstlisting}
+
+\idx{Changing directory} via terminal via the \idx{cd}command.
 \begin{lstlisting}
 cd /directory # Changes the directory to the subdirectory /directory
 cd ..         # Goes back one directory
 \end{lstlisting}
 
-Getting \textbf{current directory} via terminal
+Getting \idx{current directory} via terminal
 \begin{lstlisting}
 pwd
 \end{lstlisting}
@@ -58,17 +75,69 @@ sudo nano /etc/hostname # Opens this file using nano for editing.
 hostname                # Command to see what the current hostname is.
 \end{lstlisting}
 
-Make a file executable and execute a file
+
+
+
+\section{Remote Connections (SSH)\index{Remote Connections}\index{SSH}}
+
+
+Accessing remote systems using \idx{Secure Shell} (\idx{SSH}).
 \begin{lstlisting}
-chmod a+x /location/of/FILE # Makes a file executable
-./FILE                      # Executes a file.
+ssh username@hostname     # Connects to the remote system using SSH
 \end{lstlisting}
+
+Transferring files securely between systems using \idx{scp} or \idx{sftp}.
+\begin{lstlisting}
+# Copies a file from local to remote system
+scp /path/to/local/file username@hostname:/path/to/remote/location
+
+# Copies a file from remote to local system
+scp username@hostname:/path/to/remote/file /path/to/local/location
+
+# Initiates interactive SFTP session with remote system
+sftp username@hostname    
+\end{lstlisting}
+
+Accessing remote desktops using \idx{X11 forwarding} and X terminal.
+\begin{lstlisting}'
+# Enables X11 forwarding for remote system
+ssh -X username@hostname
+
+# Opens a new X terminal window from remote system
+xterm        
+\end{lstlisting}
+
+Securely transferring files between systems using \idx{rsync}.
+\begin{lstlisting}
+# Synchronizes files and directories between local and remote systems
+rsync -avz /source/path username@hostname:/destination/path
+\end{lstlisting}
+
+Accessing remote systems via graphical interface using tools like \idx{VNC} or \idx{XRDP}.
+\begin{lstlisting}
+# Opens a VNC session to remote system
+vncviewer hostname
+
+# Opens a Remote Desktop Protocol (RDP) session to remote system
+rdesktop hostname
+\end{lstlisting}
+
+Establishing persistent remote connections using tools like \idx{tmux} or \idx{screen}.
+\begin{lstlisting}
+tmux new -s sessionname    # Creates a new tmux session
+screen -S sessionname      # Creates a new screen session
+\end{lstlisting}
+
+
+
+
+
 
 
 
 \section{Files and Storage}
 
-To find a file within a folder or its sub-folders, you can use the \textbf{find}\index{find} command.
+To find a file within a folder or its sub-folders, you can use the \idx{find}\index{find} command.
 \begin{lstlisting}
 find -name "fileName.txt"  # Finds a file named fileName.txt
 find -name "file*"  # Finds a file containing "file" in its name.
@@ -97,10 +166,10 @@ du -ah    # Lists the size of all files in the directory.
 
 List information about File(s) (in the current directory by default). You can specify the number of entries you want listed using the \idx{head} and \idx{tail} commands.
 \begin{lstlisting}
-ls			# list all items in a directory
-ls -1		# list all items in a directory (one item per line)
-ls -lh		# list all items in a directory with size, owner, and date modified
-ls -lhrt	# Useful ls output
+ls         # list all items in a directory
+ls -1      # list all items in a directory (one item per line)
+ls -lh     # list all items with size, owner, and date modified
+ls -lhrt   # Useful ls output
 
 ls -lhrt | head -4	 # Outputs only the first four entires
 ls -lhrt | tail -4	 # Outputs only the last four entires
@@ -111,7 +180,7 @@ List all of the block devices (hence partitions) detected by the machine
 lsblk
 \end{lstlisting}
 
-\textbf{Mount}\index{mount} and \textbf{unmount}\index{unmount} a partition
+\idx{Mount}\index{mount} and \idx{unmount} a partition
 \begin{lstlisting}
 sudo mount <DEVICE TO MOUNT> <MOUNT POINT>
 sudo mount /dev/sdb1/ /mnt/       # example of mounting
@@ -120,10 +189,25 @@ sudo umount /dev/sdb1/ /mnt/      # example of mounting
 \end{lstlisting}
 
 
-To open a \textbf{pdf}\index{pdf} via terminal, most generic desktop environments support
+To open a \idx{pdf} via terminal, most generic desktop environments support
 \begin{lstlisting}
 xdg-open filename.pdf
 \end{lstlisting}
+
+Creating backups using tools like \idx{tar}, \idx{rsync}, or \idx{backuppc}.
+\begin{lstlisting}
+# Creates a compressed tarball of a directory
+tar -czvf backup.tar.gz /path/to/directory
+
+# Synchronizes files and directories between two locations
+rsync -avz /source/path /destination/path
+\end{lstlisting}
+
+
+
+
+
+
 
 
 
@@ -136,12 +220,12 @@ List all users
 cut -d: -f1 /etc/passwd
 \end{lstlisting}
 
-Create a new user using the \textbf{useradd}\index{useradd} command.
+Create a new user using the \idx{useradd} command.
 \begin{lstlisting}
-sudo useradd [options] <USERNAME>             # Creates a user
-sudo useradd -e 2016-02-05 <NAME>             # Creates a user that expites on a day.
-sudo useradd <USERNAME> -G <GROUPNAME>        # Adds a user to a group upon creation.
-useradd --help                                # See full useradd options.
+sudo useradd [options] <USERNAME>       # Creates a user
+sudo useradd -e 2016-02-05 <NAME>       # Creates a user that expites on a day.
+sudo useradd <USERNAME> -G <GROUPNAME>  # Adds a user to a group upon creation.
+useradd --help                          # See full useradd options.
 \end{lstlisting}
 
 Change a users password using passwd.
@@ -149,7 +233,7 @@ Change a users password using passwd.
 passwd <USERNAME>
 \end{lstlisting}
 
-Change the user in terminal using the \textbf{su}\index{su} command.
+Change the user in terminal using the \idx{su} command.
 \begin{lstlisting}
 su - <USERNAME>
 \end{lstlisting}
@@ -159,6 +243,13 @@ Add a user to the sudoers group
 usermod -aG sudo <USERNAME>
 \end{lstlisting}
 
+Managing user permissions and file ownership using \idx{chmod}, \idx{chown}, and \idx{chgrp}.
+\begin{lstlisting}
+chmod 755 file           # Changes file permissions to read, write, and execute for owner, and read and execute for group and others
+chmod a+x file           # Changes file permissions to include execute permissions.
+chown user:group file    # Changes the owner and group of the file
+chgrp group file         # Changes the group of the file
+\end{lstlisting}
 
 
 
@@ -171,64 +262,68 @@ usermod -aG sudo <USERNAME>
 
 
 
-\section{Networking\index{Networking}}
+\section{Networking\idx{Networking}}
 
-The \textbf{ifconfig}\index{ifconfig} command is for viewing IP configuration information and configuring network interface parameters.
+The \idx{ifconfig} command is for viewing IP configuration information and configuring network interface parameters.
 \begin{lstlisting}
 ifconfig
 \end{lstlisting}
 
-The \textbf{traceroute}\index{traceroute} command is for printing the route that packets take to a network host.
+The \idx{traceroute} command is for printing the route that packets take to a network host.
 \begin{lstlisting}
 traceroute
 \end{lstlisting}
 
-The \textbf{Domain Information Groper}\index{dig} is used to perform DNS lookups and display answers returned from the DNS servers.
+The \idx{Domain Information Groper} is used to perform DNS lookups and display answers returned from the DNS servers.
 \begin{lstlisting}
 dig
 \end{lstlisting}
 
-The \textbf{telnet}\index{telnet} command connects the destination host:port via the telnet protocal. An established connection means connectivity between two hosts is properly working.
+The \idx{telnet} command connects the destination host:port via the telnet protocal. An established connection means connectivity between two hosts is properly working.
 \begin{lstlisting}
 telnet
 \end{lstlisting}
 
-The \textbf{nslookup}\index{nslookup} command is for querying Internet domain name servers.
+The \idx{nslookup} command is for querying Internet domain name servers.
 \begin{lstlisting}
 nslookup
 \end{lstlisting}
 
-The \textbf{netstat}\index{netstat} command is used to review open network connections and open sockets. 
+The \idx{netstat} command is used to review open network connections and open sockets. 
 \begin{lstlisting}
 netstat
 \end{lstlisting}
 
-The \textbf{nmap}\index{nmap} command is used to check for opened ports on a server
+The \idx{nmap} command is used to check for opened ports on a server
 \begin{lstlisting}
 nmap <SERVER NAME>
 \end{lstlisting}
 
-The \textbf{ifup} and \textbf{ifdown} commands are used to disable network interfaces.
+The \idx{ifup} and \idx{ifdown} commands are used to disable network interfaces.
 \begin{lstlisting}
-# enables an ethernet parameter
+# Enables an ethernet parameter
 ifup <ETHERNET INTERFACE PARAMETER>
 ifup eth0  # example: enables 'eth0'
 
-# disables an ethernet parameter
+# Disables an ethernet parameter
 ifdown <ETHERNET INTERFACE PARAMETER>
 ifdown eth0  # example: disables 'eth0'
 \end{lstlisting}
 
-Enable/Disable \textbf{IPv6}\index{IPv6}. This is only a temporary solution as it may turn itself back on after some time.
+Enable/Disable \idx{IPv6}. This is only a temporary solution as it may turn itself back on after some time.
 \begin{lstlisting}
-#Use these two commands to disable IPv6
+# Use these two commands to disable IPv6
 sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
 sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 
-#Use these two commands to re-enable IPv6
+# Use these two commands to re-enable IPv6
 sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
 sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
 \end{lstlisting}
+
+
+
+
 
 
 
@@ -244,12 +339,14 @@ When outputting to a file, there is an append and an overwrite operator.
 command > output.txt    // Writes output to output.txt
 command >> output.txt   // Appends output to output.txt
 \end{lstlisting}
-To redirect all output from a program (including stdout and stderr), you can use 
+To redirect all output from a program (including \idx{stdout} and \idx{stderr}), you can use 
 \begin{lstlisting}
 command -args > output.txt 2>&1
 \end{lstlisting}
 
-To create a shell script you must create a new text file and save it as a '.sh' file. The file should start with the directory to the proper shell which is generally the default below. The first line (starting with a shebang '\#!') is not a comment, but instead is treated by Unix as "which shell do I use to run this code." In our case, the Bourne shell will be used \cite{linux: shell scripting}. Furthermore, to create a shell application that has parameters, with a help screen to explain those parameters, you can apply the following template.
+\lstset{language=Bash, style=shellstyle}
+
+To create a shell script you must create a new text file and save it as a '.sh' file. The file should start with the directory to the proper shell which is generally the default below. The first line (starting with a \idx{shebang} '\#!') is not a comment, but instead is treated by Unix as "which shell do I use to run this code." In our case, the Bourne shell will be used \cite{linux: shell scripting}. Furthermore, to create a shell application that has parameters, with a help screen to explain those parameters, you can apply the following template.
 \begin{lstlisting}
 #!/bin/sh
 # This is a comment!
@@ -295,7 +392,7 @@ fi
 }
 \end{lstlisting}
 
-To print text one can use the \textbf{echo}\index{echo} command as follows.
+To print text one can use the \idx{echo} command as follows.
 \begin{lstlisting}
 #!/bin/sh
 echo Hello World
@@ -303,7 +400,7 @@ echo "Hello World"
 echo -e "In order to print newline characters, use the e option!\n"
 \end{lstlisting}
 
-To make a file executable, or change the permissions in general the \textbf{chmod}\index{chmod} command can be used and is typically used as follows.
+To make a file executable, or change the permissions in general the \idx{chmod} command can be used and is typically used as follows.
 \begin{lstlisting}
 chmod a+x <SCRIPTNAME>.sh					 # Make a script executable.
 chmod -R 775 filesToChangePermissionsOf.ext  # Change the permissions of some file.
@@ -368,8 +465,9 @@ done
 
 
 \section{Other}
+\lstset{language=Bash, style=terminalstyle}
 
-The \textbf{mkfifo}\index{mkfifo} command is used to create a new named pipe. A pipe is used to store the output of one program to be used in another.
+The \idx{mkfifo} command is used to create a new named pipe. A pipe is used to store the output of one program to be used in another.
 \begin{lstlisting}
 mkfifo namedPipe   # Creates a pip named "namedPipe".
 ls > namedPipe     # Feeds the output of ls into namedPipe.
@@ -378,8 +476,8 @@ mkfifo namedPipe2 -m700  # Modifies the permissions of a created pipe.
 \end{lstlisting}
 
 \subsection{emacs}
-\textbf{Emacs}\index{emacs} is a powerful text editor. You can open a document through emacs using the following. The ``-nw" flag indicates no GUI window should open (open in terminal).
+\idx{Emacs} is a powerful text editor. You can open a document through emacs using the following. The ``-nw" flag indicates no GUI window should open (open in terminal).
 \begin{lstlisting}
 emacs doc.txt -nw
 \end{lstlisting}
-To toggle \textbf{read-only mode} use C-x C-q.
+To toggle \idx{read-only mode} use C-x C-q.
