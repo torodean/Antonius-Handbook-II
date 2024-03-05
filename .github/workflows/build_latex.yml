@@ -29,7 +29,7 @@ jobs:
         git config --global user.name 'Antonius Torode'
         git config --global user.email 'torodean@users.noreply.github.com'
         git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}
-        git checkout "${GITHUB_REF:11}"
+        git checkout -b automated-updates
         cd Volume\ II\ Programmers\ Paradise  # Change directory to the subfolder
         git add Handbook_autogen.pdf
         git commit -m "Automated LaTeX generation - updating PDF"
