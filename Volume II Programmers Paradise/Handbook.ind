@@ -116,8 +116,8 @@
   \item Methods, \hyperpage{41}
   \item MiKTeX, \hyperpage{27}
   \item mkfifo, \hyperpage{9}
-  \item Mount, \hyperpage{5}
-  \item mount, \hyperpage{5}
+  \item Mount, \hyperpage{4}
+  \item mount, \hyperpage{4}
 
   \indexspace
 
@@ -195,7 +195,7 @@
 
   \indexspace
 
-  \item unmount, \hyperpage{5}
+  \item unmount, \hyperpage{4}
   \item upper(), \hyperpage{42}
   \item useradd, \hyperpage{5}
 
@@ -205,7 +205,7 @@
   \item variables, \hyperpage{8}
   \item Vector, \hyperpage{15}
   \item vector, \hyperpage{15}
-  \item VNC, \hyperpage{4}
+  \item VNC, \hyperpage{3}
 
   \indexspace
 
@@ -215,7 +215,7 @@
   \indexspace
 
   \item X11 forwarding, \hyperpage{3}
-  \item XRDP, \hyperpage{4}
+  \item XRDP, \hyperpage{3}
 
   \indexspace
 
