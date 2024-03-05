@@ -33,4 +33,4 @@ jobs:
         cd Volume\ II\ Programmers\ Paradise  # Change directory to the subfolder
         git add Handbook_autogen.pdf
         git commit -m "Automated LaTeX generation - updating PDF"
-        git push
+        git push origin automated-updates
