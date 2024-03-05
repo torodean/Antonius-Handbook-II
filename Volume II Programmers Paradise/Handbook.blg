@@ -1,25 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Handbook.aux
 A level-1 auxiliary file: ./Resources/Copywrite.aux
 A level-1 auxiliary file: ./Resources/Preface.aux
 A level-1 auxiliary file: ./Chapters/Introduction.aux
 A level-1 auxiliary file: ./Chapters/Linux.aux
-White space in argument---line 11 of file ./Chapters/Linux.aux
+White space in argument---line 13 of file ./Chapters/Linux.aux
  : \citation{linux:
  :                  shell scripting}
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: ./Chapters/Windows.aux
 A level-1 auxiliary file: ./Chapters/Mac.aux
 A level-1 auxiliary file: ./Chapters/Cpp.aux
-A level-1 auxiliary file: ./Chapters/ROOT.aux
+A level-1 auxiliary file: ./Chapters/Make.aux
+A level-1 auxiliary file: ./Chapters/Git.aux
+White space in argument---line 11 of file ./Chapters/Git.aux
+ : \citation{git:
+ :                Advanced}
+I'm skipping whatever remains of this command
+White space in argument---line 13 of file ./Chapters/Git.aux
+ : \citation{git:
+ :                Advanced}
+I'm skipping whatever remains of this command
+White space in argument---line 15 of file ./Chapters/Git.aux
+ : \citation{git:
+ :                Advanced}
+I'm skipping whatever remains of this command
+White space in argument---line 17 of file ./Chapters/Git.aux
+ : \citation{git:
+ :                Advanced}
+I'm skipping whatever remains of this command
+A level-1 auxiliary file: ./Chapters/LaTeX.aux
 A level-1 auxiliary file: ./Chapters/CSharp.aux
+A level-1 auxiliary file: ./Chapters/java.aux
+A level-1 auxiliary file: ./Chapters/html.aux
+A level-1 auxiliary file: ./Chapters/css.aux
+A level-1 auxiliary file: ./Chapters/php.aux
+A level-1 auxiliary file: ./Chapters/javascript.aux
 A level-1 auxiliary file: ./Chapters/Python.aux
 I found no \bibdata command---while reading file Handbook.aux
 I found no \bibstyle command---while reading file Handbook.aux
-You've used 1 entry,
+You've used 3 entries,
             0 wiz_defined-function locations,
-            94 strings with 714 characters,
+            103 strings with 866 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0
@@ -58,4 +81,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 0
-(There were 3 error messages)
+(There were 7 error messages)

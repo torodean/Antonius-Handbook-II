@@ -1,6 +1,6 @@
 \chapter{Python\index{Python}}
 \thispagestyle{fancy}
-\lstset{language=Python, style=pythonstyle}
+\lstset{}\lstset{language=Python, style=pythonstyle}
 
 Python is a high-level, interpreted programming language known for its simplicity, readability, and versatility. With its elegant syntax and dynamic typing, Python facilitates rapid development and prototyping across various domains, including web development, data analysis, artificial intelligence, and scientific computing. Its extensive standard library and vibrant ecosystem of third-party packages provide comprehensive support for a wide range of tasks, from basic scripting to complex software development. Python's object-oriented and functional programming paradigms, coupled with its strong community support and cross-platform compatibility, make it an ideal choice for both beginners and experienced developers seeking efficient and expressive solutions to their programming challenges. Its emphasis on code readability and simplicity distinguishes Python from other languages, promoting maintainability and collaboration in software projects.
 
@@ -18,7 +18,29 @@ https://docs.python.org/2/
 
 
 
-\section{Imports and libraries}
+
+
+
+
+\section{Basics of Python}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Imports and libraries}
+
+Import floating point division which allows python 2 compatibility when using division with doubles. Include this at the beginning of the script.
+\begin{lstlisting}
+from __future__ import division
+\end{lstlisting}
 
 On Linux, there's a site-packages folder that imported libraries are all in. These are located in the following directories for python versions 2.7 and 3.6 respectively.
 
@@ -30,12 +52,6 @@ On Linux, there's a site-packages folder that imported libraries are all in. The
 I believe you only have specify the path from that folder on. For example, an app that uses the import program.script.interface as interface will have the interface.py file installed to usr/lib/python3.6/site-packages/program/scripts.
 
 
-\section{Basics of Python}
-
-Import floating point division which allows python 2 compatibility when using division with doubles. Include this at the beginning of the script.
-\begin{lstlisting}
-from __future__ import division
-\end{lstlisting}
 
 
 
@@ -43,14 +59,7 @@ from __future__ import division
 
 
 
-
-
-
-
-
-
-
-\section{Program parameters}
+\subsection{Program parameters}
 
 You can add input parameters for a python script/program using the argparse package.
 \begin{lstlisting}
@@ -82,7 +91,7 @@ if args.verbose:
 
 
 
-\section{Methods, Functions, and Classes}
+\subsection{Methods, Functions, and Classes}
 
 
 To define a \idx{function} in Python, you use the \idx{def} keyword followed by the function name and parameters, if any. You can also include a docstring to provide documentation for the function. In this example, the \texttt{greet()} function takes a \texttt{name} parameter and returns a greeting message.
@@ -136,7 +145,7 @@ print("The area of the rectangle is:", area)
 
 
 
-\section{String manipulation}
+\subsection{String manipulation}
 
 To split a string by a \idx{delimiter} you can use the \idx{split()} method. To remove any leadig or trailing \idx{whitespace} from a string, you can use the \idx{strip()} method. Additionally, you can use \idx{lstrip()} to remove leading whitespace and \idx{rstrip()} to remove trailing whitespace.
 \begin{lstlisting}
@@ -189,7 +198,7 @@ print(f_equation) # prints "5 + 6 = 11"
 
 
 
-\section{Arrays and lists}
+\subsection{Arrays and lists}
 
 To check if any value in one array or list is present in another array or list, you can use the \idx{any()} function along with a generator expression. In this example, the \idx{any()} function iterates over each item in \texttt{list2} and checks if it is present in \texttt{list1}. If any common elements are found, the condition evaluates to \texttt{True}, and the corresponding message is printed.
 \begin{lstlisting}
@@ -229,7 +238,7 @@ list_length = len(my_list)   # Stores 5
 
 
 
-\section{Plotting and Graphs\index{Plotting and Graphs}}
+\subsection{Plotting and Graphs\index{Plotting and Graphs}}
 
 A nicely formatted plot with a legend using the pylab package.
 \begin{lstlisting}
