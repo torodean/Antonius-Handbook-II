@@ -18,7 +18,7 @@ jobs:
 
     - name: Pull changes from automated-updates branch
       run: |
-        git fetch origin automated-updates
+        git fetch origin main
         git checkout -b automated-updates
         git merge origin/automated-updates
         git pull origin automated-updates
