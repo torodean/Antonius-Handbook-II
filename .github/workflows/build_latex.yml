@@ -13,6 +13,16 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
+    - name: Switch to automated-updates branch
+      run: git checkout automated-updates
+
+    - name: Pull changes from automated-updates branch
+      run: |
+        git fetch origin automated-updates:automated-updates
+        git checkout automated-updates
+        git merge origin/automated-updates
+        git pull origin automated-updates
+
     - name: Setup TeX Live
       uses: xu-cheng/latex-action@v2
       with:      
@@ -21,7 +31,7 @@ jobs:
         
     - name: Rename LaTeX document
       run: |
-        cd Volume\ II\ Programmers\ Paradise  # Change directory to the subfolder
+        cd "Volume II Programmers Paradise"  # Change directory to the subfolder
         mv Handbook.pdf Handbook_autogen.pdf
         
     - name: Commit and Push Changes
@@ -29,9 +39,6 @@ jobs:
         git config --global user.name 'Antonius Torode'
         git config --global user.email 'torodean@users.noreply.github.com'
         git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}
-        git checkout -b automated-updates
-        git pull origin main
-        cd Volume\ II\ Programmers\ Paradise  # Change directory to the subfolder
         git add Handbook_autogen.pdf
         git commit -m "Automated LaTeX generation - updating PDF"
         git push origin automated-updates
