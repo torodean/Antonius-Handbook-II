@@ -13,9 +13,6 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v2
 
-    - name: Switch to automated-updates branch
-      run: git checkout automated-updates
-
     - name: Pull changes from automated-updates branch
       run: |
         git fetch origin main
