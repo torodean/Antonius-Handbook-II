@@ -33,7 +33,3 @@ For Citation purposes you can use the following with the version used replaced i
 
 Torode, A. "Antonius’ Handbook" 2021. Volume ## Version: #.###. "https://torodean.github.io/AHandbook.html"
 
-
-
-
-
