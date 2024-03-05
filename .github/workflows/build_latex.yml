@@ -17,8 +17,7 @@ jobs:
       run: |
         git fetch origin main
         git checkout -b automated-updates
-        git merge origin/automated-updates
-        git pull origin automated-updates
+        git pull origin main
 
     - name: Setup TeX Live
       uses: xu-cheng/latex-action@v2
