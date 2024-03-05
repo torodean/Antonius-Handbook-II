@@ -15,6 +15,7 @@ jobs:
 
     - name: Pull changes from automated-updates branch
       run: |
+        git branch -D automated-updates
         git fetch origin main
         git checkout -b automated-updates
         git pull origin main
