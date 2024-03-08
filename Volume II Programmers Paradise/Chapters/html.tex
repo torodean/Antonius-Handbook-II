@@ -4,9 +4,11 @@
 
 \idx{HTML} (Hypertext Markup Language) is a fundamental language for creating and structuring web pages. It consists of tags that define the structure and content of a document, allowing developers to organize text, images, links, and other media elements. HTML documents are hierarchical, with a tree-like structure where each element is nested within others, forming a Document Object Model (DOM). Developers can manipulate the DOM using JavaScript to dynamically update content and interact with users. HTML5, the latest version of HTML, introduced new features like semantic elements (e.g., $<$header$>$, $<$footer$>$) and multimedia support (e.g., $<$video$>$, $<$audio$>$), enhancing the capabilities for building modern web applications. Understanding HTML is essential for web developers to create accessible, well-structured, and responsive websites.
 
-\section{Hello world}
 
-The below HTML is a basic example of an HTML document structure. It should be saved with a `.html' extension. It starts with the document type declaration ($<$!DOCTYPE html$>$), indicating that it is an HTML5 document. Inside the $<$html$>$ element, the \idx{lang} attribute specifies the language of the document (English in this case). The document contains a $<$head$>$ section where \idx{metadata} and resources for the document are defined. In this example, it includes the \idx{character set} ($<$meta charset="UTF-8"$>$), and the title of the document ($<$title$>$Hello, World!$<$/title$>$). The main content of the document is contained within the $<$body$>$ element. In this example, it includes a heading ($<$h1$>$) displaying the text "Hello, World!", followed by a paragraph ($<$p$>$) with the text "This is a simple HTML file."
+
+\section{HTML Basics}
+
+The below HTML is a basic example of an HTML document structure (\idx{hello world}). It should be saved with a `.html' extension. It starts with the document type declaration ($<$!DOCTYPE html$>$), indicating that it is an HTML5 document. Inside the $<$html$>$ element, the \idx{lang} attribute specifies the language of the document (English in this case). The document contains a $<$head$>$ section where \idx{metadata} and resources for the document are defined. In this example, it includes the \idx{character set} ($<$meta charset="UTF-8"$>$), and the title of the document ($<$title$>$Hello, World!$<$/title$>$). The main content of the document is contained within the $<$body$>$ element. In this example, it includes a heading ($<$h1$>$) displaying the text "Hello, World!", followed by a paragraph ($<$p$>$) with the text "This is a simple HTML file."
 
 \begin{lstlisting}
 <!DOCTYPE html>
@@ -21,8 +23,6 @@ The below HTML is a basic example of an HTML document structure. It should be sa
 </body>
 </html>
 \end{lstlisting}
-
-\section{HTML Basics}
 
 HTML \idx{comments} are enclosed within `$<$!--` and `--$>$` tags. Anything between these tags is treated as a comment and is ignored by the web browser when rendering the page. Comments can span multiple lines and can be placed anywhere within the HTML document. Here's an example of an HTML comment:
 \begin{lstlisting}
@@ -43,3 +43,29 @@ To add a \idx{stylesheet} to an HTML document (for css or other elements), add a
 </head>
 \end{lstlisting}
 
+The \idx{div} element is a generic container that allows you to group and style content together. It's commonly used for layout purposes and to apply styling or scripting to multiple elements at once.
+
+\begin{lstlisting}
+<div id="container">
+    <h2>This is a div container</h2>
+    <p>This is some content inside the container.</p>
+</div>
+\end{lstlisting}
+
+The \idx{span} element is an inline container used to mark up a part of text or a part of a document. It's often used to apply styles to specific parts of text.
+
+\begin{lstlisting}
+<p>This is a <span style="color: red;">highlighted</span> word.</p>
+\end{lstlisting}
+
+The \idx{img} element is used to embed images in an HTML document.
+
+\begin{lstlisting}
+<img src="image.jpg" alt="Description of image">
+\end{lstlisting}
+
+The \idx{a} element is used to create hyperlinks to other web pages, files, locations within the same page, or email addresses.
+
+\begin{lstlisting}
+<a href="https://www.example.com">Link to Example Website</a>
+\end{lstlisting}

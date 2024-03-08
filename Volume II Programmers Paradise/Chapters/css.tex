@@ -1,5 +1,71 @@
 \chapter{CSS}
 \thispagestyle{fancy}
-\lstset{}\lstset{language=CSS, style=cssstyle}
+\lstset{}\lstset{language=html, style=cssstyle}
 
 \idx{CSS} (Cascading Style Sheets) is a styling language used to control the visual presentation of HTML and XML documents. It allows developers to define styles for elements such as colors, fonts, layout, and spacing, separating the content from its presentation. CSS works by selecting elements in a document and applying styles to them based on rules defined by the developer. It offers various selectors and properties to target specific elements or groups of elements, enabling fine-grained control over the appearance of a web page. CSS can be applied inline within HTML elements, embedded in the <style> tag in the document head, or linked externally to the HTML file. With CSS, developers can create visually appealing and responsive web designs, improving user experience and accessibility across different devices and screen sizes. Understanding CSS is essential for front-end developers to create attractive and well-designed web interfaces.
+
+\begin{urlbox}
+For a free visual reference to css, you can use the following link:
+
+\url{https://cssreference.io/}
+\end{urlbox}
+
+
+
+
+
+
+
+\section{CSS Basics}
+
+CSS supports \idx{comments} using the \texttt{/* */} syntax. Comments are ignored by the browser.
+\begin{lstlisting}
+/* This is a CSS comment */
+\end{lstlisting}
+
+CSS style rules consist of a \idx{selector} and a \idx{declaration} block. The selector targets one or more HTML elements, and the declaration block contains one or more property-value pairs that define the styles to apply. An example of a CSS rule follows. In this example, the selector \texttt{h1} targets all \texttt{<h1>} elements, and the declaration block sets the text color to blue, font size to 24 pixels, and font weight to bold. 
+\begin{lstlisting}
+h1 {
+    color: blue;
+    font-size: 24px;
+    font-weight: bold;
+}
+\end{lstlisting}
+
+CSS uses \idx{selectors} to target specific HTML elements for styling. There are various types of selectors, including element selectors, class selectors, ID selectors, and more. For example, to style all paragraphs with a class of "intro," you can use the following. This rule will italicize the text of all paragraphs with the class "intro."
+\begin{lstlisting}
+p.intro {
+    font-style: italic;
+}
+\end{lstlisting}
+
+The \idx{color} property sets the text color. It can be specified using color names, RGB values, HEX codes, or HSL values.
+\begin{lstlisting}
+/* Using RGB value */
+body {
+    color: rgb(51, 51, 51);
+}
+
+/* Using HEX value */
+body {
+    color: #333;
+}
+
+/* Using color name */
+body {
+    color: darkgray;
+}
+\end{lstlisting}
+
+To modify the \idx{background} look, you can use the following properties:
+
+\begin{lstlisting}
+body {
+    background-color: #f0f0f0; /* Light gray background color */
+    background-image: url("background.jpg"); /* Background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Fix the background image */
+}
+\end{lstlisting}

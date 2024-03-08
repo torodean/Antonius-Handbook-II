@@ -1,6 +1,9 @@
 This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
-Scanning input file Handbook.idx....done (166 entries accepted, 0 rejected).
-Sorting entries....done (1278 comparisons).
-Generating output file Handbook.ind....done (224 lines written, 0 warnings).
+Scanning input file Handbook.idx....
+!! Input index error (file = Handbook.idx, line = 187):
+   -- Illegal null field.
+done (192 entries accepted, 1 rejected).
+Sorting entries.....done (1555 comparisons).
+Generating output file Handbook.ind....done (245 lines written, 0 warnings).
 Output written in Handbook.ind.
 Transcript written in Handbook.ilg.

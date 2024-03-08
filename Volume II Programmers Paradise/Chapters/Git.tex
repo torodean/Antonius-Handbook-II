@@ -20,12 +20,12 @@ Git is a distributed version control system designed for software development, e
 \subsection{Basic Git}
 
 To turn an existing directory into a git repository you can use the \textbf{git init}\index{init} command,
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git init   # Makes the current directory a git repository.
 \end{lstlisting}
 
 Git contains some basic \textbf{configuration}\index{config} that can be set for all the local repositories.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 # Sets the name you want attached to your commit transactions.
 git config --global user.name "[name]"
 
@@ -37,7 +37,7 @@ git config --global color.ui auto
 \end{lstlisting}
 
 Some basic commands used by git include cloning repositories with the \textbf{clone}\index{clone} (a local version of a repository, including all commits and branches) command, checking the \textbf{log}\index{log} of previous changes, and checking the \textbf{status}\index{status} of current files.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git clone https://github.com/torodean/Antonius-Handbook-II.git
 
 git log         # Prints a list of the commits and their messages.
@@ -47,14 +47,14 @@ git status      # Checks which state current files are in.
 \end{lstlisting}
 
 To \textbf{synchronize}\index{fetch}\index{merge}\index{pull} your local repository with the remote repository.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git fetch    # Downloads all history from the remote tracking branches.
 git merge    # Combines remote tracking branch into current local branch. 
 git pull     # A combination of git fetch and git merge.
 \end{lstlisting}
 
 To record changes to a git repository, you will primarily use the \textbf{add}\index{add}, \textbf{commit}\index{commit} (a Git object, a snapshot of your entire repository compressed into a SHA), \textbf{diff}\index{diff}, and \textbf{push}\index{push} commands. The \textbf{add}\index{add} command can be thought of to ``add precisely this content to the next commit''. 
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git add -A             # Stages all files to be committed.
 git add textFile.txt   # Stages a text file named 'textFile'.
 git rm textFile.txt    # Removes a text file from staging.
@@ -73,7 +73,7 @@ git push               # Updates remote references using local references.
 
 
 The \textbf{branch}\index{branch} (a lightweight movable pointer to a commit) command is used to create a new branch. The \textbf{checkout}\index{checkout} command is used to change the working branch.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git branch                # Lists all branches.
 git branch --merged       # See merged to current branches.
 git branch -v             # See last commit on each branch.
@@ -86,7 +86,7 @@ git checkout -b issue087  # Does both of the above commands in one line.
 \end{lstlisting}
 
 The \textbf{merge}\index{merge} command is used to combine multiple branches after work on them is finished. To assist with merge conflicts, you can use \textbf{mergetool}\index{mergetool}.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git checkout master      # Changes to the master branch.
 git merge issue087       # Attempts to merge master and issue087.
 
@@ -94,13 +94,13 @@ git mergetool            # Starts mergetool to assist with merge conflicts.
 \end{lstlisting}
 
 Using the fork command, one can create a copy of a repository owned by a different user.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git fork [URL]
 \end{lstlisting}
 
 Sometimes a file or type of file(s) are desired to be ignored by git and not push to the repository. This cane be done by creating a special file named \textbf{.gitignore}\index{gitignore}.
 \begin{lstlisting}
-# Example of a .gitignore file. This file tells git to ignore the following types of files.
+# Example .gitignore file. This file tells git to ignore the following types of files.
 *.aux
 *.log
 *.synctex.gz
@@ -118,7 +118,7 @@ Sometimes a file or type of file(s) are desired to be ignored by git and not pus
 \subsection{Advanced Git}
 
 A useful tool is \textbf{stash}\index{stash} (code must be staged to be stashed), which lets you save code without making a commit \cite{git}\cite{git: Advanced}.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git stash        # Makes a temporary local save of your repository.
 git stash list   # Show's a list of stashes that have been made.
 git stash apply  # Reapplies the content of a stash.
@@ -130,14 +130,14 @@ git checkout .   # Resets all uncommitted code.
 \end{lstlisting}
 
 The \textbf{reset}\index{reset} tool is used for accidental commits or reversing commits \cite{git}\cite{git: Advanced}.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git reset                  # Lets you modify your repository before doing a commit.
 git reset --soft HEAD~NUM. # Resets the most recent $NUM of commits.
 git reset --hard HEAD~NUM  # Erases your last $NUM of commits.
 \end{lstlisting}
 
 The \textbf{bisect}\index{bisect} tool will present you with the details of a commit when compared with another. By referencing a good commit and a bad commit, git will traverse between the two and ask you which ones are good and which ones are bad and then you can display the differences after the process is finished \cite{git}\cite{git: Advanced}.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git bisect        # Allows you to hunt for bad commits.
 git bisect start  # Tells git that there is a bad commit.
 git bisect bad    # Tells git which commit is bad.
@@ -146,13 +146,13 @@ git show          # Show the commit to indentify the issue.
 \end{lstlisting}
 
 The \textbf{rebase}\index{rebase} tool is used to combine commits. The rebase tool can be dangerous as it could potentially permanently delete files. It is recommended to view the documentation before using it \cite{git}\cite{git: Advanced}.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git rebase   # Allows for applying changes from one branch onto another.
 \end{lstlisting}
 
 To view and change the url that the git repository is using to update, you can use the 
 textbf{git remote} command.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git remote -v  # Lists the remote url of the repository.
 git remote set-url origin <NEW-URL>  # Change the url of the repo.
 \end{lstlisting}
@@ -173,17 +173,17 @@ git remote set-url origin <NEW-URL>  # Change the url of the repo.
 Git submodules are a feature in Git that allows developers to include one Git repository as a subdirectory within another Git repository. This enables the management of dependencies and external libraries within a project, allowing for modular and organized codebases. With Git submodules, developers can easily incorporate external code repositories into their projects while maintaining version control and tracking changes across multiple repositories. This provides a convenient way to reuse code, collaborate with external teams, and manage complex project dependencies effectively. However, it's important to note that working with Git submodules requires understanding of their workflow and potential complexities, making them a powerful but nuanced tool for managing project dependencies in software development.
 
 \myindent For a project containing git \idx{submodules}. When cloned (by default), the submodule repo's and containing files will not be cloned. Only a reference to the submodule commit will be cloned. To clone the submodule's files along with the repo, use
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git clone --recurse-submodules <project-path>
 \end{lstlisting}
 
 If you have cloned a repository and would like to update submodule files after the fact, you can use
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git submodule update --init --recursive
 \end{lstlisting}
 
 In a repository containing a submodule, the submodule is always pointing to a specific commit for that submodule. This commit may not be the latest of the submodule. To update all submodules to their latest commits, you can use the \idx{remote flag}. After doing this to update submodules, changes will appear in the top level git reposity - as the submodule commit pointers have changed. These changes will need committed to the git repo.
-\begin{lstlisting}
+\begin{lstlisting}[style=terminalstyle]
 git submodule update --init --recursive --remote
 \end{lstlisting}
 
@@ -195,3 +195,20 @@ By default, each submodule will be in a detached \idx{HEAD} state. To commit cha
     url = submodule_url
     branch = submodule_branch
 \end{lstlisting}
+
+
+
+
+
+
+
+
+\section{Github.io}
+
+\idx{GitHub Pages} is a static site hosting service provided by \idx{GitHub} that allows users to host websites directly from their GitHub repositories. Users can create and publish websites for projects, documentation, personal portfolios, or blogs by simply committing and pushing HTML, CSS, and JavaScript files to a designated repository branch. GitHub Pages supports custom domains, HTTPS encryption, and various themes, making it a convenient and accessible platform for hosting static websites. Additionally, it integrates seamlessly with GitHub's version control system, enabling easy collaboration and versioning of website content.
+
+\begin{urlbox}
+For a free tutorial on creating a github.io website, you can follow the following link:
+
+\url{https://gitwebsitetutorial.github.io/}
+\end{urlbox}

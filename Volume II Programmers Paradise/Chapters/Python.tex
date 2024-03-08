@@ -334,3 +334,124 @@ def test_add():
     assert my_module.add(5, -3) == 2
 \end{lstlisting}
 
+A pytest \idx{fixture} can be used to create a \idx{temporary directory} for testing.
+
+\begin{lstlisting}
+import pytest
+
+@pytest.fixture
+def temp_directory():
+    """
+    Fixture to create a temporary directory for testing.
+
+    This fixture creates a temporary directory using tempfile.mkdtemp().
+    The temporary directory path is provided to the test functions, and after testing,
+    the temporary directory is removed to clean up resources.
+
+    Yields:
+        str: Path of the temporary directory.
+    """
+    # Create a temporary directory for testing
+    temp_dir = tempfile.mkdtemp()
+    # Provide the temporary directory to the test for its duration.
+    yield temp_dir
+
+# Call a method using the temp_directory() method.
+def test_method(temp_directory):
+	print(temp_directory) # Prints the temp directory path
+\end{lstlisting}
+
+A pytest \idx{fixture} can be used to return an instance of a class.
+
+\begin{lstlisting}
+import pytest
+from mmorpdnd import MMORPDND
+
+@pytest.fixture
+def mmorpdnd_instance():
+    """
+    Fixture to provide an instance of the MMORPDND class for testing.
+    """
+    return MMORPDND()
+\end{lstlisting}
+
+You can define a list of test \idx{parameters} to be input into a test via the \idx{@pytest.mark.parametrize} decorator, allowing multiple input-output pairs to be tested with the same test function.
+
+\begin{lstlisting}
+@pytest.mark.parametrize("input_string, expected_output", [
+    ("'6 (barbarian 3, rogue 3)'", 6),
+    ("'12 dwarfs and 3 elves'", 12),
+    ("'No numbers here!'", None),
+    ("'Only one number: 42'", 42),
+    ("'Negative number: -10'", -10),
+    ("'Integers: 1 2 3'", 1),
+    ("'999'", 999),
+])
+def test_extract_first_integer(input_string, expected_output):
+    """
+    Test case to verify the behavior of extract_first_integer function.
+    """
+    assert extract_first_integer(input_string) == expected_output
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+\section{Python tk GUI}
+
+Python \idx{Tkinter} (\idx{Tk}) is a built-in \idx{GUI} (Graphical User Interface) toolkit that allows developers to create desktop applications with a graphical interface in Python. Tkinter provides a set of widgets (such as buttons, labels, and entry boxes) and tools to arrange them within windows and frames. It is based on the Tk GUI toolkit originally developed for the Tcl programming language. With Tkinter, developers can create cross-platform applications that run on Windows, macOS, and Linux, making it a popular choice for simple to moderately complex desktop applications in Python. To install Tk on linux (APT), the following command can be used.
+
+\begin{lstlisting}[style=terminalstyle]
+sudo apt-get install python3-tk
+\end{lstlisting}
+
+A basic \idx{hello world} gui written in Tk follows:
+
+\begin{lstlisting}
+import tkinter as tk
+
+def say_hello():
+    label.config(text="Hello, World!")
+
+# Create the main application window
+gui = tk.Tk()
+gui.title("Hello, Tkinter!")
+
+# Create a label widget
+label = tk.Label(gui, text="Click the button to say hello!")
+label.pack(pady=10)
+
+# Create a button widget
+button = tk.Button(gui, text="Say Hello", command=say_hello)
+button.pack()
+
+# Run the Tkinter event loop
+gui.mainloop()
+\end{lstlisting}
+
+To change the \idx{geometry} of a Tk gui window, the following can be used:
+
+\begin{lstlisting}
+gui = tk.Tk()
+gui.geometry("300x470")
+\end{lstlisting}
+
+To change the \idx{icon} of a Tk gui window, the following can be used:
+
+\begin{lstlisting}
+# Load icon image
+icon = PhotoImage(file=f'{root_dir}/img.png')
+# Set icon image
+gui.tk.call('wm', 'iconphoto', self.gui._w, icon)
+\end{lstlisting}
+
+
+
+
+
+

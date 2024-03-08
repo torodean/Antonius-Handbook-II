@@ -32,9 +32,30 @@ C++ is a powerful, high-level programming language renowned for its performance,
 
 
 
+
+
+
+
+
+
+
+
+
 \section{Basics of the Language}
 
-The C++ main function is designed by default to pass in arguments when a program is ran. The argument passign is set up as follows.
+A basic C++ \idx{hello world} program follows. This program includes the <iostream> header file, which provides input and output functionality. The main() function is the entry point of the program, and it simply outputs "Hello, World!" to the console using std::cout, which is the standard output stream. Finally, return 0; indicates successful program execution.
+
+\begin{lstlisting}
+#include <iostream>
+
+int main() {
+    // Print "Hello, World!" to the console
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+\end{lstlisting}
+
+The C++ main function is designed by default to pass in arguments when a program is ran. The argument passing is set up as follows.
 \begin{lstlisting}
 int main(int argc, char *argv[])
 {
