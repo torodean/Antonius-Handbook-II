@@ -94,7 +94,7 @@ if args.verbose:
 \subsection{Methods, Functions, and Classes}
 
 
-To define a \idx{function} in Python, you use the \idx{def} keyword followed by the function name and parameters, if any. You can also include a docstring to provide documentation for the function. In this example, the \texttt{greet()} function takes a \texttt{name} parameter and returns a greeting message.
+To define a \idx{function} in Python, you use the \idx{def} keyword followed by the function name and parameters, if any. You can also include a docstring to provide documentation for the function. In this example, the \texttt{greet}() function takes a \texttt{name} parameter and returns a greeting message.
 \begin{lstlisting}
 def greet(name):
     """
@@ -106,7 +106,7 @@ def greet(name):
 \end{lstlisting}
 
 
-\idx{Methods} are functions that are associated with objects. They are defined within the scope of a class and are accessed through instances of the class. In this example, the \texttt{bark()} method of the \texttt{Dog} class prints a bark message when called.
+\idx{Methods} are functions that are associated with objects. They are defined within the scope of a class and are accessed through instances of the class. In this example, the \texttt{bark}() method of the \texttt{Dog} class prints a bark message when called.
 \begin{lstlisting}
 class Dog:
     def bark(self):
@@ -116,7 +116,7 @@ class Dog:
         print("Woof!")
 \end{lstlisting}
 
-\idx{Classes} in Python allow you to define your own data types with custom attributes and methods. In this example, the \texttt{Rectangle} class represents a geometric rectangle. It has an \idx{\_\_init\_\_()} method to initialize its width and height attributes and an \texttt{area()} method to calculate its area.
+\idx{Classes} in Python allow you to define your own data types with custom attributes and methods. In this example, the \texttt{Rectangle} class represents a geometric rectangle. It has an \idx{\_\_init\_\_}() method to initialize its width and height attributes and an \texttt{area}() method to calculate its area.
 \begin{lstlisting}
 class Rectangle:
     def __init__(self, width, height):
@@ -147,7 +147,7 @@ print("The area of the rectangle is:", area)
 
 \subsection{String manipulation}
 
-To split a string by a \idx{delimiter} you can use the \idx{split()} method. To remove any leadig or trailing \idx{whitespace} from a string, you can use the \idx{strip()} method. Additionally, you can use \idx{lstrip()} to remove leading whitespace and \idx{rstrip()} to remove trailing whitespace.
+To split a string by a \idx{delimiter} you can use the \idx{split}() method. To remove any leadig or trailing \idx{whitespace} from a string, you can use the \idx{strip}() method. Additionally, you can use \idx{lstrip}() to remove leading whitespace and \idx{rstrip}() to remove trailing whitespace.
 \begin{lstlisting}
 stringValue = "Test; string "
 
@@ -158,7 +158,7 @@ leftWhiteSpace = secondPart.lstrip()    # Stores "string "
 rightWhiteSpace = secondPart.rstrip()   # Stores " string"
 \end{lstlisting}
 
-The opposite of splitting strings is joining them. You can use the \idx{join()} method to concatenate a sequence of strings into a single string, using a specified delimiter.
+The opposite of splitting strings is joining them. You can use the \idx{join}() method to concatenate a sequence of strings into a single string, using a specified delimiter.
 \begin{lstlisting}
 words = ['Hello', 'world', '!']
 
@@ -166,7 +166,7 @@ words = ['Hello', 'world', '!']
 sentence = ' '.join(words)   # Stores "Hello world !"
 \end{lstlisting}
 
-Python provides methods to convert the case of strings. You can use \idx{lower()} to convert a string to lowercase and \idx{upper()} to convert it to uppercase.
+Python provides methods to convert the case of strings. You can use \idx{lower}() to convert a string to lowercase and \idx{upper}() to convert it to uppercase.
 
 \begin{lstlisting}
 text = "Hello, World!"
@@ -178,7 +178,7 @@ lowerCaseText = text.lower()   # Stores "hello, world!"
 upperCaseText = text.upper()   # Stores "HELLO, WORLD!"
 \end{lstlisting}
 
-To insert variables into a string, you can use the \idx{format()} method or by using an \idx{f-string} (introduced in python3.6).
+To insert variables into a string, you can use the \idx{format}() method or by using an \idx{f-string} (introduced in python3.6).
 \begin{lstlisting}
 a = 5
 b = 6
@@ -200,7 +200,7 @@ print(f_equation) # prints "5 + 6 = 11"
 
 \subsection{Arrays and lists}
 
-To check if any value in one array or list is present in another array or list, you can use the \idx{any()} function along with a generator expression. In this example, the \idx{any()} function iterates over each item in \texttt{list2} and checks if it is present in \texttt{list1}. If any common elements are found, the condition evaluates to \texttt{True}, and the corresponding message is printed.
+To check if any value in one array or list is present in another array or list, you can use the \idx{any}() function along with a generator expression. In this example, the \idx{any}() function iterates over each item in \texttt{list2} and checks if it is present in \texttt{list1}. If any common elements are found, the condition evaluates to \texttt{True}, and the corresponding message is printed.
 \begin{lstlisting}
 list1 = ["apple", "banana", "orange"]
 list2 = ["orange", "grape", "pear"]
@@ -211,7 +211,7 @@ else:
     print("No common elements found")
 \end{lstlisting}
  
-You can concatenate two or more lists using the \idx{+ operator} or the \idx{extend()} method. Both methods produce the same result: a new list containing all the elements from the original lists in the specified order.
+You can concatenate two or more lists using the \idx{+ operator} or the \idx{extend}() method. Both methods produce the same result: a new list containing all the elements from the original lists in the specified order.
 \begin{lstlisting}
 list1 = [1, 2, 3]
 list2 = [4, 5, 6]
@@ -223,7 +223,7 @@ concatenated_list = list1 + list2   # Stores [1, 2, 3, 4, 5, 6]
 list1.extend(list2)   # Modifies list1 to [1, 2, 3, 4, 5, 6]
 \end{lstlisting}
 
-To find the number of elements in a list, you can use the built-in \idx{len()} function.
+To find the number of elements in a list, you can use the built-in \idx{len}() function.
 \begin{lstlisting}
 my_list = [10, 20, 30, 40, 50]
 
@@ -279,6 +279,20 @@ manage.full_screen_toggle() # Makes the plt full screen.
 plt.show()                  # Displays plot.
 plt.savefig("fileName.png") # Saves the figure as an image
 \end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -449,6 +463,357 @@ icon = PhotoImage(file=f'{root_dir}/img.png')
 # Set icon image
 gui.tk.call('wm', 'iconphoto', self.gui._w, icon)
 \end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Useful Methods and Packages}
+
+
+\subsection{Useful Packages}
+
+In this section, we explore Python's extensive collection of packages, offering tailored solutions for diverse tasks. Python's packages are specialized tools, empowering developers to address specific challenges efficiently. From data manipulation to machine learning, web development to scientific computing, Python packages provide a robust foundation for diverse projects.
+
+
+
+
+\subsubsection{\idx{collections}}
+
+Python's \idx{collections} module provides a \idx{Counter} class, which is a specialized dictionary designed for counting hashable objects. One lesser-known feature of Counter is that it supports arithmetic operations like \idx{addition}, \idx{subtraction}, \idx{intersection}, and \idx{union}. This is particularly useful when you're dealing with counting occurrences of items across different datasets or need to perform set-like operations on the counts themselves.
+\begin{lstlisting}
+from collections import Counter
+
+# Define two Counters
+counter1 = Counter({'a': 3, 'b': 1, 'c': 2})
+counter2 = Counter({'a': 1, 'b': 2, 'd': 1})
+
+# Addition: Adds counts from two counters
+print("Addition:", counter1 + counter2)
+# Prints "Addition: Counter({'a': 4, 'b': 3, 'c': 2, 'd': 1})"
+
+# Subtraction: Subtracts counts, but keeps only positive results
+print("Subtraction:", counter1 - counter2)
+# Prints "Subtraction: Counter({'a': 2, 'c': 2})"
+
+# Intersection: Keeps only positive counts common to both counters
+print("Intersection:", counter1 & counter2)
+# Prints "Intersection: Counter({'a': 1, 'b': 1})"
+
+# Union: Keeps maximum counts from both counters
+print("Union:", counter1 | counter2)
+# Prints "Union: Counter({'a': 3, 'b': 2, 'c': 2, 'd': 1})"
+\end{lstlisting}
+
+Python's \idx{collections} module provides a class called \idx{defaultdict}, which is a subclass of the built-in dictionary (dict) class. The \idx{defaultdict} is similar to a regular dictionary, but it allows you to specify a default value factory for missing keys. This means that when you access a key that doesn't exist, instead of raising a \idx{KeyError}, defaultdict will create the key and assign it a default value returned by the factory function.
+\begin{lstlisting}
+from collections import defaultdict
+
+# Create a defaultdict with int as the default value factory
+d = defaultdict(int)
+
+# Accessing a non-existent key will create it with a default value of 0
+print(d['a'])  # Output: 0
+
+# You can also specify a different default value factory
+d = defaultdict(list)
+
+# Accessing a non-existent key will create it with an empty list as the default value
+print(d['b'])  # Output: []
+
+# You can use any callable as the default value factory
+d = defaultdict(lambda: 'default')
+
+# Accessing a non-existent key will create it with 'default' as the default value
+print(d['c'])  # Output: 'default'
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+\subsubsection{\idx{itertools}}
+
+Python's \idx{itertools} module provides functions called \idx{combinations} and \idx{combinations\_with\_replacement}, which generates all possible \idx{combinations} of a given length from the elements of an \idx{iterable}, including combinations with repeated elements.
+\begin{lstlisting}
+from itertools import combinations
+
+# Generate combinations of length 2 from the elements 'A', 'B', 'C' without replacement
+combinations = combinations(['A', 'B', 'C'], 2)
+
+# Print the generated combinations
+for combo in combinations:
+    print(combo, end=',')
+# Prints "('A', 'B'),('A', 'C'),('B', 'C'),"
+\end{lstlisting}
+\begin{lstlisting}
+from itertools import combinations_with_replacement
+
+# Generate combinations of length 2 from the elements 'A', 'B', 'C' with replacement
+combinations = combinations_with_replacement(['A', 'B', 'C'], 2)
+
+# Print the generated combinations
+for combo in combinations:
+    print(combo, end=',')
+# Prints "('A', 'A'),('A', 'B'),('A', 'C'),('B', 'B'),('B', 'C'),('C', 'C'),"
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{\idx{slice}}
+
+Python has a built-in \idx{slice} object that can be used to slice \idx{sequences} like \idx{lists}, \idx{tuples}, and \idx{strings}. While slicing with regular slicing syntax (list[start:end:step]) is common, creating and using slice objects directly can be powerful, especially when working with multiple slices or when you want to reuse the same slice configuration.
+\begin{lstlisting}
+# Create a slice object with start, stop, and step
+my_slice = slice(1, 5, 2)
+
+# Apply the slice to a list
+my_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+sliced_result = my_list[my_slice]
+
+print(sliced_result)  # Output: ['b', 'd']
+
+# You can also use the slice object with other sequences like strings
+my_string = "Hello, World!"
+sliced_string = my_string[my_slice]
+
+print(sliced_string)  # Output: 'el'
+\end{lstlisting}
+
+In this example, slice(1, 8, 2) creates a \idx{slice} object that starts at index 1 ('b'), ends at index 8 ('i'), and steps by 2. So, applying this slice to the list ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], it selects elements at indices 1, 3, 5, and 7, which correspond to the values 'b', 'd', 'f', and 'h', respectively.
+\begin{lstlisting}
+# Create a slice object with start, stop, and step
+my_slice = slice(1, 8, 2)
+
+# Apply the slice to a list
+my_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
+sliced_result = my_list[my_slice]
+
+print(sliced_result)  # Output: ['b', 'd', 'f', 'h']
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{\idx{functools}}
+
+Python's \idx{functools} module provides a function called \idx{singledispatch}, which allows you to create a single-dispatch generic function. It allows you to define a function behavior based on the type of the first argument. This is particularly useful for creating functions that can handle different types of input in a flexible and extensible way, similar to \idx{method overloading} in other programming languages.
+\begin{lstlisting}
+from functools import singledispatch
+
+@singledispatch
+def my_func(arg):
+    print("Default implementation:", arg)
+
+@my_func.register(int)
+def _(arg):
+    print("Processing an integer:", arg)
+
+@my_func.register(str)
+def _(arg):
+    print("Processing a string:", arg)
+
+@my_func.register(list)
+def _(arg):
+    print("Processing a list:", arg)
+
+# Test the function with different types of input
+my_func(10)         # Output: Processing an integer: 10
+my_func("Hello")    # Output: Processing a string: Hello
+my_func([1, 2, 3])  # Output: Processing a list: [1, 2, 3]
+\end{lstlisting}
+
+Python's \idx{functools} module provides a decorator called \idx{lru\_cache}, which stands for "Least Recently Used Cache." It's a built-in memoization decorator that caches the results of a function and reuses them when the same inputs occur again. \idx{lru\_cache} Uses a least-recently-used (LRU) eviction policy. This means that when the cache reaches its maximum size (specified by the maxsize argument), the least recently used entries are discarded to make room for new ones.
+\begin{lstlisting}
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+>>> [fib(n) for n in range(16)]
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+
+>>> fib.cache_info()
+CacheInfo(hits=28, misses=16, maxsize=None, currsize=16)
+\end{lstlisting}
+
+Python's \idx{functools} module provides a function called \idx{cache}, which allows you to cache the results of a function call and reuse them when the same inputs occur again. This can significantly improve the performance of your code, especially when dealing with expensive computations or I/O operations. This was introduced in python 3.9. Unlike \idx{lru\_cache}, \idx{cache} Does not have a built-in eviction policy. It simply caches results until the program exits or until the function is explicitly uncached. Because it never needs to evict old values, this is smaller and faster than \idx{lru\_cache} with a size limit.
+
+\begin{lstlisting}
+from functools import cache
+
+@cache
+def factorial(n):
+    return n * factorial(n-1) if n else 1
+
+>>> factorial(10)      # no previously cached result, makes 11 recursive calls
+3628800
+>>> factorial(5)       # just looks up cached value result
+120
+>>> factorial(12)      # makes two new recursive calls, the other 10 are cached
+479001600
+\end{lstlisting}
+
+
+
+
+
+\subsubsection{\idx{typing}}
+
+Python's \idx{typing} module provides a way to specify type hints for variables, function arguments, and return values. While type hints are often used for improving code readability and catching errors early during development, you can also use them for \idx{runtime} type checking using the typing module's \idx{runtime\_checkable} decorator along with the \idx{Protocol} class. In this example, Printable is defined as a protocol using the Protocol class. It specifies a method print that takes no arguments and returns None. By decorating Printable with @runtime\_checkable, you enable runtime type checking for objects that claim to conform to the protocol. The print\_if\_possible function takes an argument of type Printable and calls its print method. When called with an object that conforms to the Printable protocol (like Printer), it works fine. However, if called with an object that does not conform to the Printable protocol (like NotPrinter), it raises a TypeError, allowing you to catch potential type errors at runtime.
+\begin{lstlisting}
+from typing import Protocol, runtime_checkable
+
+# Define a protocol with type hints for methods
+@runtime_checkable
+class Printable(Protocol):
+    def print(self) -> None:
+        pass
+
+# A class that conforms to the Printable protocol
+class Printer:
+    def print(self) -> None:
+        print("Printing...")
+
+# A class that does not conform to the Printable protocol
+class NotPrinter:
+    def display(self) -> None:
+        print("Displaying...")
+
+def print_if_possible(obj: Printable) -> None:
+    obj.print()
+
+printer = Printer()
+not_printer = NotPrinter()
+
+# This will work fine since Printer conforms to the Printable protocol
+print_if_possible(printer)
+
+# This will raise a TypeError since NotPrinter does not conform to the Printable protocol
+print_if_possible(not_printer)
+\end{lstlisting}
+
+
+
+
+
+
+
+\subsubsection{\idx{enum}}
+
+Python's \idx{enum} module provides a powerful way to create \idx{enumerations} in Python. Enumerations allow you to define symbolic names (members) for a set of unique values, which can make your code more readable and maintainable. One lesser-known feature of enumerations is the ability to create them dynamically using the Enum class's functional API. This allows you to create enumerations without explicitly subclassing Enum.
+\begin{lstlisting}
+from enum import Enum
+
+# Define a dynamic enumeration
+DynamicEnum = Enum("DynamicEnum", ["VALUE1", "VALUE2", "VALUE3"])
+
+# Access enumeration members
+print(DynamicEnum.VALUE1)  # Output: DynamicEnum.VALUE1
+print(DynamicEnum.VALUE2)  # Output: DynamicEnum.VALUE2
+print(DynamicEnum.VALUE3)  # Output: DynamicEnum.VALUE3
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+\subsubsection{\idx{contextlib}}
+
+Python's \idx{contextlib} module provides a decorator called \idx{contextmanager}, which allows you to create context managers using generator functions. Context managers are objects that define \_\_enter\_\_ and \_\_exit\_\_ methods, and they are commonly used with the with statement to manage resources, such as opening and closing files or acquiring and releasing locks.
+\begin{lstlisting}
+from contextlib import contextmanager
+
+@contextmanager
+def open_file(filename, mode):
+    file = open(filename, mode)
+    try:
+        yield file
+    finally:
+        file.close()
+
+# Usage of the context manager
+with open_file("example.txt", "w") as f:
+    f.write("Hello, context managers!")
+\end{lstlisting}
+
+Python's \idx{contextlib} module provides utilities for working with context managers. One lesser-known feature of the \idx{contextlib} module is the \idx{redirect\_stdout} and \idx{redirect\_stderr} context managers, which allow you to temporarily redirect the standard output and standard error streams to a specified file or file-like object.
+\begin{lstlisting}
+from contextlib import redirect_stdout
+import io
+
+# Create a StringIO object to redirect output
+output_buffer = io.StringIO()
+
+# Redirect stdout to the StringIO object
+with redirect_stdout(output_buffer):
+    print("This will be captured by the redirect_stdout context manager")
+
+# Get the captured output from the StringIO object
+captured_output = output_buffer.getvalue()
+
+print("Captured Output:", captured_output)
+# Prints "Captured Output: This will be captured by the redirect_stdout context manager"
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

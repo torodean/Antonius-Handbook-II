@@ -9,10 +9,11 @@
 			Key combination & Descriptions \\
 			\hline
 			$\boxplus$ + R & Opens a run window. \\
-			$\boxplus$ + m & Minimize all open windows. \\
+			$\boxplus$ + M & Minimize all open windows. \\
 			$\boxplus$ + E & Opens the explorer window. \\
 			$\boxplus$ + UP & Minimize the currently opened window. \\
 			$\boxplus$ + F & Opens search for searching files and folders. \\
+			$\boxplus$ + P & Opens display projection settings. \\
 			Alt + Tab & Change between open windows. \\
 			CTRL + ALT + Delete & Provides user options such as changing password. \\
 			CTRL + SHIFT + ESC & Opens Windows Task Manager. 
@@ -20,7 +21,7 @@
 	\end{center}
 \end{fancybox}
 
-To access the Windows 7 "God Mode" which is essentially a collection of administrator and troubleshooting features, create a folder with the following name:
+To access the Windows 7 "\idx{God Mode}" which is essentially a collection of administrator and troubleshooting features, create a folder with the following name:
 \begin{lstlisting}
 GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}
 \end{lstlisting}
@@ -35,7 +36,12 @@ To view and manage the \idx{services} that are running on a machine, you can acc
 services.msc	# Opens the services running.
 \end{lstlisting}
 
-To view and modify mouse settings, such as sensitivity or speed, you can open a run window and enter
+To view and modify \idx{mouse} settings, such as sensitivity or speed, you can open a run window and enter
 \begin{lstlisting}[style=terminalstyle]
 main.cpl		# Opens the mouse settings.
+\end{lstlisting}
+
+The \idx{System File Checker} is a built-in tool that scans for and restores corrupted system files. You can run it from the Command Prompt with administrative privileges.
+\begin{lstlisting}[style=terminalstyle]
+sfc /scannow
 \end{lstlisting}

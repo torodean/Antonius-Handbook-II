@@ -44,8 +44,8 @@
 \indexentry{nslookup|hyperpage}{5}
 \indexentry{netstat|hyperpage}{5}
 \indexentry{nmap|hyperpage}{5}
-\indexentry{ifup|hyperpage}{6}
-\indexentry{ifdown|hyperpage}{6}
+\indexentry{ifup|hyperpage}{5}
+\indexentry{ifdown|hyperpage}{5}
 \indexentry{IPv6|hyperpage}{6}
 \indexentry{stdout|hyperpage}{6}
 \indexentry{stderr|hyperpage}{6}
@@ -59,135 +59,233 @@
 \indexentry{wc|hyperpage}{8}
 \indexentry{arithmetic|hyperpage}{8}
 \indexentry{for loop|hyperpage}{8}
+\indexentry{brace expansion|hyperpage}{8}
 \indexentry{mkfifo|hyperpage}{8}
-\indexentry{Emacs|hyperpage}{8}
-\indexentry{read-only mode|hyperpage}{8}
-\indexentry{services|hyperpage}{9}
-\indexentry{hello world|hyperpage}{11}
-\indexentry{address|hyperpage}{12}
-\indexentry{pointer|hyperpage}{12}
-\indexentry{template|hyperpage}{13}
-\indexentry{Input and Output|hyperpage}{13}
-\indexentry{Variable Types|hyperpage}{14}
-\indexentry{Vector|hyperpage}{14}
-\indexentry{vector|hyperpage}{14}
-\indexentry{Converting Between Types|hyperpage}{15}
-\indexentry{std::string to int|hyperpage}{15}
-\indexentry{stoi|hyperpage}{15}
-\indexentry{std::string to int|hyperpage}{15}
-\indexentry{stod|hyperpage}{15}
-\indexentry{std::string to const char*|hyperpage}{15}
-\indexentry{c\_str()|hyperpage}{15}
-\indexentry{Prime Number|hyperpage}{15}
-\indexentry{prime|hyperpage}{15}
-\indexentry{System Commands|hyperpage}{16}
-\indexentry{Sleep|hyperpage}{16}
-\indexentry{sleep|hyperpage}{16}
-\indexentry{Simulate Key Strokes|hyperpage}{16}
-\indexentry{little endian|hyperpage}{17}
-\indexentry{big endian|hyperpage}{17}
-\indexentry{Make|hyperpage}{19}
-\indexentry{CMake|hyperpage}{19}
-\indexentry{CMakeLists|hyperpage}{19}
-\indexentry{git|hyperpage}{21}
-\indexentry{init|hyperpage}{21}
-\indexentry{config|hyperpage}{21}
-\indexentry{clone|hyperpage}{21}
-\indexentry{log|hyperpage}{21}
-\indexentry{status|hyperpage}{21}
-\indexentry{fetch|hyperpage}{21}
-\indexentry{merge|hyperpage}{21}
-\indexentry{pull|hyperpage}{21}
-\indexentry{add|hyperpage}{21}
-\indexentry{commit|hyperpage}{21}
-\indexentry{diff|hyperpage}{21}
-\indexentry{push|hyperpage}{21}
-\indexentry{add|hyperpage}{21}
-\indexentry{branch|hyperpage}{22}
-\indexentry{checkout|hyperpage}{22}
-\indexentry{merge|hyperpage}{22}
-\indexentry{mergetool|hyperpage}{22}
-\indexentry{gitignore|hyperpage}{22}
-\indexentry{stash|hyperpage}{22}
-\indexentry{reset|hyperpage}{23}
-\indexentry{bisect|hyperpage}{23}
-\indexentry{rebase|hyperpage}{23}
-\indexentry{Git Submodules|hyperpage}{23}
-\indexentry{submodules|hyperpage}{23}
-\indexentry{remote flag|hyperpage}{23}
-\indexentry{HEAD|hyperpage}{24}
-\indexentry{.gitmodules|hyperpage}{24}
-\indexentry{GitHub Pages|hyperpage}{24}
-\indexentry{GitHub|hyperpage}{24}
-\indexentry{LaTeX|hyperpage}{25}
-\indexentry{TeX Live|hyperpage}{25}
-\indexentry{MiKTeX|hyperpage}{25}
-\indexentry{comments|hyperpage}{25}
-\indexentry{package|hyperpage}{25}
-\indexentry{titles|hyperpage}{25}
-\indexentry{subtitles|hyperpage}{25}
-\indexentry{authors|hyperpage}{25}
-\indexentry{subtitle|hyperpage}{25}
-\indexentry{author|hyperpage}{26}
-\indexentry{hyperlinking|hyperpage}{27}
-\indexentry{C\#|hyperpage}{28}
-\indexentry{Java|hyperpage}{32}
-\indexentry{hello world|hyperpage}{32}
-\indexentry{HTML|hyperpage}{33}
-\indexentry{HTML|hyperpage}{33}
-\indexentry{hello world|hyperpage}{33}
-\indexentry{lang|hyperpage}{33}
-\indexentry{metadata|hyperpage}{33}
-\indexentry{character set|hyperpage}{33}
-\indexentry{comments|hyperpage}{33}
-\indexentry{stylesheet|hyperpage}{33}
-\indexentry{div|hyperpage}{33}
-\indexentry{span|hyperpage}{34}
-\indexentry{img|hyperpage}{34}
-\indexentry{a|hyperpage}{34}
-\indexentry{CSS|hyperpage}{35}
-\indexentry{comments|hyperpage}{35}
-\indexentry{selector|hyperpage}{35}
-\indexentry{declaration|hyperpage}{35}
-\indexentry{selectors|hyperpage}{35}
-\indexentry{color|hyperpage}{35}
-\indexentry{background|hyperpage}{36}
-\indexentry{PHP|hyperpage}{37}
+\indexentry{Emacs|hyperpage}{9}
+\indexentry{read-only mode|hyperpage}{9}
+\indexentry{God Mode|hyperpage}{10}
+\indexentry{services|hyperpage}{10}
+\indexentry{mouse|hyperpage}{10}
+\indexentry{System File Checker|hyperpage}{10}
+\indexentry{hello world|hyperpage}{12}
+\indexentry{address|hyperpage}{13}
+\indexentry{pointer|hyperpage}{13}
+\indexentry{template|hyperpage}{14}
+\indexentry{Input and Output|hyperpage}{14}
+\indexentry{Variable Types|hyperpage}{15}
+\indexentry{Vector|hyperpage}{15}
+\indexentry{vector|hyperpage}{15}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{integer|hyperpage}{16}
+\indexentry{stoi|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{double|hyperpage}{16}
+\indexentry{stod|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{const char*|hyperpage}{16}
+\indexentry{c\_str|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{long long int|hyperpage}{16}
+\indexentry{stoll|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{float|hyperpage}{16}
+\indexentry{stof|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{unsigned int|hyperpage}{16}
+\indexentry{stoul|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{long double|hyperpage}{16}
+\indexentry{stold|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{std::string|hyperpage}{16}
+\indexentry{std::to\_string|hyperpage}{16}
+\indexentry{prime|hyperpage}{17}
+\indexentry{Fibonacci|hyperpage}{17}
+\indexentry{Fibonacci|hyperpage}{17}
+\indexentry{sleep|hyperpage}{18}
+\indexentry{Windows|hyperpage}{18}
+\indexentry{Windows|hyperpage}{18}
+\indexentry{const char*|hyperpage}{18}
+\indexentry{Key Strokes|hyperpage}{18}
+\indexentry{Key Strokes|hyperpage}{18}
+\indexentry{Windows|hyperpage}{18}
+\indexentry{Key Strokes|hyperpage}{19}
+\indexentry{Linux|hyperpage}{19}
+\indexentry{little endian|hyperpage}{20}
+\indexentry{big endian|hyperpage}{20}
+\indexentry{Windows|hyperpage}{20}
+\indexentry{Linux|hyperpage}{20}
+\indexentry{compile-time|hyperpage}{20}
+\indexentry{constexpr|hyperpage}{20}
+\indexentry{runtime|hyperpage}{20}
+\indexentry{user-defined|hyperpage}{21}
+\indexentry{literals|hyperpage}{21}
+\indexentry{user-defined|hyperpage}{21}
+\indexentry{literals|hyperpage}{21}
+\indexentry{user-defined|hyperpage}{21}
+\indexentry{domain-specific|hyperpage}{21}
+\indexentry{literals|hyperpage}{21}
+\indexentry{user-defined|hyperpage}{21}
+\indexentry{literals|hyperpage}{21}
+\indexentry{templates|hyperpage}{22}
+\indexentry{template specialization|hyperpage}{22}
+\indexentry{template|hyperpage}{22}
+\indexentry{Make|hyperpage}{23}
+\indexentry{CMake|hyperpage}{23}
+\indexentry{CMakeLists|hyperpage}{23}
+\indexentry{git|hyperpage}{25}
+\indexentry{init|hyperpage}{25}
+\indexentry{configuration|hyperpage}{25}
+\indexentry{clone|hyperpage}{25}
+\indexentry{log|hyperpage}{25}
+\indexentry{status|hyperpage}{25}
+\indexentry{fetch|hyperpage}{25}
+\indexentry{merge|hyperpage}{25}
+\indexentry{pull|hyperpage}{25}
+\indexentry{add|hyperpage}{25}
+\indexentry{commit|hyperpage}{25}
+\indexentry{diff|hyperpage}{25}
+\indexentry{push|hyperpage}{25}
+\indexentry{add|hyperpage}{25}
+\indexentry{branch|hyperpage}{26}
+\indexentry{checkout|hyperpage}{26}
+\indexentry{merge|hyperpage}{26}
+\indexentry{mergetool|hyperpage}{26}
+\indexentry{.gitignore|hyperpage}{26}
+\indexentry{stash|hyperpage}{26}
+\indexentry{reset|hyperpage}{27}
+\indexentry{bisect|hyperpage}{27}
+\indexentry{rebase|hyperpage}{27}
+\indexentry{remote|hyperpage}{27}
+\indexentry{Git Submodules|hyperpage}{27}
+\indexentry{submodules|hyperpage}{27}
+\indexentry{remote flag|hyperpage}{27}
+\indexentry{HEAD|hyperpage}{28}
+\indexentry{.gitmodules|hyperpage}{28}
+\indexentry{foreach|hyperpage}{28}
+\indexentry{GitHub Pages|hyperpage}{28}
+\indexentry{GitHub|hyperpage}{28}
+\indexentry{LaTeX|hyperpage}{29}
+\indexentry{TeX Live|hyperpage}{29}
+\indexentry{MiKTeX|hyperpage}{29}
+\indexentry{comments|hyperpage}{29}
+\indexentry{package|hyperpage}{29}
+\indexentry{titles|hyperpage}{29}
+\indexentry{subtitles|hyperpage}{29}
+\indexentry{authors|hyperpage}{29}
+\indexentry{subtitle|hyperpage}{29}
+\indexentry{author|hyperpage}{30}
+\indexentry{hyperlinking|hyperpage}{31}
+\indexentry{C\#|hyperpage}{32}
+\indexentry{Java|hyperpage}{36}
+\indexentry{hello world|hyperpage}{36}
+\indexentry{HTML|hyperpage}{37}
+\indexentry{HTML|hyperpage}{37}
 \indexentry{hello world|hyperpage}{37}
-\indexentry{Python|hyperpage}{39}
-\indexentry{function|hyperpage}{40}
-\indexentry{def|hyperpage}{40}
-\indexentry{Methods|hyperpage}{40}
-\indexentry{Classes|hyperpage}{40}
-\indexentry{\_\_init\_\_()|hyperpage}{40}
-\indexentry{delimiter|hyperpage}{41}
-\indexentry{split()|hyperpage}{41}
-\indexentry{whitespace|hyperpage}{41}
-\indexentry{strip()|hyperpage}{41}
-\indexentry{lstrip()|hyperpage}{41}
-\indexentry{rstrip()|hyperpage}{41}
-\indexentry{join()|hyperpage}{41}
-\indexentry{lower()|hyperpage}{41}
-\indexentry{upper()|hyperpage}{41}
-\indexentry{format()|hyperpage}{41}
-\indexentry{f-string|hyperpage}{41}
-\indexentry{any()|hyperpage}{41}
-\indexentry{any()|hyperpage}{41}
-\indexentry{+ operator|hyperpage}{42}
-\indexentry{extend()|hyperpage}{42}
-\indexentry{len()|hyperpage}{42}
-\indexentry{Plotting and Graphs|hyperpage}{42}
-\indexentry{Pytest|hyperpage}{43}
-\indexentry{Pytest|hyperpage}{43}
-\indexentry{assert|hyperpage}{43}
-\indexentry{fixture|hyperpage}{43}
-\indexentry{temporary directory|hyperpage}{43}
-\indexentry{fixture|hyperpage}{44}
-\indexentry{parameters|hyperpage}{44}
-\indexentry{@pytest.mark.parametrize|hyperpage}{44}
-\indexentry{Tkinter|hyperpage}{44}
-\indexentry{Tk|hyperpage}{44}
-\indexentry{GUI|hyperpage}{44}
-\indexentry{hello world|hyperpage}{45}
-\indexentry{geometry|hyperpage}{45}
-\indexentry{icon|hyperpage}{45}
+\indexentry{lang|hyperpage}{37}
+\indexentry{metadata|hyperpage}{37}
+\indexentry{character set|hyperpage}{37}
+\indexentry{comments|hyperpage}{37}
+\indexentry{stylesheet|hyperpage}{37}
+\indexentry{div|hyperpage}{37}
+\indexentry{span|hyperpage}{38}
+\indexentry{img|hyperpage}{38}
+\indexentry{a|hyperpage}{38}
+\indexentry{CSS|hyperpage}{39}
+\indexentry{comments|hyperpage}{39}
+\indexentry{selector|hyperpage}{39}
+\indexentry{declaration|hyperpage}{39}
+\indexentry{selectors|hyperpage}{39}
+\indexentry{color|hyperpage}{39}
+\indexentry{background|hyperpage}{40}
+\indexentry{PHP|hyperpage}{41}
+\indexentry{hello world|hyperpage}{41}
+\indexentry{Python|hyperpage}{43}
+\indexentry{function|hyperpage}{44}
+\indexentry{def|hyperpage}{44}
+\indexentry{Methods|hyperpage}{44}
+\indexentry{Classes|hyperpage}{44}
+\indexentry{\_\_init\_\_|hyperpage}{44}
+\indexentry{delimiter|hyperpage}{45}
+\indexentry{split|hyperpage}{45}
+\indexentry{whitespace|hyperpage}{45}
+\indexentry{strip|hyperpage}{45}
+\indexentry{lstrip|hyperpage}{45}
+\indexentry{rstrip|hyperpage}{45}
+\indexentry{join|hyperpage}{45}
+\indexentry{lower|hyperpage}{45}
+\indexentry{upper|hyperpage}{45}
+\indexentry{format|hyperpage}{45}
+\indexentry{f-string|hyperpage}{45}
+\indexentry{any|hyperpage}{45}
+\indexentry{any|hyperpage}{45}
+\indexentry{+ operator|hyperpage}{46}
+\indexentry{extend|hyperpage}{46}
+\indexentry{len|hyperpage}{46}
+\indexentry{Plotting and Graphs|hyperpage}{46}
+\indexentry{Pytest|hyperpage}{47}
+\indexentry{Pytest|hyperpage}{47}
+\indexentry{assert|hyperpage}{47}
+\indexentry{fixture|hyperpage}{47}
+\indexentry{temporary directory|hyperpage}{47}
+\indexentry{fixture|hyperpage}{48}
+\indexentry{parameters|hyperpage}{48}
+\indexentry{@pytest.mark.parametrize|hyperpage}{48}
+\indexentry{Tkinter|hyperpage}{48}
+\indexentry{Tk|hyperpage}{48}
+\indexentry{GUI|hyperpage}{48}
+\indexentry{hello world|hyperpage}{49}
+\indexentry{geometry|hyperpage}{49}
+\indexentry{icon|hyperpage}{49}
+\indexentry{collections|hyperpage}{49}
+\indexentry{collections|hyperpage}{49}
+\indexentry{Counter|hyperpage}{49}
+\indexentry{addition|hyperpage}{49}
+\indexentry{subtraction|hyperpage}{49}
+\indexentry{intersection|hyperpage}{49}
+\indexentry{union|hyperpage}{49}
+\indexentry{collections|hyperpage}{50}
+\indexentry{defaultdict|hyperpage}{50}
+\indexentry{defaultdict|hyperpage}{50}
+\indexentry{KeyError|hyperpage}{50}
+\indexentry{itertools|hyperpage}{50}
+\indexentry{itertools|hyperpage}{50}
+\indexentry{combinations|hyperpage}{50}
+\indexentry{combinations\_with\_replacement|hyperpage}{50}
+\indexentry{combinations|hyperpage}{50}
+\indexentry{iterable|hyperpage}{50}
+\indexentry{slice|hyperpage}{51}
+\indexentry{slice|hyperpage}{51}
+\indexentry{sequences|hyperpage}{51}
+\indexentry{lists|hyperpage}{51}
+\indexentry{tuples|hyperpage}{51}
+\indexentry{strings|hyperpage}{51}
+\indexentry{slice|hyperpage}{51}
+\indexentry{functools|hyperpage}{51}
+\indexentry{functools|hyperpage}{51}
+\indexentry{singledispatch|hyperpage}{51}
+\indexentry{method overloading|hyperpage}{51}
+\indexentry{functools|hyperpage}{52}
+\indexentry{lru\_cache|hyperpage}{52}
+\indexentry{lru\_cache|hyperpage}{52}
+\indexentry{functools|hyperpage}{52}
+\indexentry{cache|hyperpage}{52}
+\indexentry{lru\_cache|hyperpage}{52}
+\indexentry{cache|hyperpage}{52}
+\indexentry{lru\_cache|hyperpage}{52}
+\indexentry{typing|hyperpage}{53}
+\indexentry{typing|hyperpage}{53}
+\indexentry{runtime|hyperpage}{53}
+\indexentry{runtime\_checkable|hyperpage}{53}
+\indexentry{Protocol|hyperpage}{53}
+\indexentry{enum|hyperpage}{53}
+\indexentry{enum|hyperpage}{53}
+\indexentry{enumerations|hyperpage}{53}
+\indexentry{contextlib|hyperpage}{54}
+\indexentry{contextlib|hyperpage}{54}
+\indexentry{contextmanager|hyperpage}{54}
+\indexentry{contextlib|hyperpage}{54}
+\indexentry{contextlib|hyperpage}{54}
+\indexentry{redirect\_stdout|hyperpage}{54}
+\indexentry{redirect\_stderr|hyperpage}{54}

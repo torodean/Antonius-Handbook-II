@@ -2,7 +2,14 @@
 \thispagestyle{fancy}
 \lstset{language=Bash, style=terminalstyle}
 
-Linux is a broad subcategory that encompass a large family of free and open sourced operating systems. Installing, setting up, and using a linux based operating system is the perfect way for anyone to gain knowledge, understanding, and practice of how a computer system truly works. Unlike the end user experience with Windows and Mac OS, linux has a much higher capability for customization and a higher degree of freedom. With that said, linux is not necessarily more user friendly to the new or average computer user, however it is free in most cases!
+Linux is a broad subcategory that encompass a large family of free and open sourced operating systems. Installing, setting up, and using a Linux based operating system is the perfect way for anyone to gain knowledge, understanding, and practice of how a computer system truly works. Unlike the end user experience with Windows and Mac OS, Linux has a much higher capability for customization and a higher degree of freedom. With that said, Linux is not necessarily more user friendly to the new or average computer user, however it is free in most cases!
+
+
+
+
+
+
+
 
 \section{System Related Commands\index{System Related Commands}}
 
@@ -74,6 +81,9 @@ Change or view the host name of a computer with the hostname file.
 sudo nano /etc/hostname # Opens this file using nano for editing.
 hostname                # Command to see what the current hostname is.
 \end{lstlisting}
+
+
+
 
 
 
@@ -222,10 +232,10 @@ cut -d: -f1 /etc/passwd
 
 Create a new user using the \idx{useradd} command.
 \begin{lstlisting}
-sudo useradd [options] <USERNAME>       # Creates a user
-sudo useradd -e 2016-02-05 <NAME>       # Creates a user that expites on a day.
-sudo useradd <USERNAME> -G <GROUPNAME>  # Adds a user to a group upon creation.
-useradd --help                          # See full useradd options.
+sudo useradd [options] <USERNAME>      # Creates a user.
+sudo useradd -e 2016-02-05 <NAME>      # Creates a user that expites on a day.
+sudo useradd <USERNAME> -G <GROUPNAME> # Adds a user to a group upon creation.
+useradd --help                         # See full useradd options.
 \end{lstlisting}
 
 Change a users password using passwd.
@@ -245,10 +255,10 @@ usermod -aG sudo <USERNAME>
 
 Managing user permissions and file ownership using \idx{chmod}, \idx{chown}, and \idx{chgrp}.
 \begin{lstlisting}
-chmod 755 file           # Changes file permissions to read, write, and execute for owner, and read and execute for group and others
-chmod a+x file           # Changes file permissions to include execute permissions.
-chown user:group file    # Changes the owner and group of the file
-chgrp group file         # Changes the group of the file
+chmod 755 file         # Changes file permissions to read, write, and execute for owner, and read and execute for group and others.
+chmod a+x file         # Changes file permissions to include execute permissions.
+chown user:group file  # Changes the owner and group of the file.
+chgrp group file       # Changes the group of the file.
 \end{lstlisting}
 
 
@@ -327,11 +337,6 @@ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
 
 
 
-
-
-
-\section{Shell Scripting}
-
 \subsection{Redirecting program output}
 
 When outputting to a file, there is an append and an overwrite operator.
@@ -343,6 +348,13 @@ To redirect all output from a program (including \idx{stdout} and \idx{stderr}),
 \begin{lstlisting}
 command -args > output.txt 2>&1
 \end{lstlisting}
+
+
+
+
+
+
+\section{Shell Scripting}
 
 \lstset{language=Bash, style=shellstyle}
 
@@ -458,8 +470,11 @@ for file in $filePattern; do
 done
 \end{lstlisting}
 
-
-
+Bash provides a feature called "\idx{brace expansion}," which allows you to generate arbitrary strings based on patterns using curly braces {}. While this feature is commonly used to generate sequences of numbers or letters, it can also be used in conjunction with command-line shortcuts to save time and improve efficiency.
+\begin{lstlisting}
+# This will create directory1, directory2, ... and directory5.
+mkdir directory{1..5}
+\end{lstlisting}
 
 
 

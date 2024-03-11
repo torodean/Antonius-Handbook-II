@@ -19,12 +19,12 @@ Git is a distributed version control system designed for software development, e
 
 \subsection{Basic Git}
 
-To turn an existing directory into a git repository you can use the \textbf{git init}\index{init} command,
+To turn an existing directory into a git repository you can use the git \idx{init} command,
 \begin{lstlisting}[style=terminalstyle]
 git init   # Makes the current directory a git repository.
 \end{lstlisting}
 
-Git contains some basic \textbf{configuration}\index{config} that can be set for all the local repositories.
+Git contains some basic \idx{configuration} that can be set for all the local repositories.
 \begin{lstlisting}[style=terminalstyle]
 # Sets the name you want attached to your commit transactions.
 git config --global user.name "[name]"
@@ -36,7 +36,7 @@ git config --global user.email "[email address]"
 git config --global color.ui auto
 \end{lstlisting}
 
-Some basic commands used by git include cloning repositories with the \textbf{clone}\index{clone} (a local version of a repository, including all commits and branches) command, checking the \textbf{log}\index{log} of previous changes, and checking the \textbf{status}\index{status} of current files.
+Some basic commands used by git include cloning repositories with the \idx{clone} (a local version of a repository, including all commits and branches) command, checking the \idx{log} of previous changes, and checking the \idx{status} of current files.
 \begin{lstlisting}[style=terminalstyle]
 git clone https://github.com/torodean/Antonius-Handbook-II.git
 
@@ -53,7 +53,7 @@ git merge    # Combines remote tracking branch into current local branch.
 git pull     # A combination of git fetch and git merge.
 \end{lstlisting}
 
-To record changes to a git repository, you will primarily use the \textbf{add}\index{add}, \textbf{commit}\index{commit} (a Git object, a snapshot of your entire repository compressed into a SHA), \textbf{diff}\index{diff}, and \textbf{push}\index{push} commands. The \textbf{add}\index{add} command can be thought of to ``add precisely this content to the next commit''. 
+To record changes to a git repository, you will primarily use the \idx{add}, \idx{commit} (a Git object, a snapshot of your entire repository compressed into a SHA), \idx{diff}, and \idx{push} commands. The \idx{add} command can be thought of to ``add precisely this content to the next commit''. 
 \begin{lstlisting}[style=terminalstyle]
 git add -A             # Stages all files to be committed.
 git add textFile.txt   # Stages a text file named 'textFile'.
@@ -72,7 +72,7 @@ git push               # Updates remote references using local references.
 
 
 
-The \textbf{branch}\index{branch} (a lightweight movable pointer to a commit) command is used to create a new branch. The \textbf{checkout}\index{checkout} command is used to change the working branch.
+The \idx{branch} (a lightweight movable pointer to a commit) command is used to create a new branch. The \idx{checkout} command is used to change the working branch.
 \begin{lstlisting}[style=terminalstyle]
 git branch                # Lists all branches.
 git branch --merged       # See merged to current branches.
@@ -85,7 +85,7 @@ git branch -d issue087    # Deletes the branch issue087.
 git checkout -b issue087  # Does both of the above commands in one line.
 \end{lstlisting}
 
-The \textbf{merge}\index{merge} command is used to combine multiple branches after work on them is finished. To assist with merge conflicts, you can use \textbf{mergetool}\index{mergetool}.
+The \idx{merge} command is used to combine multiple branches after work on them is finished. To assist with merge conflicts, you can use \idx{mergetool}.
 \begin{lstlisting}[style=terminalstyle]
 git checkout master      # Changes to the master branch.
 git merge issue087       # Attempts to merge master and issue087.
@@ -98,7 +98,7 @@ Using the fork command, one can create a copy of a repository owned by a differe
 git fork [URL]
 \end{lstlisting}
 
-Sometimes a file or type of file(s) are desired to be ignored by git and not push to the repository. This cane be done by creating a special file named \textbf{.gitignore}\index{gitignore}.
+Sometimes a file or type of file(s) are desired to be ignored by git and not push to the repository. This cane be done by creating a special file named \idx{.gitignore}.
 \begin{lstlisting}
 # Example .gitignore file. This file tells git to ignore the following types of files.
 *.aux
@@ -117,7 +117,7 @@ Sometimes a file or type of file(s) are desired to be ignored by git and not pus
 
 \subsection{Advanced Git}
 
-A useful tool is \textbf{stash}\index{stash} (code must be staged to be stashed), which lets you save code without making a commit \cite{git}\cite{git: Advanced}.
+A useful tool is \idx{stash} (code must be staged to be stashed), which lets you save code without making a commit \cite{git}\cite{git: Advanced}.
 \begin{lstlisting}[style=terminalstyle]
 git stash        # Makes a temporary local save of your repository.
 git stash list   # Show's a list of stashes that have been made.
@@ -129,14 +129,14 @@ git stash clear  # Used to remove all stashes.
 git checkout .   # Resets all uncommitted code.
 \end{lstlisting}
 
-The \textbf{reset}\index{reset} tool is used for accidental commits or reversing commits \cite{git}\cite{git: Advanced}.
+The \idx{reset} tool is used for accidental commits or reversing commits \cite{git}\cite{git: Advanced}.
 \begin{lstlisting}[style=terminalstyle]
-git reset                  # Lets you modify your repository before doing a commit.
+git reset   # Lets you modify your repository before doing a commit.
 git reset --soft HEAD~NUM. # Resets the most recent $NUM of commits.
 git reset --hard HEAD~NUM  # Erases your last $NUM of commits.
 \end{lstlisting}
 
-The \textbf{bisect}\index{bisect} tool will present you with the details of a commit when compared with another. By referencing a good commit and a bad commit, git will traverse between the two and ask you which ones are good and which ones are bad and then you can display the differences after the process is finished \cite{git}\cite{git: Advanced}.
+The \idx{bisect} tool will present you with the details of a commit when compared with another. By referencing a good commit and a bad commit, git will traverse between the two and ask you which ones are good and which ones are bad and then you can display the differences after the process is finished \cite{git}\cite{git: Advanced}.
 \begin{lstlisting}[style=terminalstyle]
 git bisect        # Allows you to hunt for bad commits.
 git bisect start  # Tells git that there is a bad commit.
@@ -145,13 +145,12 @@ git bisect good   # Tells git which commit is good.
 git show          # Show the commit to indentify the issue.
 \end{lstlisting}
 
-The \textbf{rebase}\index{rebase} tool is used to combine commits. The rebase tool can be dangerous as it could potentially permanently delete files. It is recommended to view the documentation before using it \cite{git}\cite{git: Advanced}.
+The \idx{rebase} tool is used to combine commits. The rebase tool can be dangerous as it could potentially permanently delete files. It is recommended to view the documentation before using it \cite{git}\cite{git: Advanced}.
 \begin{lstlisting}[style=terminalstyle]
 git rebase   # Allows for applying changes from one branch onto another.
 \end{lstlisting}
 
-To view and change the url that the git repository is using to update, you can use the 
-textbf{git remote} command.
+To view and change the url that the git repository is using to update, you can use the git \idx{remote} command.
 \begin{lstlisting}[style=terminalstyle]
 git remote -v  # Lists the remote url of the repository.
 git remote set-url origin <NEW-URL>  # Change the url of the repo.
@@ -196,7 +195,19 @@ By default, each submodule will be in a detached \idx{HEAD} state. To commit cha
     branch = submodule_branch
 \end{lstlisting}
 
+A Git command that allows you to run a given shell command in each submodule of your repository is the \idx{foreach} command. This command is particularly useful when you're working with a repository that contains multiple submodules and you need to perform an operation across all of them.
+\begin{lstlisting}[style=terminalstyle]
+git submodule foreach <command>
+\end{lstlisting}
 
+This can be used with any other git commands to perform the action on each submodule recursively.
+\begin{lstlisting}[style=terminalstyle]
+# Pull changes for each submodule from the main branch.
+git submodule foreach git pull origin main
+
+# Get the status of each submodule.
+git submodule foreach git status
+\end{lstlisting}
 
 
 

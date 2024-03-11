@@ -1,137 +1,175 @@
 \begin{theindex}
 
-  \item + operator, \hyperpage{42}
-  \item .gitmodules, \hyperpage{24}
-  \item \_\_init\_\_(), \hyperpage{40}
+  \item + operator, \hyperpage{46}
+  \item .gitignore, \hyperpage{26}
+  \item .gitmodules, \hyperpage{28}
+  \item \_\_init\_\_, \hyperpage{44}
 
   \indexspace
 
-  \item a, \hyperpage{34}
-  \item add, \hyperpage{21}
-  \item address, \hyperpage{12}
-  \item any(), \hyperpage{41}
+  \item a, \hyperpage{38}
+  \item add, \hyperpage{25}
+  \item addition, \hyperpage{49}
+  \item address, \hyperpage{13}
+  \item any, \hyperpage{45}
   \item apt, \hyperpage{2}
   \item arithmetic, \hyperpage{8}
-  \item assert, \hyperpage{43}
-  \item author, \hyperpage{26}
-  \item authors, \hyperpage{25}
+  \item assert, \hyperpage{47}
+  \item author, \hyperpage{30}
+  \item authors, \hyperpage{29}
 
   \indexspace
 
-  \item background, \hyperpage{36}
+  \item background, \hyperpage{40}
   \item backuppc, \hyperpage{4}
-  \item big endian, \hyperpage{17}
-  \item bisect, \hyperpage{23}
-  \item branch, \hyperpage{22}
+  \item big endian, \hyperpage{20}
+  \item bisect, \hyperpage{27}
+  \item brace expansion, \hyperpage{8}
+  \item branch, \hyperpage{26}
 
   \indexspace
 
-  \item C\#, \hyperpage{28}
-  \item c\_str(), \hyperpage{15}
+  \item C\#, \hyperpage{32}
+  \item c\_str, \hyperpage{16}
+  \item cache, \hyperpage{52}
   \item cd, \hyperpage{2}
   \item Changing directory, \hyperpage{2}
-  \item character set, \hyperpage{33}
-  \item checkout, \hyperpage{22}
+  \item character set, \hyperpage{37}
+  \item checkout, \hyperpage{26}
   \item chgrp, \hyperpage{5}
   \item chmod, \hyperpage{5}, \hyperpage{7}
   \item chown, \hyperpage{5}, \hyperpage{7}
-  \item Classes, \hyperpage{40}
-  \item clone, \hyperpage{21}
-  \item CMake, \hyperpage{19}
-  \item CMakeLists, \hyperpage{19}
-  \item color, \hyperpage{35}
-  \item comments, \hyperpage{25}, \hyperpage{33}, \hyperpage{35}
-  \item commit, \hyperpage{21}
-  \item config, \hyperpage{21}
-  \item Converting Between Types, \hyperpage{15}
-  \item CSS, \hyperpage{35}
+  \item Classes, \hyperpage{44}
+  \item clone, \hyperpage{25}
+  \item CMake, \hyperpage{23}
+  \item CMakeLists, \hyperpage{23}
+  \item collections, \hyperpage{49, 50}
+  \item color, \hyperpage{39}
+  \item combinations, \hyperpage{50}
+  \item combinations\_with\_replacement, \hyperpage{50}
+  \item comments, \hyperpage{29}, \hyperpage{37}, \hyperpage{39}
+  \item commit, \hyperpage{25}
+  \item compile-time, \hyperpage{20}
+  \item configuration, \hyperpage{25}
+  \item const char*, \hyperpage{16}, \hyperpage{18}
+  \item constexpr, \hyperpage{20}
+  \item contextlib, \hyperpage{54}
+  \item contextmanager, \hyperpage{54}
+  \item Counter, \hyperpage{49}
+  \item CSS, \hyperpage{39}
   \item current directory, \hyperpage{2}
 
   \indexspace
 
-  \item declaration, \hyperpage{35}
-  \item def, \hyperpage{40}
-  \item delimiter, \hyperpage{41}
-  \item diff, \hyperpage{21}
-  \item div, \hyperpage{33}
+  \item declaration, \hyperpage{39}
+  \item def, \hyperpage{44}
+  \item defaultdict, \hyperpage{50}
+  \item delimiter, \hyperpage{45}
+  \item diff, \hyperpage{25}
+  \item div, \hyperpage{37}
   \item dnf, \hyperpage{2}
   \item Domain Information Groper, \hyperpage{5}
+  \item domain-specific, \hyperpage{21}
+  \item double, \hyperpage{16}
 
   \indexspace
 
   \item echo, \hyperpage{7}
-  \item Emacs, \hyperpage{8}
+  \item Emacs, \hyperpage{9}
+  \item enum, \hyperpage{53}
+  \item enumerations, \hyperpage{53}
   \item export, \hyperpage{7}
-  \item extend(), \hyperpage{42}
+  \item extend, \hyperpage{46}
 
   \indexspace
 
-  \item f-string, \hyperpage{41}
-  \item fetch, \hyperpage{21}
+  \item f-string, \hyperpage{45}
+  \item fetch, \hyperpage{25}
+  \item Fibonacci, \hyperpage{17}
   \item find, \hyperpage{3}
-  \item fixture, \hyperpage{43, 44}
+  \item fixture, \hyperpage{47, 48}
+  \item float, \hyperpage{16}
   \item for loop, \hyperpage{8}
-  \item format(), \hyperpage{41}
-  \item function, \hyperpage{40}
+  \item foreach, \hyperpage{28}
+  \item format, \hyperpage{45}
+  \item function, \hyperpage{44}
+  \item functools, \hyperpage{51, 52}
 
   \indexspace
 
-  \item geometry, \hyperpage{45}
-  \item git, \hyperpage{21}
-  \item Git Submodules, \hyperpage{23}
-  \item GitHub, \hyperpage{24}
-  \item GitHub Pages, \hyperpage{24}
-  \item gitignore, \hyperpage{22}
-  \item GUI, \hyperpage{44}
+  \item geometry, \hyperpage{49}
+  \item git, \hyperpage{25}
+  \item Git Submodules, \hyperpage{27}
+  \item GitHub, \hyperpage{28}
+  \item GitHub Pages, \hyperpage{28}
+  \item God Mode, \hyperpage{10}
+  \item GUI, \hyperpage{48}
 
   \indexspace
 
-  \item HEAD, \hyperpage{24}
+  \item HEAD, \hyperpage{28}
   \item head, \hyperpage{4}
-  \item hello world, \hyperpage{11}, \hyperpage{32, 33}, \hyperpage{37}, 
-		\hyperpage{45}
-  \item HTML, \hyperpage{33}
+  \item hello world, \hyperpage{12}, \hyperpage{36, 37}, \hyperpage{41}, 
+		\hyperpage{49}
+  \item HTML, \hyperpage{37}
   \item htop, \hyperpage{2}
-  \item hyperlinking, \hyperpage{27}
+  \item hyperlinking, \hyperpage{31}
 
   \indexspace
 
-  \item icon, \hyperpage{45}
+  \item icon, \hyperpage{49}
   \item ifconfig, \hyperpage{5}
-  \item ifdown, \hyperpage{6}
-  \item ifup, \hyperpage{6}
-  \item img, \hyperpage{34}
-  \item init, \hyperpage{21}
-  \item Input and Output, \hyperpage{13}
+  \item ifdown, \hyperpage{5}
+  \item ifup, \hyperpage{5}
+  \item img, \hyperpage{38}
+  \item init, \hyperpage{25}
+  \item Input and Output, \hyperpage{14}
+  \item integer, \hyperpage{16}
+  \item intersection, \hyperpage{49}
   \item iotop, \hyperpage{2}
   \item IPv6, \hyperpage{6}
+  \item iterable, \hyperpage{50}
+  \item itertools, \hyperpage{50}
 
   \indexspace
 
-  \item Java, \hyperpage{32}
-  \item join(), \hyperpage{41}
+  \item Java, \hyperpage{36}
+  \item join, \hyperpage{45}
 
   \indexspace
 
-  \item lang, \hyperpage{33}
-  \item LaTeX, \hyperpage{25}
-  \item len(), \hyperpage{42}
-  \item little endian, \hyperpage{17}
-  \item log, \hyperpage{21}
-  \item lower(), \hyperpage{41}
-  \item lstrip(), \hyperpage{41}
+  \item Key Strokes, \hyperpage{18, 19}
+  \item KeyError, \hyperpage{50}
 
   \indexspace
 
-  \item Make, \hyperpage{19}
-  \item merge, \hyperpage{21, 22}
-  \item mergetool, \hyperpage{22}
-  \item metadata, \hyperpage{33}
-  \item Methods, \hyperpage{40}
-  \item MiKTeX, \hyperpage{25}
+  \item lang, \hyperpage{37}
+  \item LaTeX, \hyperpage{29}
+  \item len, \hyperpage{46}
+  \item Linux, \hyperpage{19, 20}
+  \item lists, \hyperpage{51}
+  \item literals, \hyperpage{21}
+  \item little endian, \hyperpage{20}
+  \item log, \hyperpage{25}
+  \item long double, \hyperpage{16}
+  \item long long int, \hyperpage{16}
+  \item lower, \hyperpage{45}
+  \item lru\_cache, \hyperpage{52}
+  \item lstrip, \hyperpage{45}
+
+  \indexspace
+
+  \item Make, \hyperpage{23}
+  \item merge, \hyperpage{25, 26}
+  \item mergetool, \hyperpage{26}
+  \item metadata, \hyperpage{37}
+  \item method overloading, \hyperpage{51}
+  \item Methods, \hyperpage{44}
+  \item MiKTeX, \hyperpage{29}
   \item mkfifo, \hyperpage{8}
   \item Mount, \hyperpage{4}
   \item mount, \hyperpage{4}
+  \item mouse, \hyperpage{10}
 
   \indexspace
 
@@ -142,60 +180,72 @@
 
   \indexspace
 
-  \item package, \hyperpage{25}
-  \item parameters, \hyperpage{44}
+  \item package, \hyperpage{29}
+  \item parameters, \hyperpage{48}
   \item pdf, \hyperpage{4}
-  \item PHP, \hyperpage{37}
-  \item Plotting and Graphs, \hyperpage{42}
-  \item pointer, \hyperpage{12}
-  \item prime, \hyperpage{15}
-  \item Prime Number, \hyperpage{15}
-  \item pull, \hyperpage{21}
-  \item push, \hyperpage{21}
-  \item Pytest, \hyperpage{43}
-  \item Python, \hyperpage{39}
+  \item PHP, \hyperpage{41}
+  \item Plotting and Graphs, \hyperpage{46}
+  \item pointer, \hyperpage{13}
+  \item prime, \hyperpage{17}
+  \item Protocol, \hyperpage{53}
+  \item pull, \hyperpage{25}
+  \item push, \hyperpage{25}
+  \item Pytest, \hyperpage{47}
+  \item Python, \hyperpage{43}
 
   \indexspace
 
-  \item read-only mode, \hyperpage{8}
-  \item rebase, \hyperpage{23}
+  \item read-only mode, \hyperpage{9}
+  \item rebase, \hyperpage{27}
+  \item redirect\_stderr, \hyperpage{54}
+  \item redirect\_stdout, \hyperpage{54}
+  \item remote, \hyperpage{27}
   \item Remote Connections, \hyperpage{3}
-  \item remote flag, \hyperpage{23}
-  \item reset, \hyperpage{23}
-  \item rstrip(), \hyperpage{41}
+  \item remote flag, \hyperpage{27}
+  \item reset, \hyperpage{27}
+  \item rstrip, \hyperpage{45}
   \item rsync, \hyperpage{3, 4}
+  \item runtime, \hyperpage{20}, \hyperpage{53}
+  \item runtime\_checkable, \hyperpage{53}
 
   \indexspace
 
   \item scp, \hyperpage{3}
   \item screen, \hyperpage{3}
   \item Secure Shell, \hyperpage{3}
-  \item selector, \hyperpage{35}
-  \item selectors, \hyperpage{35}
-  \item services, \hyperpage{9}
+  \item selector, \hyperpage{39}
+  \item selectors, \hyperpage{39}
+  \item sequences, \hyperpage{51}
+  \item services, \hyperpage{10}
   \item sftp, \hyperpage{3}
   \item shebang, \hyperpage{6}
-  \item Simulate Key Strokes, \hyperpage{16}
-  \item Sleep, \hyperpage{16}
-  \item sleep, \hyperpage{16}
-  \item span, \hyperpage{34}
-  \item split(), \hyperpage{41}
+  \item singledispatch, \hyperpage{51}
+  \item sleep, \hyperpage{18}
+  \item slice, \hyperpage{51}
+  \item span, \hyperpage{38}
+  \item split, \hyperpage{45}
   \item SSH, \hyperpage{3}
-  \item stash, \hyperpage{22}
-  \item status, \hyperpage{21}
-  \item std::string to const char*, \hyperpage{15}
-  \item std::string to int, \hyperpage{15}
+  \item stash, \hyperpage{26}
+  \item status, \hyperpage{25}
+  \item std::string, \hyperpage{16}
+  \item std::to\_string, \hyperpage{16}
   \item stderr, \hyperpage{6}
   \item stdout, \hyperpage{6}
-  \item stod, \hyperpage{15}
-  \item stoi, \hyperpage{15}
-  \item strip(), \hyperpage{41}
-  \item stylesheet, \hyperpage{33}
+  \item stod, \hyperpage{16}
+  \item stof, \hyperpage{16}
+  \item stoi, \hyperpage{16}
+  \item stold, \hyperpage{16}
+  \item stoll, \hyperpage{16}
+  \item stoul, \hyperpage{16}
+  \item strings, \hyperpage{51}
+  \item strip, \hyperpage{45}
+  \item stylesheet, \hyperpage{37}
   \item su, \hyperpage{5}
-  \item submodules, \hyperpage{23}
-  \item subtitle, \hyperpage{25}
-  \item subtitles, \hyperpage{25}
-  \item System Commands, \hyperpage{16}
+  \item submodules, \hyperpage{27}
+  \item subtitle, \hyperpage{29}
+  \item subtitles, \hyperpage{29}
+  \item subtraction, \hyperpage{49}
+  \item System File Checker, \hyperpage{10}
   \item System Related Commands, \hyperpage{2}
 
   \indexspace
@@ -203,35 +253,43 @@
   \item tail, \hyperpage{4}
   \item tar, \hyperpage{4}
   \item telnet, \hyperpage{5}
-  \item template, \hyperpage{13}
-  \item temporary directory, \hyperpage{43}
-  \item TeX Live, \hyperpage{25}
-  \item titles, \hyperpage{25}
-  \item Tk, \hyperpage{44}
-  \item Tkinter, \hyperpage{44}
+  \item template, \hyperpage{14}, \hyperpage{22}
+  \item template specialization, \hyperpage{22}
+  \item templates, \hyperpage{22}
+  \item temporary directory, \hyperpage{47}
+  \item TeX Live, \hyperpage{29}
+  \item titles, \hyperpage{29}
+  \item Tk, \hyperpage{48}
+  \item Tkinter, \hyperpage{48}
   \item tmux, \hyperpage{3}
   \item top, \hyperpage{2}
   \item touch, \hyperpage{8}
   \item traceroute, \hyperpage{5}
+  \item tuples, \hyperpage{51}
+  \item typing, \hyperpage{53}
 
   \indexspace
 
+  \item union, \hyperpage{49}
   \item unmount, \hyperpage{4}
-  \item upper(), \hyperpage{41}
+  \item unsigned int, \hyperpage{16}
+  \item upper, \hyperpage{45}
+  \item user-defined, \hyperpage{21}
   \item useradd, \hyperpage{4}
 
   \indexspace
 
-  \item Variable Types, \hyperpage{14}
+  \item Variable Types, \hyperpage{15}
   \item variables, \hyperpage{7}
-  \item Vector, \hyperpage{14}
-  \item vector, \hyperpage{14}
+  \item Vector, \hyperpage{15}
+  \item vector, \hyperpage{15}
   \item VNC, \hyperpage{3}
 
   \indexspace
 
   \item wc, \hyperpage{8}
-  \item whitespace, \hyperpage{41}
+  \item whitespace, \hyperpage{45}
+  \item Windows, \hyperpage{18}, \hyperpage{20}
 
   \indexspace
 

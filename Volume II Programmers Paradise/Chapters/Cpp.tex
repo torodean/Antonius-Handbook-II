@@ -164,7 +164,12 @@ for (bool a : { false, true }) { /* ... */ }
 
 
 
-\section{Basic Input and Output\index{Input and Output}}
+
+
+
+
+
+\subsection{Basic Input and Output\index{Input and Output}}
 To output text via a terminal you can use:
 \begin{lstlisting}
 uint32_t number = 0x123456         // A hexadecimal number.
@@ -186,7 +191,12 @@ std::getline(std::cin, input);
 
 
 
-\section{Variable Types\index{Variable Types}}
+
+
+
+
+
+\subsection{Variable Types\index{Variable Types}}
 
 Creating and using a vector\index{Vector}\index{vector}.
 \begin{lstlisting}
@@ -212,7 +222,8 @@ V2[0][3] = 3.1415; //Sets the 4th element in the first row of V2 to 3.1415.
 
 
 
-\section{Class Structures}
+
+\subsection{Class Structures}
 In C++ a \textbf{Class} is an object that can contain variables and functions all defined within the object to be used in various ways.
 \begin{lstlisting}
 // This creates a class named ParentClass.
@@ -264,29 +275,100 @@ int main() {
 
 
 
-\subsection{Converting Between Types\index{Converting Between Types}}
 
-\subsection*{std::string to int\index{std::string to int}}
-To convert a string to an integer you can use the \textbf{stoi}\index{stoi} function:
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Converting Between Types}
+
+\subsubsection{\idx{std::string} to *}
+
+To convert a \idx{std::string} to an \idx{integer} you can use the \idx{stoi} function:
 \begin{lstlisting}
 std::string text = "31415";
 int number = std::stoi(text);
 \end{lstlisting}
 
-\subsection*{std::string to double\index{std::string to int}}
-To convert a string to a double you can use the \textbf{stod}\index{stod} function:
+To convert a \idx{std::string} to a \idx{double} you can use the \idx{stod} function:
 \begin{lstlisting}
 std::string text = "3.1415";
 double number = std::stod(text);
 \end{lstlisting}
 
-\subsection*{std::string to const char*\index{std::string to const char*}}
-To convert a string to a const char* you can use the \textbf{c\_str()}\index{c\_str()} function:
+To convert a \idx{std::string} to a \idx{const char*} you can use the \idx{c\_str} function:
 \begin{lstlisting}
 std::string str = "3.1415";
 const char* chr = str.c_str();
 \end{lstlisting}
 
+To convert a \idx{std::string} to a \idx{long long int} you can use the \idx{stoll} function:
+\begin{lstlisting}
+std::string text = "123456789012345";
+long long int number = std::stoll(text);
+\end{lstlisting}
+
+To convert a \idx{std::string} to a \idx{float} you can use the \idx{stof} function:
+\begin{lstlisting}
+std::string text = "3.1415";
+float number = std::stof(text);
+\end{lstlisting}
+
+To convert a \idx{std::string} to a \idx{unsigned int} you can use the \idx{stoul} function:
+\begin{lstlisting}
+std::string text = "12345";
+unsigned int number = std::stoul(text);
+\end{lstlisting}
+
+To convert a \idx{std::string} to a \idx{long double} you can use the \idx{stold} function:
+\begin{lstlisting}
+std::string text = "3.14159265358979323846";
+long double number = std::stold(text);
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+\subsubsection{* to \idx{std::string}}
+
+To convert various types back to a \idx{std::string}, you can use the \idx{std::to\_string} method:
+
+\begin{lstlisting}
+int number_int = 31415;
+std::string text_int = std::to_string(number_int);
+
+double number_double = 3.1415;
+std::string text_double = std::to_string(number_double);
+
+// For const char*, you can use the string constructor.
+const char* chr = "3.1415";
+std::string str_char(chr);
+
+long long int number_ll = 123456789012345;
+std::string text_ll = std::to_string(number_ll);
+
+float number_float = 3.1415;
+std::string text_float = std::to_string(number_float);
+
+unsigned int number_uint = 12345;
+std::string text_uint = std::to_string(number_uint);
+
+long double number_ld = 3.14159265358979323846;
+std::string text_ld = std::to_string(number_ld);
+\end{lstlisting}
 
 
 
@@ -305,8 +387,11 @@ const char* chr = str.c_str();
 
 \section{Mathematical Commands}
 
-\subsection*{Prime Number\index{Prime Number}}
-A simple brute force method to determines if a number of type long is \textbf{prime}\index{prime} or not.
+
+
+\subsubsection{Prime Numbers}
+
+A simple brute force method to determines if a number of type long is \idx{prime} or not.
 \begin{lstlisting}
 bool isPrime(long num) {  
 	int c = 0;   //c is a counter for how many numbers can divide evenly into num
@@ -326,7 +411,25 @@ bool isPrime(long num) {
 }
 \end{lstlisting}
 
-\subsection*{Trigonometric Identities}
+
+
+
+\subsubsection{\idx{Fibonacci} Sequence}
+
+A simple brute force method for determining the \idx{Fibonacci} numbers.
+\begin{lstlisting}
+int fibonacci(int n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+\end{lstlisting}
+
+
+
+
+
+\subsubsection{Trigonometric Identities}
+
 To perform calculations using trigonometric identities, you first must include cmath and then do so as follows. These trigonometric functions from cmath can be used as floats, doubles, or long doubles.
 \begin{lstlisting}
 #include <cmath>                        // Needed at start of file.
@@ -349,30 +452,31 @@ float numT = std::tan(num);             // Calculates the tan of the number
 
 
 
-\section{System Commands\index{System Commands}}
+\section{System Commands}
 
-\subsection*{Sleep\index{Sleep}}
-Make the thread \textbf{sleep}\index{sleep} for some amount of time using the std::chrono to determine the duration \cite{cpp:chrono}.
+\subsection*{Sleep}
+Make the thread \idx{sleep} for some amount of time using the std::chrono to determine the duration \cite{cpp:chrono}.
 \begin{lstlisting}
 #include <thread>
 #include <chrono>
 
-std::this_thread::sleep_for(std::chrono::milliseconds(50)); //Makes the system sleep for 50 milliseconds.
+// Makes the system sleep for 50 milliseconds.
+std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
-std::this_thread::sleep_for(std::chrono::seconds(50)); //Makes the system sleep for 50 seconds.
+// Makes the system sleep for 50 seconds.
+std::this_thread::sleep_for(std::chrono::seconds(50)); 
 \end{lstlisting}
 
-On a Windows specific program this can be simplified by including the windows.h header
+On a \idx{Windows} specific program this can be simplified by including the windows.h header
 \begin{lstlisting}
 #include <windows.h>
 
-Sleep(50); //Makes the system sleep for 50 milliseconds.
-
-Sleep(5000); //Makes the system sleep for 50 seconds.
+Sleep(50);   // Makes the system sleep for 50 milliseconds.
+Sleep(5000); // Makes the system sleep for 50 seconds.
 \end{lstlisting}
 
 
-On a Windows specific program one can run a command directly from command prompt using the system function. The input variable to system is const char*.
+On a \idx{Windows} specific program one can run a command directly from command prompt using the system function. The input variable to system is \idx{const char*}.
 \begin{lstlisting}
 #include <windows.h>
 
@@ -389,7 +493,9 @@ system("DATE");   // Runs the DATE command from windows command prompt.
 
 
 
-\subsection{Simulate Key Strokes (Windows Only)\index{Simulate Key Strokes}}
+\subsection{Simulate \idx{Key Strokes}}
+
+\subsubsection{\idx{Key Strokes} on \idx{Windows}}
 
 First the correct files must be included and an event must be setup.
 \begin{lstlisting}
@@ -398,65 +504,103 @@ First the correct files must be included and an event must be setup.
 
 INPUT ip;
 
-ip.type = INPUT_KEYBOARD; // Set up a generic keyboard event.    
-ip.ki.wScan = 0; // hardware scan code for key                                   
+ip.type = INPUT_KEYBOARD; // Set up a generic keyboard event.
+ip.ki.wScan = 0; // hardware scan code for key.
 ip.ki.time = 0;
 ip.ki.dwExtraInfo = 0;
 \end{lstlisting}
 
 After this, functions can be setup to simulate various keys based on the specific key codes, two examples of such are
 \begin{lstlisting}
-void space(){ 
-// Press the "space" key.  
-ip.ki.wVk = VK_SPACE; // virtual-key code for the "space" key.                                                                                
-ip.ki.dwFlags = 0; // 0 for key press                                                                                                        
-SendInput(1, &ip, sizeof(INPUT));
-
-// Release the "space" key                                                                                                                   
-ip.ki.wVk = VK_SPACE; // virtual-key code for the "space" key.                                                                                
-ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release                                                                          
-SendInput(1, &ip, sizeof(INPUT));
-Sleep(50);
+void space() { 
+	// Press the "space" key.
+	ip.ki.wVk = VK_SPACE; // virtual-key code for the "space" key.
+	ip.ki.dwFlags = 0;    // 0 for key press.
+	SendInput(1, &ip, sizeof(INPUT));
+	
+	// Release the "space" key.
+	ip.ki.wVk = VK_SPACE;            // virtual-key code for the "space" key.
+	ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release.
+	SendInput(1, &ip, sizeof(INPUT));
+	Sleep(50);
 }
 
-void one(){ 
-// Press the "1" key.    
-ip.ki.wVk = 0x31; // virtual-key code for the "1" key.                                          
-ip.ki.dwFlags = 0; // 0 for key press                                                                                                        
-SendInput(1, &ip, sizeof(INPUT));
-
-// Release the "1" key.                                                                                                                    
-ip.ki.wVk = 0x31; // virtual-key code for the "1" key.                                                                                      
-ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release.                                                                          
-SendInput(1, \&ip, sizeof(INPUT));
-Sleep(50);
+void one() { 
+	// Press the "1" key.
+	ip.ki.wVk = 0x31;   // virtual-key code for the "1" key.                                          
+	ip.ki.dwFlags = 0;  // 0 for key press
+	SendInput(1, &ip, sizeof(INPUT));
+	
+	// Release the "1" key.
+	ip.ki.wVk = 0x31;                // virtual-key code for the "1" key.
+	ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release.
+	SendInput(1, \&ip, sizeof(INPUT));
+	Sleep(50);
 }
 \end{lstlisting}
 
 A similar method can be used to simulate mouse clicks. And example for left click follows
 \begin{lstlisting}
-void leftclick(){
-INPUT ip={0};
-// left down                                                                                                                                   
-ip.type = INPUT_MOUSE;
-ip.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
-SendInput(1,&Input,sizeof(INPUT));
-
-// left up                                                                                                                                     
-ZeroMemory(&Input,sizeof(INPUT));
-ip.type = INPUT_MOUSE;
-ip.mi.dwFlags = MOUSEEVENTF_LEFTUP;
-SendInput(1,&Input,sizeof(INPUT));
-Sleep(50);
+void leftclick() {
+	INPUT ip={0};
+	// left down
+	ip.type = INPUT_MOUSE;
+	ip.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+	SendInput(1,&Input,sizeof(INPUT));
+	
+	// left up
+	ZeroMemory(&Input,sizeof(INPUT));
+	ip.type = INPUT_MOUSE;
+	ip.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+	SendInput(1,&Input,sizeof(INPUT));
+	Sleep(50);
 }
 \end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+\subsubsection{\idx{Key Strokes} on \idx{Linux}}
+
+First the correct files must be included and an event must be setup.
+\begin{lstlisting}
+extern "C" {
+	#include <xdo.h>
+}
+
+xdo = xdo_new(":1.0");
+\end{lstlisting}
+
+After this, functions can be setup to simulate various keys based on the specific key specifiers, two examples of such are
+\begin{lstlisting}
+void space() {
+    xdo_send_keysequence_window(xdo, CURRENTWINDOW, "space", 0);
+}
+
+void one() {
+	xdo_send_keysequence_window(xdo, CURRENTWINDOW, "1", 0);
+}
+\end{lstlisting}
+
+
+
+
+
+
 
 
 
 
 
 \section{Compiler/Processor specific}
-The order of bytes within a binary representation of a number can be either \textbf{little endian}\index{little endian} or \textbf{big endian}\index{big endian}. In some cases, it is important to know this. Below is a function that will return the endianness of the machine you are compiling on.
+
+The order of bytes within a binary representation of a number can be either \idx{little endian} or \idx{big endian}. In some cases, it is important to know this. Below is a function that will return the endianness of the machine you are compiling on.
 \begin{lstlisting}
 bool is_big_endian(){
 	union { uint32_t i; char c[4]; } bint = {0x01020304};
@@ -464,7 +608,7 @@ bool is_big_endian(){
 }
 
 #if BYTE_ORDER == BIG_ENDIAN
-// Use big endian code here.
+	// Use big endian code here.
 #endif
 
 #if BYTE_ORDER == LITTLE_ENDIAN
@@ -472,7 +616,7 @@ bool is_big_endian(){
 #endif
 \end{lstlisting}
 
-To define specific code to use on windows vs linux you can use the following
+To define specific code to use on \idx{Windows} vs \idx{Linux} you can use the following
 \begin{lstlisting}
 // This checks for windows or Cygwin.
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined _WIN32 || defined _WIN64 || defined __CYGWIN__
@@ -484,6 +628,155 @@ To define specific code to use on windows vs linux you can use the following
 
 
 
+
+
+
+
+
+
+
+
 %\section{Qt Specific}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Advanced Coding Features}
+
+C++ allows you to perform \idx{compile-time} evaluation of expressions using \idx{constexpr} functions and variables. This feature enables you to compute values at compile-time rather than \idx{runtime}, providing potential performance benefits and allowing for more flexible code optimization.
+\begin{lstlisting}
+#include <iostream>
+
+constexpr int fibonacci(int n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    constexpr int fib_10 = fibonacci(10);
+    std::cout << "Fibonacci number at position 10: " << fib_10 << std::endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+\subsubsection{\idx{user-defined} \idx{literals}}
+
+
+C++ allows you to create \idx{user-defined} \idx{literals}, which are custom suffixes that can be applied to literal values to create objects of \idx{user-defined} types. This feature enables you to create more readable and expressive code by introducing \idx{domain-specific} \idx{literals}.
+\begin{lstlisting}
+#include <iostream>
+
+// Define a user-defined literal for converting meters to kilometers
+constexpr long double operator"" _km(long double meters) {
+    return meters / 1000.0;
+}
+
+int main() {
+    // Use the user-defined literal to convert meters to kilometers
+    long double distance = 5000.0_km;
+
+	// Outputs "Distance in kilometers: 5"
+    std::cout << "Distance in kilometers: " << distance << std::endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+When using \idx{user-defined} \idx{literals}, it is up to the user to ensure that the units are consistent throughout the application. For example, the below defines celcius and farenheit temperatures. The celcius temperature has a conversion to itself, so all output temperatures will be in the units of celcius, whereas all other conversions will be converted to celcius.
+\begin{lstlisting}
+#include <iostream>
+
+// Define a user-defined literal for Celsius
+constexpr double operator"" _C(long double celsius) {
+    return celsius;
+}
+
+// Define a user-defined literal for Fahrenheit
+constexpr double operator"" _F(long double fahrenheit) {
+    return (fahrenheit - 32.0) * 5.0 / 9.0;
+}
+
+int main() {
+    // Use the user-defined literals to represent temperatures
+    constexpr double freezing_point_C = 0.0_C;
+    constexpr double boiling_point_C = 100.0_C;
+
+    std::cout << "Freezing point of water in Celsius: " << freezing_point_C << std::endl;
+	// Outputs "Freezing point of water in Celsius: 0"
+    std::cout << "Boiling point of water in Celsius: " << boiling_point_C << std::endl;
+	// Outputs "Boiling point of water in Celsius: 100"
+
+    // Use the user-defined literals to convert Fahrenheit to Celsius
+    constexpr double temperature_F = 212.0_F;
+    constexpr double temperature_C = 98.6_F;
+
+    std::cout << "Temperature in Fahrenheit: " << temperature_F << std::endl;
+	// Outputs "Temperature in Fahrenheit: 100" (which is the celcius value)
+    std::cout << "Equivalent temperature in Celsius: " << temperature_C << std::endl;
+	// Outputs "Equivalent temperature in Celsius: 37"
+
+    return 0;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+\subsubsection{\idx{templates}}
+
+C++ provides a feature called "\idx{template specialization}," which allows you to provide specialized implementations for specific \idx{template} arguments. Template specialization is particularly useful when you need different behavior for certain template arguments while maintaining a generic implementation for others.
+\begin{lstlisting}
+#include <iostream>
+
+// Generic template
+template <typename T>
+struct MyTemplate {
+    void print() {
+        std::cout << "Generic template: " << typeid(T).name() << std::endl;
+    }
+};
+
+// Specialized template for int
+template <>
+struct MyTemplate<int> {
+    void print() {
+        std::cout << "Specialized template for int" << std::endl;
+    }
+};
+
+int main() {
+    MyTemplate<double> obj1;
+    obj1.print(); // Output: Generic template: d
+
+    MyTemplate<int> obj2;
+    obj2.print(); // Output: Specialized template for int
+
+    return 0;
+}
+\end{lstlisting}
 
