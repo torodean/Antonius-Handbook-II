@@ -780,3 +780,45 @@ int main() {
 }
 \end{lstlisting}
 
+
+
+
+
+
+\subsubsection{\idx{Function Pointers}}
+
+C++ allows you to define and use "\idx{function pointers}," which are \idx{pointers} that point to functions rather than data. Function pointers enable you to treat functions as first-class citizens, allowing you to pass functions as arguments to other functions, store them in data structures, and call them dynamically at runtime.
+\begin{lstlisting}
+#include <iostream>
+
+// Function pointer type declaration
+typedef int (*Operation)(int, int);
+
+// Function to add two numbers
+int add(int a, int b) {
+    return a + b;
+}
+
+// Function to subtract two numbers
+int subtract(int a, int b) {
+    return a - b;
+}
+
+// Function to perform an operation using function pointer
+int perform(Operation op, int a, int b) {
+    return op(a, b);
+}
+
+int main() {
+    // Define function pointers
+    Operation addition = &add;
+    Operation subtraction = &subtract;
+
+    // Use function pointers to perform operations
+    std::cout << "Addition result: " << perform(addition, 5, 3) << std::endl;
+    std::cout << "Subtraction result: " << perform(subtraction, 5, 3) << std::endl;
+
+    return 0;
+}
+\end{lstlisting}
+
