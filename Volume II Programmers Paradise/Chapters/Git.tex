@@ -156,7 +156,14 @@ git remote -v  # Lists the remote url of the repository.
 git remote set-url origin <NEW-URL>  # Change the url of the repo.
 \end{lstlisting}
 
+If you've already pushed a commit to a remote repository, you can still modify the most recent \idx{commit message} (assuming the branch you are pushing to is not protected). To do so, you use the \idx{amend} flag with git \idx{commit}. The \idx{force-with-lease} flag checks if the remote branch has updates that do not exist locally.
+\begin{lstlisting}[style=terminalstyle]
+# Update the commit message.
+git commit --amend -m "New commit message"
 
+# Force push to the branch. 
+git push --force-with-lease origin your-branch-name
+\end{lstlisting} 
 
 
 

@@ -849,7 +849,11 @@ print("Captured Output:", captured_output)
 
 Thsi section is a collection of useful methods that can be adapted or used for many applications. These are all methods that I've written or heavily modified for my own use and have found useful on multiple occasions.
 
-\subsubsection{Logging and Application Output}
+
+
+
+
+\subsubsection{\idx{Logging} and Application \idx{Output}}
 
 To perform \idx{logging} for an application, you often want to create a \idx{log file} named based on the application name and the current date. This can be expanded to be contained in a class and called during initialization or just used as standalone.
 
@@ -1004,6 +1008,85 @@ The American National Standards Institute (\idx{ANSI}) \idx{color codes} in the 
 	\end{longtable}
 \end{fancybox}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{\idx{Config Files}}
+
+For a basic and somewhat generic \idx{config file} \idx{framework}, you can use the following setup. The config variables and default values are stored in a map. This method will then update any variable/value pairs that are found in a configuration file. The config file should be setup so that each line contains a `variable=value' pair. The value's must match the type that are defined in the configuration variables map. Lines that start with a `\#' are considered comment lines and ignored. The values can then all be called by calling the configuration map.
+
+\begin{lstlisting}
+# Example config file setup for the below framework.
+name = John
+age = 30
+weight = 70.5
+\end{lstlisting}
+
+\begin{lstlisting}
+# Example config_variables
+config_vars = {
+    'name':           'default_name',
+    'age':            0,
+    'weight':         0.0,
+    'is_student':     False,
+    'favorite_color': 'red'
+}
+
+def load_config_file(config_file, config_variables, verbose=False):
+    """
+    Load configuration variables from a file and update their values.
+
+    Args:
+        config_file (str): The path to the configuration file.
+        config_variables (map): The map of configuration variables.
+            Should be formatted with default values for each possible configuration variable desired:
+            {'name':'default', 'age':0, 'weight':0.0, ...}
+        verbose (bool, optional): If True, print verbose messages indicating the configuration variables being set. 
+                                  Defaults to False.
+
+    Returns:
+        None
+
+    Raises:
+        FileNotFoundError: If the specified config_file is not found.
+
+    Notes:
+        - Configuration variables are updated based on the values specified in the config file.
+        - The config file should have lines in the format "variable = value".
+        - Each variable's value will be converted to the specified type as per the config_variables dictionary.
+    """
+    try:
+        with open(config_file, 'r') as file:
+            for line in file:
+                # Skip commented lines.
+                if line.startswith('#'):
+                    continue
+
+                if '=' in line:
+                    variable, value = map(str.strip, line.strip().split('='))
+                    if variable in config_variables:                        
+                        # Retrieve default value and type
+                        value_type = type(config_variables[variable])
+                        # Convert the value to the proper type
+                        converted_value = value_type(value)
+                        config_variables[variable] = converted_value
+                        if verbose:
+                            print(f"Setting config variable: {variable} -> {converted_value}")
+                    elif verbose:
+                        print(f"WARNING: Invalid variable detected in config file: {variable}")                        
+    except FileNotFoundError:
+        print("ERROR: Config file not found.")
+\end{lstlisting}
 
 
 

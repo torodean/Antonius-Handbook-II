@@ -161,9 +161,13 @@
 \indexentry{bisect|hyperpage}{28}
 \indexentry{rebase|hyperpage}{28}
 \indexentry{remote|hyperpage}{28}
+\indexentry{commit message|hyperpage}{28}
+\indexentry{amend|hyperpage}{28}
+\indexentry{commit|hyperpage}{28}
+\indexentry{force-with-lease|hyperpage}{28}
 \indexentry{Git Submodules|hyperpage}{28}
 \indexentry{submodules|hyperpage}{28}
-\indexentry{remote flag|hyperpage}{28}
+\indexentry{remote flag|hyperpage}{29}
 \indexentry{HEAD|hyperpage}{29}
 \indexentry{.gitmodules|hyperpage}{29}
 \indexentry{foreach|hyperpage}{29}
@@ -294,6 +298,8 @@
 \indexentry{contextlib|hyperpage}{55}
 \indexentry{redirect\_stdout|hyperpage}{55}
 \indexentry{redirect\_stderr|hyperpage}{55}
+\indexentry{Logging|hyperpage}{56}
+\indexentry{Output|hyperpage}{56}
 \indexentry{logging|hyperpage}{56}
 \indexentry{log file|hyperpage}{56}
 \indexentry{log file|hyperpage}{56}
@@ -303,3 +309,6 @@
 \indexentry{color codes|hyperpage}{57}
 \indexentry{ANSI|hyperpage}{58}
 \indexentry{color codes|hyperpage}{58}
+\indexentry{Config Files|hyperpage}{58}
+\indexentry{config file|hyperpage}{58}
+\indexentry{framework|hyperpage}{58}
