@@ -389,7 +389,7 @@ def mmorpdnd_instance():
     return MMORPDND()
 \end{lstlisting}
 
-You can define a list of test \idx{parameters} to be input into a test via the \idx{@pytest.mark.parametrize} decorator, allowing multiple input-output pairs to be tested with the same test function.
+You can define a list of test \idx{parameters} to be input into a test via the @\idx{pytest.mark.parametrize} decorator, allowing multiple input-output pairs to be tested with the same test function.
 
 \begin{lstlisting}
 @pytest.mark.parametrize("input_string, expected_output", [

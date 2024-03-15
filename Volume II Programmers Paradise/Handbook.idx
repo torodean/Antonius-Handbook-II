@@ -68,14 +68,26 @@
 \indexentry{services|hyperpage}{10}
 \indexentry{mouse|hyperpage}{10}
 \indexentry{System File Checker|hyperpage}{10}
+\indexentry{C++|hyperpage}{12}
+\indexentry{object-oriented|hyperpage}{12}
+\indexentry{OOP|hyperpage}{12}
+\indexentry{classes|hyperpage}{12}
+\indexentry{inheritance|hyperpage}{12}
+\indexentry{polymorphism|hyperpage}{12}
+\indexentry{memory management|hyperpage}{12}
 \indexentry{hello world|hyperpage}{12}
+\indexentry{arguments|hyperpage}{12}
 \indexentry{address|hyperpage}{13}
-\indexentry{pointer|hyperpage}{13}
-\indexentry{template|hyperpage}{14}
+\indexentry{ampersand|hyperpage}{13}
+\indexentry{address-of|hyperpage}{13}
+\indexentry{Pointers|hyperpage}{13}
+\indexentry{Templates|hyperpage}{14}
+\indexentry{boolean|hyperpage}{14}
 \indexentry{Input and Output|hyperpage}{14}
 \indexentry{Variable Types|hyperpage}{15}
 \indexentry{Vector|hyperpage}{15}
 \indexentry{vector|hyperpage}{15}
+\indexentry{Class|hyperpage}{15}
 \indexentry{std::string|hyperpage}{16}
 \indexentry{std::string|hyperpage}{16}
 \indexentry{integer|hyperpage}{16}
@@ -238,7 +250,7 @@
 \indexentry{temporary directory|hyperpage}{48}
 \indexentry{fixture|hyperpage}{49}
 \indexentry{parameters|hyperpage}{49}
-\indexentry{@pytest.mark.parametrize|hyperpage}{49}
+\indexentry{pytest.mark.parametrize|hyperpage}{49}
 \indexentry{Tkinter|hyperpage}{49}
 \indexentry{Tk|hyperpage}{49}
 \indexentry{GUI|hyperpage}{49}

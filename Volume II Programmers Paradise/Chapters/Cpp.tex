@@ -2,7 +2,7 @@
 \thispagestyle{fancy}
 \lstset{}\lstset{language=C++, style=cppstyle}
 
-C++ is a powerful, high-level programming language renowned for its performance, flexibility, and extensive standard library. Developed by Bjarne Stroustrup in the early 1980s, C++ is an extension of the C programming language with added support for object-oriented programming (OOP) features, such as classes, inheritance, and polymorphism. C++ is widely used in systems programming, game development, embedded systems, and performance-critical applications due to its close-to-the-metal capabilities and efficient memory management. Its rich standard library provides developers with a wide range of functions and data structures for building robust and scalable applications. C++'s versatility allows developers to write code that is both low-level, allowing direct hardware access, and high-level, facilitating complex software design patterns. Despite its complexity, C++ remains a popular choice for developers seeking performance and control over their software projects.
+\idx{C++} is a powerful, high-level programming language renowned for its performance, flexibility, and extensive standard library. Developed by Bjarne Stroustrup in the early 1980s, C++ is an extension of the C programming language with added support for \idx{object-oriented} programming (\idx{OOP}) features, such as \idx{classes}, \idx{inheritance}, and \idx{polymorphism}. C++ is widely used in systems programming, game development, embedded systems, and performance-critical applications due to its close-to-the-metal capabilities and efficient \idx{memory management}. Its rich standard library provides developers with a wide range of functions and data structures for building robust and scalable applications. C++'s versatility allows developers to write code that is both low-level, allowing direct hardware access, and high-level, facilitating complex software design patterns. Despite its complexity, C++ remains a popular choice for developers seeking performance and control over their software projects.
 
 \section{Data Types}
 
@@ -55,7 +55,7 @@ int main() {
 }
 \end{lstlisting}
 
-The C++ main function is designed by default to pass in arguments when a program is ran. The argument passing is set up as follows.
+The C++ main function is designed by default to pass in \idx{arguments} when a program is ran. The argument passing is set up as follows.
 \begin{lstlisting}
 int main(int argc, char *argv[])
 {
@@ -74,13 +74,13 @@ argument2
 argument3
 \end{lstlisting}
 
-``The address\index{address} of a variable can be obtained by preceding the name of a variable with an ampersand sign (\&), known as \textbf{address-of operator}. \cite{cpp:pointers}
+``The \idx{address} of a variable can be obtained by preceding the name of a variable with an \idx{ampersand} sign (\&), known as \idx{address-of} operator. \cite{cpp:pointers}
 \begin{lstlisting}
 var = 314;       //Creates a variable and stores in in memory.
 address = &var;  //Returns the memory address of the stored variable.
 \end{lstlisting}
 
-``\textbf{Pointers}\index{pointer} are said to `point to' the variable whose address they store.'' \cite{cpp:pointers} Proceeding a pointer with the dereference operator (*), which can be read as `value pointed to by' can be used to access a variable which stores the address of another variable (called a \textbf{pointer}).
+``\idx{Pointers} are said to `point to' the variable whose address they store.'' \cite{cpp:pointers} Proceeding a pointer with the dereference operator (*), which can be read as `value pointed to by' can be used to access a variable which stores the address of another variable (called a \textbf{pointer}).
 \begin{lstlisting}
 pointer = *address; //Sets pointer to the value of the variable that address points to.
 \end{lstlisting}
@@ -133,7 +133,7 @@ int main (){
 }
 \end{lstlisting}
 
-\textbf{Templates}\index{template} can be used for defining classes that support multiple types. 
+\idx{Templates} can be used for defining classes that support multiple types. 
 \begin{lstlisting}
 template<class type>
 class className{   //Creates a class named ClassName
@@ -157,7 +157,7 @@ template<class type>
 type className<type>::getMax(){ return a>b ? a:b; }
 \end{lstlisting}
 
-To loop over boolean values, you can use
+To loop over \idx{boolean} values, you can use
 \begin{lstlisting}
 for (bool a : { false, true }) { /* ... */ }
 \end{lstlisting}
@@ -224,7 +224,7 @@ V2[0][3] = 3.1415; //Sets the 4th element in the first row of V2 to 3.1415.
 
 
 \subsection{Class Structures}
-In C++ a \textbf{Class} is an object that can contain variables and functions all defined within the object to be used in various ways.
+In C++ a \idx{Class} is an object that can contain variables and functions all defined within the object to be used in various ways.
 \begin{lstlisting}
 // This creates a class named ParentClass.
 class ParentClass{
