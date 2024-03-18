@@ -179,18 +179,24 @@ List information about File(s) (in the current directory by default). You can sp
 ls         # list all items in a directory
 ls -1      # list all items in a directory (one item per line)
 ls -lh     # list all items with size, owner, and date modified
+ls -lu     # list all items with size, owner, and date accessed.
+ls -lc     # list all items with size, owner, and date of status change. 
 ls -lhrt   # Useful ls output
 
 ls -lhrt | head -4	 # Outputs only the first four entires
 ls -lhrt | tail -4	 # Outputs only the last four entires
 \end{lstlisting}
 
-List all of the block devices (hence partitions) detected by the machine
+The \idx{stat} command is used to display detailed information about a file or directory. It provides various details such as file type, permissions, size, timestamps (access, modify, and change), and more.
 \begin{lstlisting}
+stat filename
+\end{lstlisting}
+
+To list all of the \idx{block devices} (and hence \idx{partitions}) detected by the machine, you can use the `\idx{lsblk}' command. Block devices are physical or \idx{virtual} devices that can be used for data storage, such as hard drives, SSDs, and partitions.\begin{lstlisting}
 lsblk
 \end{lstlisting}
 
-\idx{Mount}\index{mount} and \idx{unmount} a partition
+To \idx{mount} and \idx{unmount} a partition
 \begin{lstlisting}
 sudo mount <DEVICE TO MOUNT> <MOUNT POINT>
 sudo mount /dev/sdb1/ /mnt/       # example of mounting
