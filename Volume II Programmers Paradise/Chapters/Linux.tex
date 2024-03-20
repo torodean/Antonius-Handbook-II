@@ -18,6 +18,12 @@ Retrieve information and valid arguments for a command. This works with many com
 COMMAND --help   # COMMAND must be a valid command such as cd, ls, etc...
 \end{lstlisting}
 
+To view the \idx{history} of commands entered or \idx{delete} a history entry, you can use the \idx{history} command. This could be useful if you accidentally typed in your \idx{password} or something similar into the terminal.
+\begin{lstlisting}
+history               # View command history.
+history -d <ID>       # Delete the history entry listed with number <ID>
+\end{lstlisting}
+
 Installing and updating packages using package managers such as \idx{apt}, \idx{yum}, or \idx{dnf}.
 \begin{lstlisting}
 sudo apt update  # Updates the list of available packages (APT)
