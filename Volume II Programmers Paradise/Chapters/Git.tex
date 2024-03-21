@@ -165,6 +165,10 @@ git commit --amend -m "New commit message"
 git push --force-with-lease origin your-branch-name
 \end{lstlisting} 
 
+On \idx{Windows}, you may see a large number of files listed as \idx{modified} when running a git \idx{status}. This could be caused by the way \idx{Windows} machines automatically modify and change \idx{file endings}. To fix this in git, you can use the core.\idx{autocrlf} setting. Setting it to true means that Git will automatically convert \idx{line endings} to the appropriate format for the operating system you're working on when you check out files.
+\begin{lstlisting}[style=terminalstyle]
+git config --global core.autocrlf true
+\end{lstlisting} 
 
 
 
@@ -230,3 +234,46 @@ For a free tutorial on creating a github.io website, you can follow the followin
 
 \url{https://gitwebsitetutorial.github.io/}
 \end{urlbox}
+
+
+
+
+
+
+
+
+
+ \section{Quality Of Life Hacks And Scripts}
+ 
+ \subsection{Repository Updating}
+ 
+ It is often the case that there are many git repositories stored in the same directory. In such an instance, it is also the case that the user may want to update all of them. This is a simple bash script to update all of the git repositories within a directory. This can be appropriately modified for other use cases and can also be modified to update submodules if desired.
+ 
+ \begin{lstlisting}[language=Bash, style=shellstyle]
+ #!/bin/bash
+ 
+ # Iterate through each directory in the current location
+ for dir in */; do
+     # Check if it's a directory
+     if [ -d "$dir" ]; then
+         # Enter the directory
+         cd "$dir" || continue
+         
+         # Check if it's a Git repository
+         if [ -d ".git" ]; then
+             echo "...Updating repository for $dir"
+             # Update the repository
+             git pull
+             git status
+             echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+         else
+             echo "Skipping $dir - Not a Git repository"
+         fi
+ 
+         # Go back to the original directory
+         cd - >/dev/null || exit
+     fi
+ done
+ \end{lstlisting}
+ 
+ 
