@@ -72,9 +72,22 @@ Restore volume icon/control button if it disappears.
 gsettings set com.canonical.indicator.sound visible true
 \end{lstlisting}
 
-Reset wifi services in case the connection gets lost.
+The command-line utility that is used to control systemd is called \idx{systemctl}, which is the init system and service manager in modern Linux distributions.
+\begin{lstlisting}
+sudo systemctl start <service_name>.service    # Start a service.
+sudo systemctl stop <service_name>.service     # Stop a service.
+sudo systemctl status <service_name>.service   # Get Status of a service.
+sudo systemctl restart <service_name>.service  # Restart a service.
+\end{lstlisting}
+
+Reset \idx{wifi} services in case the connection gets lost.
 \begin{lstlisting}
 sudo systemctl restart network-manager.service
+\end{lstlisting}
+
+The command-line utility used for querying and displaying logs from the systemd journal is \idx{journalctl}. The `-e' flag will start the log at the end (most recent) logged messages, which is often useful.
+\begin{lstlisting}
+sudo journalctl -xe
 \end{lstlisting}
 
 Turn off LCD display.
