@@ -85,7 +85,7 @@ Reset \idx{wifi} services in case the connection gets lost.
 sudo systemctl restart network-manager.service
 \end{lstlisting}
 
-The command-line utility used for querying and displaying logs from the systemd journal is \idx{journalctl}. The `-e' flag will start the log at the end (most recent) logged messages, which is often useful.
+The command-line utility used for querying and displaying \idx{logs} from the systemd journal is \idx{journalctl}. The `-e' flag will start the log at the end (most recent) logged messages, which is often useful.
 \begin{lstlisting}
 sudo journalctl -xe
 \end{lstlisting}
@@ -95,13 +95,18 @@ Turn off LCD display.
 xset dpms force off  // Turns off display.
 \end{lstlisting}
 
-Change or view the host name of a computer with the hostname file.
+Change or view the \idx{host} name of a computer with the hostname file.
 \begin{lstlisting}
 sudo nano /etc/hostname # Opens this file using nano for editing.
 hostname                # Command to see what the current hostname is.
 \end{lstlisting}
 
-
+To get the \idx{date} and \idx{time} of a system, you can use the \idx{date} command. You can further specify parameters to only return a single component of this which may be useful in scripting.
+\begin{lstlisting}
+date            # Returns "Tue Apr  2 13:31:21 UTC 2024"
+date +%Z        # Returns "UTC"
+date +%Y        # Returns "2024"
+\end{lstlisting}
 
 
 
