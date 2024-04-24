@@ -108,6 +108,11 @@ date +%Z        # Returns "UTC"
 date +%Y        # Returns "2024"
 \end{lstlisting}
 
+To run a command continuously on a loop and view the output, you can use the \idx{watch} command. This does not typically preserve colors in the output.
+\begin{lstlisting}
+watch -n 5 <command>   # Runs <command> every 5 seconds.
+\end{lstlisting}
+
 
 
 
