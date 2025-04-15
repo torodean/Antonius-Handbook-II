@@ -22,6 +22,7 @@ To view the \idx{history} of commands entered or \idx{delete} a history entry, y
 \begin{lstlisting}
 history               # View command history.
 history -d <ID>       # Delete the history entry listed with number <ID>
+# Prepend a space to a command to exclude it from history (if HISTCONTROL=ignorespace).
 \end{lstlisting}
 
 Installing and updating packages using package managers such as \idx{apt}, \idx{yum}, or \idx{dnf}.
@@ -78,6 +79,8 @@ sudo systemctl start <service_name>.service    # Start a service.
 sudo systemctl stop <service_name>.service     # Stop a service.
 sudo systemctl status <service_name>.service   # Get Status of a service.
 sudo systemctl restart <service_name>.service  # Restart a service.
+sudo systemctl enable <service_name>.service   # Enables a service to start on boot
+sudo systemctl disable <service_name>.service  # Disables a service from starting on boot
 \end{lstlisting}
 
 Reset \idx{wifi} services in case the connection gets lost.
@@ -87,6 +90,7 @@ sudo systemctl restart network-manager.service
 
 The command-line utility used for querying and displaying \idx{logs} from the systemd journal is \idx{journalctl}. The `-e' flag will start the log at the end (most recent) logged messages, which is often useful.
 \begin{lstlisting}
+sudo journalctl -e # Jumps to most recent logs
 sudo journalctl -xe
 \end{lstlisting}
 
@@ -99,6 +103,7 @@ Change or view the \idx{host} name of a computer with the hostname file.
 \begin{lstlisting}
 sudo nano /etc/hostname # Opens this file using nano for editing.
 hostname                # Command to see what the current hostname is.
+sudo hostnamectl set-hostname <name> # Sets hostname without a needed reboot.
 \end{lstlisting}
 
 To get the \idx{date} and \idx{time} of a system, you can use the \idx{date} command. You can further specify parameters to only return a single component of this which may be useful in scripting.
@@ -110,9 +115,23 @@ date +%Y        # Returns "2024"
 
 To run a command continuously on a loop and view the output, you can use the \idx{watch} command. This does not typically preserve colors in the output.
 \begin{lstlisting}
-watch -n 5 <command>   # Runs <command> every 5 seconds.
+watch -n 5 <command>         # Runs <command> every 5 seconds.
+watch --color -n 5 <command> # Attempts to preserve colors in output
 \end{lstlisting}
 
+\subsection{Checking RPM Packages and Versions\index{RPM Packages}}
+To query and manage RPM (Red Hat Package Manager) packages installed on a system, you can use the \idx{rpm} command with various options to retrieve information such as package versions, details, and installation status.
+
+\begin{lstlisting}
+rpm -q <package>                 # Queries if a package is installed.
+rpm -q --queryformat '%{VERSION}-%{RELEASE}' <package>  # Displays the version and release of the specified package.
+/usr/bin/rpm -q --queryformat '%{VERSION}-%{RELEASE}' <package>  # Same as above, using the full path to the rpm binary.
+rpm -qi <package>                # Displays detailed information about the specified package, including version, release, and description.
+rpm -qa                          # Lists all installed RPM packages on the system.
+rpm -qa | grep <package>         # Searches for a specific package in the list of all installed packages.
+rpm -qf /path/to/file            # Identifies which package owns a specific file on the system.
+rpm -q --changelog <package>     # Shows the changelog of the specified package.
+\end{lstlisting}
 
 
 
