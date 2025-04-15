@@ -627,6 +627,14 @@ To define specific code to use on \idx{Windows} vs \idx{Linux} you can use the f
 \end{lstlisting}
 
 
+\subsubsection{Inspecting Dynamic Symbols}
+The \idx{nm -D} command lists dynamic symbols in shared libraries or executables, useful for debugging linker errors. It shows symbols a library provides or requires, marked as \texttt{T} (defined, e.g., functions) or \texttt{U} (undefined, to be resolved by another library). Use with \texttt{grep} to find specific symbols.
+
+\begin{lstlisting}[style=terminalstyle]
+nm -D /usr/lib64/libmyLibrary.so | grep someMethod
+\end{lstlisting}
+
+\textbf{Output Example:} If \texttt{U otherLibrary::someClass::someMethod} appears, the library expects \texttt{someMethod} from another library, indicating a dependency. If empty, the symbol is not referenced.
 
 
 
