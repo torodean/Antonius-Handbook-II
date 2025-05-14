@@ -793,6 +793,11 @@ int main() {
 
 
 
+
+
+
+
+
 \subsubsection{\idx{Function Pointers}}
 
 C++ allows you to define and use "\idx{function pointers}," which are \idx{pointers} that point to functions rather than data. Function pointers enable you to treat functions as first-class citizens, allowing you to pass functions as arguments to other functions, store them in data structures, and call them dynamically at runtime.
@@ -829,4 +834,91 @@ int main() {
     return 0;
 }
 \end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{PImpl Idiom (Pointer to Implementation)}
+
+The \idx{PImpl} (Pointer to Implementation) idiom is commonly used in C++ to hide implementation details and minimize the compilation dependencies between an interface and the implementation. It is especially useful when you want to reduce the recompilation cost when modifying the implementation of a class, as it allows you to change the private members of a class without affecting its header file.
+
+The PImpl idiom works by moving the implementation details into a separate class, which is accessed through a pointer in the public class. The pointer is then used to forward method calls to the actual implementation.
+
+\subsection{Example: PImpl Idiom}
+
+Below is an example of how the PImpl idiom can be implemented:
+
+\begin{lstlisting}
+#include <memory>
+#include <iostream>
+
+// Forward declaration of the implementation class.
+class MyClassImpl;
+
+// Public interface of MyClass, which hides the implementation details.
+class MyClass {
+public:
+    MyClass();
+    ~MyClass();
+
+    void display() const;
+
+private:
+    // Pointer to the implementation (PImpl).
+    std::unique_ptr<MyClassImpl> pImpl;
+};
+
+// The implementation class (hidden from the public interface).
+class MyClassImpl {
+public:
+    void displayImpl() const {
+        std::cout << "Displaying implementation details!" << std::endl;
+    }
+};
+
+// Constructor initializes the pImpl pointer.
+MyClass::MyClass() : pImpl(std::make_unique<MyClassImpl>()) {}
+
+// Destructor ensures proper cleanup of the pImpl pointer.
+MyClass::~MyClass() = default;
+
+// Public method that forwards the call to the implementation.
+void MyClass::display() const {
+    pImpl->displayImpl();
+}
+
+int main() {
+    MyClass obj;
+    obj.display();  // Calls the implementation's display method.
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Benefits of PImpl}
+The PImpl idiom provides several advantages:
+\begin{itemize}
+    \item \textbf{Reduced Compilation Dependencies}: Changes in the implementation class do not require recompiling the public interface (header file).
+    \item \textbf{Binary Compatibility}: The header file remains unchanged, ensuring that the ABI (Application Binary Interface) remains stable across different versions.
+    \item \textbf{Encapsulation}: The implementation details are hidden from the user, reducing the exposure of internal data structures and methods.
+\end{itemize}
+
+\subsection{Considerations}
+\begin{itemize}
+    \item \textbf{Pointer Overhead}: The use of a pointer adds an extra level of indirection, which may incur a slight performance penalty, especially when dealing with frequently accessed members.
+    \item \textbf{Memory Management}: Proper memory management (e.g., using \idx{std::unique\_ptr}) is necessary to ensure that the implementation class is properly destroyed when the public class goes out of scope.
+\end{itemize}
+
+
+
+
 
