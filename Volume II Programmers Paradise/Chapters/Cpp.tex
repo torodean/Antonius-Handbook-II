@@ -946,19 +946,19 @@ struct tag_float {};
 
 // General template for the function (does nothing by default).
 template <typename T, typename Tag>
-void process(T value, Tag) {
+void process(T value, Tag tag) {
     std::cout << "Generic processing" << std::endl;
 }
 
 // Specialized version of process for integers.
 template <>
-void process<int, tag_int>(int value, tag_int) {
+void process<int, tag_int>(int value, tag_int tag) {
     std::cout << "Processing integer: " << value << std::endl;
 }
 
 // Specialized version of process for floats.
 template <>
-void process<float, tag_float>(float value, tag_float) {
+void process<float, tag_float>(float value, tag_float tag) {
     std::cout << "Processing float: " << value << std::endl;
 }
 
