@@ -922,3 +922,75 @@ The PImpl idiom provides several advantages:
 
 
 
+
+
+
+
+
+
+\section{Tag Dispatch}
+
+\idx{Tag dispatch} is a technique used in C++ to implement function overload resolution based on types that are not directly related to the arguments but serve as tags to differentiate between different implementations. It allows for more flexible and efficient generic code by choosing the correct implementation based on type traits or other compile-time conditions.
+
+The basic idea is to define different versions of a function or method, each specialized for a particular "tag" type. The dispatching mechanism is usually done through template specialization or \idx{SFINAE} (Substitution Failure Is Not An Error), where the tag itself is used to determine which function version to call.
+
+\subsection{Example: Tag Dispatch}
+
+\begin{lstlisting}
+#include <iostream>
+#include <type_traits>
+
+// Tag types that will be used for dispatching.
+struct tag_int {};
+struct tag_float {};
+
+// General template for the function (does nothing by default).
+template <typename T, typename Tag>
+void process(T value, Tag) {
+    std::cout << "Generic processing" << std::endl;
+}
+
+// Specialized version of process for integers.
+template <>
+void process<int, tag_int>(int value, tag_int) {
+    std::cout << "Processing integer: " << value << std::endl;
+}
+
+// Specialized version of process for floats.
+template <>
+void process<float, tag_float>(float value, tag_float) {
+    std::cout << "Processing float: " << value << std::endl;
+}
+
+int main() {
+    int i = 10;
+    float f = 3.14f;
+
+    process(i, tag_int{});   // Calls the integer-specific version.
+    process(f, tag_float{});  // Calls the float-specific version.
+    process(i, tag_float{});  // Calls the generic version.
+    
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Benefits of Tag Dispatch}
+
+Tag dispatch can be particularly useful in the following cases:
+\begin{itemize}
+    \item \textbf{Specialized Implementations}: Allows different code paths to be chosen based on the type of the argument in a highly flexible and extensible way.
+    \item \textbf{Compile-Time Decisions}: The dispatch mechanism enables making decisions at compile time, resulting in more efficient and optimized code by avoiding runtime overhead.
+    \item \textbf{Extensibility}: Adding new types or modifying the behavior for specific types requires minimal changes, making the system easy to extend.
+\end{itemize}
+
+\subsection{Considerations}
+\begin{itemize}
+    \item \textbf{Complexity}: While powerful, tag dispatch can make the codebase harder to maintain due to its reliance on template metaprogramming techniques and the need to define specialized versions of functions.
+    \item \textbf{Overhead}: In some cases, the number of specialized templates required for dispatching can lead to a larger code size, especially when dealing with many types.
+\end{itemize}
+
+
+
+
+
+
