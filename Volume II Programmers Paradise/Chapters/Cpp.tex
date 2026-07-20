@@ -101,9 +101,9 @@ char *mychar;   //Creates mychar to point to a char.
 short *myshort; //Creates myshort to point to a short.
 long *mylong;   //Creates mylong to point to a long.
 
-++mychar;       //Would increment to the next memory slot.
-++myshort;      //Would increment two memory slots.
-++mylong;       //Would increment four memory slots.
+++mychar;       //Would increment to the next memory slot (sizeof(char) = 1 byte).
+++myshort;      //Would increment two memory slots (sizeof(short) = 2 bytes).
+++mylong;       //Would increment sizeof(long) bytes: 4 on Windows (LLP64), 8 on most Linux/macOS 64-bit (LP64).
 
 *p++   // same as *(p++): increment pointer, and dereference unincremented address
 *++p   // same as *(++p): increment pointer, and dereference incremented address
@@ -143,7 +143,7 @@ public:
 	type getMax(){ return a>b ? a:b; };
 };
 \end{lstlisting}
-...Alternately, the above code can also be written as
+...Alternately, the above code can also be written as below. Note that this is a \textit{member-function definition}, not a free function: because it is a member of \texttt{className}, it may access the private members \texttt{a} and \texttt{b}. For a class template like this, the out-of-line definition must also appear in the same header (visible at the point of instantiation), not in a separate \texttt{.cpp} file.
 \begin{lstlisting}
 template<class type>
 class className{   //Creates a class named ClassName
@@ -224,14 +224,14 @@ V2[0][3] = 3.1415; //Sets the 4th element in the first row of V2 to 3.1415.
 
 
 \subsection{Class Structures}
-In C++ a \idx{Class} is an object that can contain variables and functions all defined within the object to be used in various ways.
+In C++ a \idx{Class} is an object that can contain variables and functions all defined within the object to be used in various ways. Classes are instantiated by a \idx{constructor} and torn down by a \idx{destructor}.
 \begin{lstlisting}
 // This creates a class named ParentClass.
 class ParentClass{
 	// The public members of a class are accessible to anything outside of the class.
 	public:
 		ParentClass();  // Constructor for the ParentClass.
-		~ParentClass(); // De-constructor for the ParentClass.
+		~ParentClass(); // Destructor for the ParentClass.
 		int notSoSpecialInt = 13; // Creates an integer.
 };
 
@@ -600,12 +600,14 @@ void one() {
 
 \section{Compiler/Processor specific}
 
-The order of bytes within a binary representation of a number can be either \idx{little endian} or \idx{big endian}. In some cases, it is important to know this. Below is a function that will return the endianness of the machine you are compiling on.
+The order of bytes within a binary representation of a number can be either \idx{little endian} or \idx{big endian}; this property is known as \idx{endianness}. In some cases, it is important to know this. Below is a function that will return the endianness of the machine you are compiling on.
 \begin{lstlisting}
 bool is_big_endian(){
 	union { uint32_t i; char c[4]; } bint = {0x01020304};
 	return bint.c[0] == 1;
 }
+
+#include <endian.h>   // Defines BYTE_ORDER, BIG_ENDIAN, LITTLE_ENDIAN (POSIX).
 
 #if BYTE_ORDER == BIG_ENDIAN
 	// Use big endian code here.
@@ -615,6 +617,8 @@ bool is_big_endian(){
 	// Use little endian code here.
 #endif
 \end{lstlisting}
+
+On Windows (MSVC), \texttt{<endian.h>} is not available; use the compiler built-ins \texttt{\_\_BYTE\_ORDER\_\_}, \texttt{\_\_ORDER\_BIG\_ENDIAN\_\_}, and \texttt{\_\_ORDER\_LITTLE\_ENDIAN\_\_} instead (e.g., \texttt{\#if \_\_BYTE\_ORDER\_\_ == \_\_ORDER\_LITTLE\_ENDIAN\_\_}).
 
 To define specific code to use on \idx{Windows} vs \idx{Linux} you can use the following
 \begin{lstlisting}
@@ -628,7 +632,7 @@ To define specific code to use on \idx{Windows} vs \idx{Linux} you can use the f
 
 
 \subsubsection{Inspecting Dynamic Symbols}
-The \idx{nm -D} command lists dynamic symbols in shared libraries or executables, useful for debugging linker errors. It shows symbols a library provides or requires, marked as \texttt{T} (defined, e.g., functions) or \texttt{U} (undefined, to be resolved by another library). Use with \texttt{grep} to find specific symbols.
+The \idx{nm -D} command lists dynamic symbols in shared libraries or executables, useful for debugging \idx{linker} errors. It shows symbols a library provides or requires, marked as \texttt{T} (defined, e.g., functions) or \texttt{U} (undefined, to be resolved by another library). Use with \texttt{grep} to find specific symbols.
 
 \begin{lstlisting}[style=terminalstyle]
 nm -D /usr/lib64/libmyLibrary.so | grep someMethod
@@ -711,38 +715,38 @@ int main() {
 }
 \end{lstlisting}
 
-When using \idx{user-defined} \idx{literals}, it is up to the user to ensure that the units are consistent throughout the application. For example, the below defines celcius and farenheit temperatures. The celcius temperature has a conversion to itself, so all output temperatures will be in the units of celcius, whereas all other conversions will be converted to celcius.
+When using \idx{user-defined} \idx{literals}, it is up to the user to ensure that the units are consistent throughout the application. For example, the below defines literals that convert between Celsius and Fahrenheit. Each literal both tags a value with its source unit and performs the conversion, so the unit of every quantity is explicit at the point where it is written.
 \begin{lstlisting}
 #include <iostream>
 
-// Define a user-defined literal for Celsius
-constexpr double operator"" _C(long double celsius) {
-    return celsius;
+// Convert a Celsius value to Fahrenheit.
+constexpr double operator"" _CtoF(long double celsius) {
+    return (celsius * 9.0 / 5.0) + 32.0;
 }
 
-// Define a user-defined literal for Fahrenheit
-constexpr double operator"" _F(long double fahrenheit) {
+// Convert a Fahrenheit value to Celsius.
+constexpr double operator"" _FtoC(long double fahrenheit) {
     return (fahrenheit - 32.0) * 5.0 / 9.0;
 }
 
 int main() {
-    // Use the user-defined literals to represent temperatures
-    constexpr double freezing_point_C = 0.0_C;
-    constexpr double boiling_point_C = 100.0_C;
+    // Convert Celsius values to Fahrenheit.
+    constexpr double freezing_point_F = 0.0_CtoF;    // 0 C -> 32 F
+    constexpr double boiling_point_F  = 100.0_CtoF;  // 100 C -> 212 F
 
-    std::cout << "Freezing point of water in Celsius: " << freezing_point_C << std::endl;
-	// Outputs "Freezing point of water in Celsius: 0"
+    std::cout << "Freezing point of water in Fahrenheit: " << freezing_point_F << std::endl;
+	// Outputs "Freezing point of water in Fahrenheit: 32"
+    std::cout << "Boiling point of water in Fahrenheit: " << boiling_point_F << std::endl;
+	// Outputs "Boiling point of water in Fahrenheit: 212"
+
+    // Convert Fahrenheit values to Celsius.
+    constexpr double boiling_point_C  = 212.0_FtoC;  // 212 F -> 100 C
+    constexpr double body_temp_C      = 98.6_FtoC;   // 98.6 F -> 37 C
+
     std::cout << "Boiling point of water in Celsius: " << boiling_point_C << std::endl;
 	// Outputs "Boiling point of water in Celsius: 100"
-
-    // Use the user-defined literals to convert Fahrenheit to Celsius
-    constexpr double temperature_F = 212.0_F;
-    constexpr double temperature_C = 98.6_F;
-
-    std::cout << "Temperature in Fahrenheit: " << temperature_F << std::endl;
-	// Outputs "Temperature in Fahrenheit: 100" (which is the celcius value)
-    std::cout << "Equivalent temperature in Celsius: " << temperature_C << std::endl;
-	// Outputs "Equivalent temperature in Celsius: 37"
+    std::cout << "Body temperature in Celsius: " << body_temp_C << std::endl;
+	// Outputs "Body temperature in Celsius: 37"
 
     return 0;
 }
@@ -1464,7 +1468,7 @@ These features are essential for writing modern, generic, and efficient C++ code
 
 
 \section{Lvalues and Rvalues}
-In C++, every expression has both a type and a value category. The two most important value categories are \idx{lvalue} and \idx{rvalue}. An \idx{lvalue} (``locator value'') is an expression that refers to a persistent object in memory - it has an address and can be assigned to. An \idx{rvalue} (``read value'') is a temporary value that does not persist beyond the expression that creates it - it can be read but not assigned to.
+In C++, every expression has both a type and a \idx{value category}. The two most important value categories are \idx{lvalue} and \idx{rvalue}. An \idx{lvalue} (``locator value'') is an expression that refers to a persistent object in memory - it has an address and can be assigned to. An \idx{rvalue} (``read value'') is a temporary value that does not persist beyond the expression that creates it - it can be read but not assigned to.
 \begin{lstlisting}
 int x = 10;
 int y = 20;
@@ -1481,7 +1485,7 @@ int& ref = x;    // OK: An lvalue reference can bind to an lvalue.
 int&& rref = 5;  // OK: An rvalue reference can bind to an rvalue.
 rref = 10;       // OK: rref is now an lvalue (it has a name and address).
 \end{lstlisting}
-Understanding the distinction is essential for \idx{move semantics} and \idx{perfect forwarding}. When an rvalue is assigned to an \idx{rvalue reference} (declared with \texttt{\&\&}), it signals that the value is temporary and its resources can be ``stolen'' (moved) rather than copied.
+Understanding the distinction is essential for \idx{move semantics} and \idx{perfect forwarding}. When an rvalue is assigned to an \idx{rvalue reference} (a kind of \idx{reference} declared with \texttt{\&\&}), it signals that the value is temporary and its resources can be ``stolen'' (moved) rather than copied.
 
 \section{Move Semantics}
 Introduced in \idx{C++11}, \idx{move semantics} allow resources (e.g., heap memory, file handles) to be transferred from one object to another rather than copied. This avoids expensive deep copies of temporary objects. A \idx{move constructor} and \idx{move assignment operator} are invoked when the source is an \idx{rvalue}, allowing the destination to ``steal'' the internal pointer and leave the source in a valid but empty state. The \idx{std::move} function casts an lvalue to an rvalue reference, enabling the move.
@@ -1521,7 +1525,7 @@ int main() {
 The key takeaway is that virtual calls incur a small runtime overhead (two pointer dereferences: one to get the vptr, one to get the function pointer from the vtable) compared to non-virtual calls. A virtual call also prevents the compiler from inlining the function. The \idx{override} keyword (C++11) is recommended to ensure the function actually overrides a base class virtual function, producing a compiler error if the signature does not match.
 
 \section{RAII (Resource Acquisition Is Initialization)}
-\idx{RAII} is a core C++ programming idiom where a resource's lifetime is tied to the lifetime of an object. The resource (memory, file handle, socket, mutex) is acquired in the object's constructor and released in its destructor. Because C++ guarantees that destructors run when an object goes out of scope (even via exceptions), RAII guarantees leak-free resource management without manual cleanup.
+\idx{RAII} is a core C++ programming idiom where a resource's \idx{lifetime} is tied to the lifetime of an object. The resource (memory, file handle, socket, mutex) is acquired in the object's constructor and released in its destructor. Because C++ guarantees that destructors run when an object goes out of \idx{scope} (even via exceptions), RAII guarantees leak-free resource management without manual cleanup.
 \begin{lstlisting}
 #include <fstream>
 #include <mutex>
