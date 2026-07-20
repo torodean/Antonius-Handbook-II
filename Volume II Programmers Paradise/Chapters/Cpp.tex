@@ -101,9 +101,9 @@ char *mychar;   //Creates mychar to point to a char.
 short *myshort; //Creates myshort to point to a short.
 long *mylong;   //Creates mylong to point to a long.
 
-++mychar;       //Would increment to the next memory slot.
-++myshort;      //Would increment two memory slots.
-++mylong;       //Would increment four memory slots.
+++mychar;       //Would increment to the next memory slot (sizeof(char) = 1 byte).
+++myshort;      //Would increment two memory slots (sizeof(short) = 2 bytes).
+++mylong;       //Would increment sizeof(long) bytes: 4 on Windows (LLP64), 8 on most Linux/macOS 64-bit (LP64).
 
 *p++   // same as *(p++): increment pointer, and dereference unincremented address
 *++p   // same as *(++p): increment pointer, and dereference incremented address
@@ -143,7 +143,7 @@ public:
 	type getMax(){ return a>b ? a:b; };
 };
 \end{lstlisting}
-...Alternately, the above code can also be written as
+...Alternately, the above code can also be written as below. Note that this is a \textit{member-function definition}, not a free function: because it is a member of \texttt{className}, it may access the private members \texttt{a} and \texttt{b}. For a class template like this, the out-of-line definition must also appear in the same header (visible at the point of instantiation), not in a separate \texttt{.cpp} file.
 \begin{lstlisting}
 template<class type>
 class className{   //Creates a class named ClassName
@@ -224,14 +224,14 @@ V2[0][3] = 3.1415; //Sets the 4th element in the first row of V2 to 3.1415.
 
 
 \subsection{Class Structures}
-In C++ a \idx{Class} is an object that can contain variables and functions all defined within the object to be used in various ways.
+In C++ a \idx{Class} is an object that can contain variables and functions all defined within the object to be used in various ways. Classes are instantiated by a \idx{constructor} and torn down by a \idx{destructor}.
 \begin{lstlisting}
 // This creates a class named ParentClass.
 class ParentClass{
 	// The public members of a class are accessible to anything outside of the class.
 	public:
 		ParentClass();  // Constructor for the ParentClass.
-		~ParentClass(); // De-constructor for the ParentClass.
+		~ParentClass(); // Destructor for the ParentClass.
 		int notSoSpecialInt = 13; // Creates an integer.
 };
 
@@ -600,12 +600,14 @@ void one() {
 
 \section{Compiler/Processor specific}
 
-The order of bytes within a binary representation of a number can be either \idx{little endian} or \idx{big endian}. In some cases, it is important to know this. Below is a function that will return the endianness of the machine you are compiling on.
+The order of bytes within a binary representation of a number can be either \idx{little endian} or \idx{big endian}; this property is known as \idx{endianness}. In some cases, it is important to know this. Below is a function that will return the endianness of the machine you are compiling on.
 \begin{lstlisting}
 bool is_big_endian(){
 	union { uint32_t i; char c[4]; } bint = {0x01020304};
 	return bint.c[0] == 1;
 }
+
+#include <endian.h>   // Defines BYTE_ORDER, BIG_ENDIAN, LITTLE_ENDIAN (POSIX).
 
 #if BYTE_ORDER == BIG_ENDIAN
 	// Use big endian code here.
@@ -615,6 +617,8 @@ bool is_big_endian(){
 	// Use little endian code here.
 #endif
 \end{lstlisting}
+
+On Windows (MSVC), \texttt{<endian.h>} is not available; use the compiler built-ins \texttt{\_\_BYTE\_ORDER\_\_}, \texttt{\_\_ORDER\_BIG\_ENDIAN\_\_}, and \texttt{\_\_ORDER\_LITTLE\_ENDIAN\_\_} instead (e.g., \texttt{\#if \_\_BYTE\_ORDER\_\_ == \_\_ORDER\_LITTLE\_ENDIAN\_\_}).
 
 To define specific code to use on \idx{Windows} vs \idx{Linux} you can use the following
 \begin{lstlisting}
@@ -628,7 +632,7 @@ To define specific code to use on \idx{Windows} vs \idx{Linux} you can use the f
 
 
 \subsubsection{Inspecting Dynamic Symbols}
-The \idx{nm -D} command lists dynamic symbols in shared libraries or executables, useful for debugging linker errors. It shows symbols a library provides or requires, marked as \texttt{T} (defined, e.g., functions) or \texttt{U} (undefined, to be resolved by another library). Use with \texttt{grep} to find specific symbols.
+The \idx{nm -D} command lists dynamic symbols in shared libraries or executables, useful for debugging \idx{linker} errors. It shows symbols a library provides or requires, marked as \texttt{T} (defined, e.g., functions) or \texttt{U} (undefined, to be resolved by another library). Use with \texttt{grep} to find specific symbols.
 
 \begin{lstlisting}[style=terminalstyle]
 nm -D /usr/lib64/libmyLibrary.so | grep someMethod
@@ -711,38 +715,38 @@ int main() {
 }
 \end{lstlisting}
 
-When using \idx{user-defined} \idx{literals}, it is up to the user to ensure that the units are consistent throughout the application. For example, the below defines celcius and farenheit temperatures. The celcius temperature has a conversion to itself, so all output temperatures will be in the units of celcius, whereas all other conversions will be converted to celcius.
+When using \idx{user-defined} \idx{literals}, it is up to the user to ensure that the units are consistent throughout the application. For example, the below defines literals that convert between Celsius and Fahrenheit. Each literal both tags a value with its source unit and performs the conversion, so the unit of every quantity is explicit at the point where it is written.
 \begin{lstlisting}
 #include <iostream>
 
-// Define a user-defined literal for Celsius
-constexpr double operator"" _C(long double celsius) {
-    return celsius;
+// Convert a Celsius value to Fahrenheit.
+constexpr double operator"" _CtoF(long double celsius) {
+    return (celsius * 9.0 / 5.0) + 32.0;
 }
 
-// Define a user-defined literal for Fahrenheit
-constexpr double operator"" _F(long double fahrenheit) {
+// Convert a Fahrenheit value to Celsius.
+constexpr double operator"" _FtoC(long double fahrenheit) {
     return (fahrenheit - 32.0) * 5.0 / 9.0;
 }
 
 int main() {
-    // Use the user-defined literals to represent temperatures
-    constexpr double freezing_point_C = 0.0_C;
-    constexpr double boiling_point_C = 100.0_C;
+    // Convert Celsius values to Fahrenheit.
+    constexpr double freezing_point_F = 0.0_CtoF;    // 0 C -> 32 F
+    constexpr double boiling_point_F  = 100.0_CtoF;  // 100 C -> 212 F
 
-    std::cout << "Freezing point of water in Celsius: " << freezing_point_C << std::endl;
-	// Outputs "Freezing point of water in Celsius: 0"
+    std::cout << "Freezing point of water in Fahrenheit: " << freezing_point_F << std::endl;
+	// Outputs "Freezing point of water in Fahrenheit: 32"
+    std::cout << "Boiling point of water in Fahrenheit: " << boiling_point_F << std::endl;
+	// Outputs "Boiling point of water in Fahrenheit: 212"
+
+    // Convert Fahrenheit values to Celsius.
+    constexpr double boiling_point_C  = 212.0_FtoC;  // 212 F -> 100 C
+    constexpr double body_temp_C      = 98.6_FtoC;   // 98.6 F -> 37 C
+
     std::cout << "Boiling point of water in Celsius: " << boiling_point_C << std::endl;
 	// Outputs "Boiling point of water in Celsius: 100"
-
-    // Use the user-defined literals to convert Fahrenheit to Celsius
-    constexpr double temperature_F = 212.0_F;
-    constexpr double temperature_C = 98.6_F;
-
-    std::cout << "Temperature in Fahrenheit: " << temperature_F << std::endl;
-	// Outputs "Temperature in Fahrenheit: 100" (which is the celcius value)
-    std::cout << "Equivalent temperature in Celsius: " << temperature_C << std::endl;
-	// Outputs "Equivalent temperature in Celsius: 37"
+    std::cout << "Body temperature in Celsius: " << body_temp_C << std::endl;
+	// Outputs "Body temperature in Celsius: 37"
 
     return 0;
 }
@@ -992,5 +996,651 @@ Tag dispatch can be particularly useful in the following cases:
 
 
 
+
+\section{Modern C++ Utility Types}
+Modern C++ (C++11 and later) introduces several utility types that simplify common programming tasks. These are part of the C++ Standard Library and do not require any external dependencies. They are used across a wide range of applications, from everyday code to library development, and are independent of any specific programming paradigm.
+
+\subsection{std::optional}
+Introduced in \idx{C++17}, \idx{std::optional} provides a type-safe way to represent optional values - a value that may or may not exist. This avoids the need for sentinel values such as \texttt{-1}, \texttt{nullptr}, or separate boolean flags. An \texttt{std::optional} either contains a value of the specified type or is empty (represented by \idx{std::nullopt}).
+\begin{lstlisting}
+#include <optional>
+#include <string>
+
+std::optional<std::string> getValue(const std::string& key) {
+    if (hasKey(key)) {
+        return getValueForKey(key);
+    }
+    return std::nullopt; // Explicitly indicates no value.
+}
+
+// Usage:
+auto result = getValue("myKey");
+if (result.has_value()) {
+    std::cout << *result << std::endl; // dereference to access the value
+} else {
+    std::cout << "Key not found!" << std::endl;
+}
+\end{lstlisting}
+\idx{std::optional} is commonly used for return values that may not exist (e.g., lookup, parse, file read), avoiding magic sentinel values, and writing safer, more expressive code.
+
+\subsection{std::make\_pair and std::tuple}
+\idx{std::make\_pair} (available since \idx{C++11}) and \idx{std::make\_tuple} (available since \idx{C++11}) are utility functions used to construct \idx{pairs} and \idx{tuples} from values. They automatically deduce the element types, making them convenient for bundling multiple values together without defining a custom struct.
+\begin{lstlisting}
+#include <utility>
+#include <tuple>
+
+auto p = std::make_pair("name", 42);          // std::pair<const char*, int>
+auto t = std::make_tuple(1, 2.5, "hello");    // std::tuple<int, double, const char*>
+
+// Accessing elements of a pair
+std::cout << p.first << ": " << p.second << std::endl;  // name: 42
+
+// Accessing elements of a tuple by index
+std::cout << std::get<0>(t) << ", " << std::get<1>(t) << std::endl;  // 1, 2.5
+\end{lstlisting}
+These utilities are commonly used to store multiple values together (e.g., key-value pairs), return multiple values from a function, and pass multiple arguments to a function or lambda.
+
+\subsection{std::apply}
+Introduced in \idx{C++17}, \idx{std::apply} calls a callable object (such as a function or \idx{lambda}) with the elements of a \idx{tuple} as its arguments. While \texttt{std::get<N>()} works fine when you know the tuple's structure at write time, \texttt{std::apply} is essential in generic code where the tuple's size and element types are not known until compile time. A common real-world use case is a task scheduler that stores deferred function calls as tuples of (function, arguments...) and executes them later.
+\begin{lstlisting}
+#include <iostream>
+#include <tuple>
+#include <string>
+
+// A generic task executor that receives a tuple of (function, args...).
+// At this point, we have NO IDEA what's in the tuple -- how many elements,
+// what types, etc. We just know it's a tuple that represents a callable
+// and its arguments.
+template<typename Tuple>
+void executeTask(Tuple&& task) {
+    // std::apply unpacks the tuple and calls the function with its args.
+    // We couldn't write std::get<0>(task)(std::get<1>(task), std::get<2>(task)...)
+    // because we don't know how many arguments there are.
+    std::apply([](auto&& func, auto&&... args) {
+        func(std::forward<decltype(args)>(args)...);
+    }, task);
+}
+
+void printSum(int a, int b) {
+    std::cout << "Sum: " << a + b << std::endl;
+}
+
+void greet(const std::string& name, int times) {
+    for (int i = 0; i < times; i++)
+        std::cout << "Hello, " << name << "!" << std::endl;
+}
+
+int main() {
+    // Tasks created elsewhere -- the executor doesn't know their structure
+    auto task1 = std::make_tuple(printSum, 3, 4);
+    auto task2 = std::make_tuple(greet, std::string("World"), 2);
+
+    executeTask(task1);
+    // Output: Sum: 7
+
+    executeTask(task2);
+    // Output: Hello, World!
+    //         Hello, World!
+
+    return 0;
+}
+\end{lstlisting}
+Notice that \texttt{executeTask} works for both tasks even though they have different numbers of arguments and completely different types. There is no way to write that with \texttt{std::get<N>} because you would need to hardcode the indices, and those indices are different for each task.
+
+\subsection{std::tie}
+Introduced in \idx{C++11}, \idx{std::tie} creates a tuple of references from existing variables, allowing a returned \idx{tuple} or \idx{pair} to be unpacked into those variables in a single assignment. It can also be combined with \idx{std::ignore} to discard unwanted elements.
+\begin{lstlisting}
+std::tuple<bool, int, std::string> getConfig() {
+    return {true, 42, "default"};
+}
+
+bool ok;
+int id;
+std::string name;
+std::tie(ok, id, name) = getConfig();
+// ok = true, id = 42, name = "default"
+
+// Discard the second element
+std::tie(ok, std::ignore, name) = getConfig();
+\end{lstlisting}
+If declaring new variables, C++17 \idx{structured bindings} (\texttt{auto [ok, id, name] = getConfig();}) is generally preferred. \idx{std::tie} remains useful when the variables already exist or when discarding elements with \idx{std::ignore}.
+
+\subsection{std::ignore}
+\idx{std::ignore} is a placeholder object that discards a value assigned to it. Its primary use is with \idx{std::tie} to skip elements when unpacking a \idx{tuple} or \idx{pair}.
+\begin{lstlisting}
+bool ok;
+std::string name;
+// Discard the int (index 1), keep the bool and string
+std::tie(ok, std::ignore, name) = getConfig();
+\end{lstlisting}
+
+\subsection{std::variant}
+Introduced in \idx{C++17}, \idx{std::variant} provides a type-safe \idx{union}. Unlike a C-style \idx{union}, which provides no way to know which type is currently stored, \idx{std::variant} tracks the active alternative and provides safe access. A mismatched access throws \idx{std::bad\_variant\_access}.
+\begin{lstlisting}
+std::variant<int, double, std::string> value;
+
+value = 42;
+std::cout << std::get<int>(value) << std::endl;       // 42
+
+value = "hello";
+if (auto ptr = std::get_if<std::string>(&value)) {
+    std::cout << *ptr << std::endl;                   // hello
+}
+// std::get<int>(value);  // Throws std::bad_variant_access
+\end{lstlisting}
+
+\subsection{std::any}
+Introduced in \idx{C++17}, \idx{std::any} is a container that can hold a value of any type. Unlike \idx{std::variant}, which requires enumerating all possible types upfront, \idx{std::any} can store any type without advance declaration. The trade-off is that the exact stored type must be known to retrieve the value via \idx{std::any\_cast}, and a mismatched cast throws \idx{std::bad\_any\_cast}.
+\begin{lstlisting}
+std::any value;
+
+value = 42;
+std::cout << std::any_cast<int>(value) << std::endl;      // 42
+
+value = std::string("hello");
+std::cout << std::any_cast<std::string>(value) << std::endl;  // hello
+
+// std::any_cast<double>(value);  // Throws std::bad_any_cast
+\end{lstlisting}
+When the set of possible types is known at compile time, \idx{std::variant} is preferred because it provides compile-time type guarantees. \idx{std::any} is useful when the type set is not known, such as in plugin systems or generic property bags.
+
+\section{Smart Pointers}
+C++11 introduced \idx{smart pointers} as part of the \idx{<memory>} header to provide automatic \idx{memory management} and eliminate the need for manual \texttt{new} and \texttt{delete}. Smart pointers use \idx{RAII} (Resource Acquisition Is Initialization) to ensure that memory is freed when the pointer goes out of scope, preventing memory leaks and dangling pointers.
+
+\subsection{std::unique\_ptr}
+\idx{std::unique\_ptr} is a smart pointer that has \idx{exclusive ownership} of a dynamically allocated object. Only one \texttt{unique\_ptr} can own the object at a time. Ownership can be transferred using \idx{std::move}, but the pointer cannot be copied.
+\begin{lstlisting}
+#include <memory>
+
+// Create a unique_ptr
+std::unique_ptr<int> p1 = std::make_unique<int>(42);
+// std::unique_ptr<int> p2 = p1;  // ERROR: cannot copy
+
+// Transfer ownership
+std::unique_ptr<int> p2 = std::move(p1);  // p1 is now nullptr
+\end{lstlisting}
+
+\subsection{std::shared\_ptr}
+\idx{std::shared\_ptr} is a smart pointer that allows \idx{shared ownership} of a dynamically allocated object. Multiple \texttt{shared\_ptr} objects can point to the same resource. A \idx{reference count} tracks how many \texttt{shared\_ptr} objects own the resource, and the memory is freed only when the last \texttt{shared\_ptr} is destroyed or reset.
+\begin{lstlisting}
+#include <memory>
+
+// Create a shared_ptr
+std::shared_ptr<int> p1 = std::make_shared<int>(42);
+std::shared_ptr<int> p2 = p1;  // OK: both share ownership
+
+// Reference count is now 2
+std::cout << p1.use_count() << std::endl;  // 2
+
+p1.reset();  // p1 gives up ownership, count drops to 1
+// Memory is freed when p2 goes out of scope
+\end{lstlisting}
+
+\subsection{std::weak\_ptr}
+\idx{std::weak\_ptr} is a smart pointer that holds a \idx{non-owning reference} to an object managed by a \idx{std::shared\_ptr}. It does not participate in the \idx{reference count}, so it cannot prevent the object from being destroyed. To access the object, a \texttt{weak\_ptr} must be converted to a \texttt{shared\_ptr} using \idx{lock()}, which returns a valid \texttt{shared\_ptr} if the object still exists, or an empty one if it has been destroyed.
+\begin{lstlisting}
+std::shared_ptr<int> shared = std::make_shared<int>(42);
+std::weak_ptr<int> weak = shared;  // Does not increase reference count
+
+if (auto locked = weak.lock()) {
+    std::cout << *locked << std::endl;  // 42
+}
+
+shared.reset();  // Object is destroyed, reference count hits 0
+
+if (auto locked = weak.lock()) {
+    std::cout << *locked << std::endl;  // Not reached
+} else {
+    std::cout << "Object no longer exists" << std::endl;
+}
+\end{lstlisting}
+\idx{std::weak\_ptr} is primarily used to break \idx{reference cycles}. If two objects hold \texttt{shared\_ptr} references to each other, neither will ever be destroyed because each keeps the other's reference count above zero. By making one direction a \texttt{weak\_ptr}, the cycle is broken and both objects can be properly cleaned up.
+
+\subsection{std::make\_unique and std::make\_shared}
+\idx{std::make\_unique} (C++14) and \idx{std::make\_shared} (C++11) are factory functions that construct an object and return the appropriate smart pointer. They are preferred over directly using \texttt{new} because they are safer (no raw pointer exposed), more efficient (\texttt{make\_shared} allocates the control block and object in a single allocation), and exception-safe.
+\begin{lstlisting}
+auto p1 = std::make_unique<int>(42);
+auto p2 = std::make_shared<int>(42);
+
+// Prefer this over:
+// std::unique_ptr<int> p1(new int(42));
+// std::shared_ptr<int> p2(new int(42));
+\end{lstlisting}
+
+\section{Type Aliases}
+C++ provides two ways to create alternative names for types. \idx{typedef} (inherited from C) and \idx{using} (introduced in \idx{C++11}). The \texttt{using} syntax is preferred in modern C++ because it is more readable and supports \idx{template aliasing}, which \texttt{typedef} cannot do.
+\begin{lstlisting}
+// typedef syntax
+typedef unsigned long ulong;
+
+// using syntax (preferred)
+using ulong = unsigned long;
+
+// Template aliasing -- only possible with 'using'
+template<typename T>
+using StringMap = std::map<std::string, T>;
+
+StringMap<int> ages;  // std::map<std::string, int>
+\end{lstlisting}
+
+\section{Range-Based For Loops}
+Introduced in \idx{C++11}, \idx{range-based for loops} provide a concise syntax for iterating over containers. C++17 extended this with \idx{structured bindings} in the loop, allowing iteration over \idx{maps} with unpacked key-value pairs.
+\begin{lstlisting}
+std::vector<int> nums = {1, 2, 3, 4, 5};
+
+// By value (copies each element)
+for (int n : nums) { std::cout << n; }          // 12345
+
+// By reference (modifies elements in place)
+for (int& n : nums) { n *= 2; }                 // nums is now {2, 4, 6, 8, 10}
+
+// C++17: Structured bindings with a map
+std::map<std::string, int> ages = {{"Alice", 30}, {"Bob", 25}};
+for (const auto& [name, age] : ages) {
+    std::cout << name << ": " << age << " ";
+}
+// Output: Alice: 30 Bob: 25
+\end{lstlisting}
+
+\section{Lambdas}
+Introduced in \idx{C++11}, a \idx{lambda} is an anonymous function object that can be defined inline. Lambdas are useful for short functions passed to \idx{STL algorithms}, callbacks, or any situation where defining a named function would be unnecessarily verbose. The general syntax is:
+\begin{lstlisting}
+[capture](parameters) -> return_type { body }
+\end{lstlisting}
+The \idx{capture} clause specifies which variables from the enclosing scope are available inside the lambda. The return type is optional and can be deduced by the compiler.
+\begin{lstlisting}
+#include <algorithm>
+#include <vector>
+
+std::vector<int> nums = {5, 2, 8, 1, 9};
+
+// Sort in descending order using a lambda
+std::sort(nums.begin(), nums.end(), [](int a, int b) {
+    return a > b;
+});
+// nums is now {9, 8, 5, 2, 1}
+
+// Capture by value
+int threshold = 5;
+auto above = [threshold](int n) { return n > threshold; };
+// above(8) returns true, above(3) returns false
+
+// Capture by reference
+int counter = 0;
+auto increment = [&counter]() { counter++; };
+increment();
+increment();
+// counter is now 2
+\end{lstlisting}
+Common capture modes:
+\begin{center}
+\begin{tabular}{l|l}
+Capture & Meaning \\
+\hline
+\texttt{[]} & Capture nothing \\
+\texttt{[=]} & Capture all variables by value \\
+\texttt{[\&]} & Capture all variables by reference \\
+\texttt{[x]} & Capture \texttt{x} by value \\
+\texttt{[\&x]} & Capture \texttt{x} by reference \\
+\texttt{[=, \&x]} & Capture all by value, except \texttt{x} by reference \\
+\texttt{[\&, x]} & Capture all by reference, except \texttt{x} by value \\
+\end{tabular}
+\end{center}
+
+\section{Structured Bindings}
+Introduced in \idx{C++17}, \idx{structured bindings} allow decomposing an object into its constituent parts in a single declaration. This works with \idx{tuples}, \idx{pairs}, arrays, and simple structs with public members.
+\begin{lstlisting}
+// Tuples and pairs
+auto [success, id, message] = getConfig();
+
+// Maps (unpacks key-value pairs)
+std::map<std::string, int> ages = {{"Alice", 30}, {"Bob", 25}};
+for (const auto& [name, age] : ages) {
+    std::cout << name << ": " << age << std::endl;
+}
+
+// Arrays
+int arr[3] = {1, 2, 3};
+auto [a, b, c] = arr;
+\end{lstlisting}
+
+
+
+
+
+
+
+
+\section{Conditional Compilation with std::enable\_if\_t}
+Introduced in \idx{C++14} as a convenience alias for \idx{std::enable\_if::type}, \idx{std::enable\_if\_t} enables or disables a function template overload based on a compile-time condition. This is a cornerstone of \idx{SFINAE} (Substitution Failure Is Not An Error), a C++ rule that allows the compiler to silently ignore a template specialization if a substitution failure occurs during overload resolution, rather than treating it as an error. By leveraging SFINAE, \texttt{std::enable\_if\_t} allows the compiler to select the appropriate overload from a set of candidates based on type traits or other compile-time properties.
+
+In its general form, \texttt{std::enable\_if\_t<Condition, T>} evaluates \texttt{Condition} at compile time. If the condition is \texttt{true}, the expression evaluates to type \texttt{T} (which defaults to \texttt{void} if omitted), and the function template is enabled. If the condition is \texttt{false}, substitution fails and the overload is silently discarded.
+\begin{lstlisting}
+#include <type_traits>
+
+// Only enabled when T is an integral type (int, long, char, etc.)
+template<typename T>
+std::enable_if_t<std::is_integral_v<T>, T>
+square(T x) {
+    return x * x;
+}
+
+// Only enabled when T is a floating-point type (float, double, etc.)
+template<typename T>
+std::enable_if_t<std::is_floating_point_v<T>, T>
+square(T x) {
+    return x * x;
+}
+\end{lstlisting}
+\idx{std::enable\_if\_t} is commonly used to enable a function only when a condition is met (e.g., argument count, type trait), overload functions based on compile-time properties, and prevent misuse of generic functions.
+
+
+
+
+\section{Variadic Templates and Fold Expressions}
+Modern C++ (C++11 and later) provides tools for writing generic, type-safe, and efficient code. Key features include \idx{variadic templates} and \idx{fold expressions}. These are typically used in library development, metaprogramming, and systems code where compile-time flexibility and zero-runtime-overhead abstractions are essential.
+
+\subsection{Variadic Templates}
+Introduced in \idx{C++11}, \idx{variadic templates} allow templates to accept any number of type or value parameters. This is accomplished through the use of \idx{parameter packs}, which can represent zero or more types or values. A type parameter pack is declared with \texttt{typename... Args}, while a value parameter pack is declared with \texttt{Args... args}. The \idx{sizeof...} operator returns the number of elements in a parameter pack at compile time.
+\begin{lstlisting}
+template<typename... Args>
+void func(Args... args);
+
+// sizeof...(Args)  returns the number of types in the pack
+// sizeof...(args)  returns the number of values in the pack
+\end{lstlisting}
+Variadic templates are commonly used for functions that take any number of arguments (e.g., logging, formatting, property copying), compile-time checks with \idx{static\_assert} and \idx{sizeof...}, and generic containers or utilities that operate on an arbitrary number of types.
+
+A common metaprogramming pattern using variadic templates is the \idx{type list} - a struct that stores a list of types in its template parameters without holding any data. The type information is accessed at compile time through \idx{partial template specialization}, where utility structs are specialized on \texttt{TypeList<Types...>} and peel types off the pack one at a time through recursion. The following example demonstrates a type list with utilities to query its size and retrieve a type at a specific index.
+\begin{lstlisting}
+#include <iostream>
+#include <typeinfo>
+
+// The type list itself -> just an empty shell that holds type info.
+// in its template parameters, not in any data member.
+template<typename... Types>
+struct TypeList {};
+
+// Compile-time utilities that operate on a TypeList.
+
+// 1. Get the number of types in the list:
+template<typename List>
+struct Size;
+
+template<typename... Types>
+struct Size<TypeList<Types...>> {
+    static constexpr size_t value = sizeof...(Types);
+};
+
+// 2. Get the Nth type in the list:
+template<size_t N, typename List>
+struct TypeAt;
+
+// Base case: index 0 returns the first type (Head)
+template<typename Head, typename... Tail>
+struct TypeAt<0, TypeList<Head, Tail...>> {
+    using type = Head;
+};
+
+// Recursive case: decrement N and recurse into the remaining types (Tail).
+template<size_t N, typename Head, typename... Tail>
+struct TypeAt<N, TypeList<Head, Tail...>> {
+    using type = typename TypeAt<N - 1, TypeList<Tail...>>::type;
+};
+
+// Using it:
+using MyTypes = TypeList<int, double, std::string>;
+
+int main() {
+    std::cout << "Number of types: " << Size<MyTypes>::value << std::endl;
+    // Output: Number of types: 3
+
+    std::cout << "Type at index 1: " << typeid(TypeAt<1, MyTypes>::type).name() << std::endl;
+    // Output: Type at index 1: d  (gcc's mangled name for double)
+
+    return 0;
+}
+\end{lstlisting}
+This pattern is used in real libraries. For example, \idx{std::variant} and \idx{std::tuple} internally use similar techniques to store a list of types and generate the appropriate code for each one.
+
+\subsection{Parameter Pack Expansion}
+\idx{Parameter pack expansion} expands a parameter pack into multiple arguments using the \texttt{...} syntax. This is fundamental to working with variadic templates, as it allows the pack to be ``unpacked'' into individual arguments when passed to functions, constructors, or other templates.
+\begin{lstlisting}
+template<typename... Args>
+auto makeTuple(Args... args) {
+    return std::make_tuple(args...); // args... expands the pack
+}
+\end{lstlisting}
+Parameter pack expansion is commonly used to build \idx{tuples}, arrays, or containers from a pack, pass arguments to functions or constructors, and generate multiple calls or assignments.
+
+\subsection{Fold Expressions}
+Introduced in \idx{C++17}, \idx{fold expressions} provide a concise way to apply a binary operator across all elements of a parameter pack at compile time. Prior to C++17, achieving the same result required recursive template instantiation. Fold expressions eliminate this boilerplate and are evaluated entirely at compile time with no runtime cost.
+\begin{lstlisting}
+// Unary right fold: (pack op ... )
+(args && ...)        // true if all args are true
+
+// Unary left fold: (... op pack)
+(... + args)         // sum of all args
+
+// Binary fold: (init op ... op pack)
+(0 + ... + args)     // sum with explicit initial value
+\end{lstlisting}
+Fold expressions are commonly used to check if all elements satisfy a condition (e.g., \texttt{\&\&} fold), sum or combine values (e.g., \texttt{+} fold), and call a function on each element of a pack (e.g., with the comma operator). The following example shows a function that returns \texttt{true} only if all boolean arguments are \texttt{true}.
+\begin{lstlisting}
+template<typename... Args>
+bool allTrue(Args... args) {
+    return (args && ...); // unary right fold over &&
+}
+\end{lstlisting}
+
+\subsection{Perfect Forwarding}
+Introduced in \idx{C++11}, \idx{perfect forwarding} allows a function template to forward its arguments to another function while preserving the argument's value category (i.e., whether it is an \idx{lvalue} or \idx{rvalue}). This is achieved through \idx{forwarding references} (also known as \idx{universal references}), which are declared using \texttt{T\&\&} in a deduced context, combined with \idx{std::forward} to cast the argument appropriately.
+\begin{lstlisting}
+template<typename T>
+void forwardArg(T&& arg) {
+    someFunction(std::forward<T>(arg)); // preserves lvalue/rvalue-ness
+}
+\end{lstlisting}
+Perfect forwarding is essential for generic functions that accept any argument type, factory functions and wrappers that construct objects in-place, and avoiding unnecessary copies in template code. When combined with variadic templates, it enables functions to forward any number of arguments perfectly.
+\begin{lstlisting}
+template<typename... Args>
+void emplace(Args&&... args) {
+    // Forwards all arguments, preserving their value categories
+    construct(std::forward<Args>(args)...);
+}
+\end{lstlisting}
+
+\subsection{Summary of Variadic Template Features}
+\begin{fancybox}[Variadic Template Features]{}
+\begin{center}
+\begin{tabular}{l|l|l}
+Feature & Standard & Primary Use\\
+\hline
+Variadic Templates & C++11 & Accept any number of types or values \\
+Parameter Pack Expansion & C++11 & Expand pack into multiple arguments \\
+Fold Expressions & C++17 & Apply operator across all elements of a pack \\
+Perfect Forwarding (\&\&...) & C++11 & Forward arguments without copying \\
+\end{tabular}
+\end{center}
+\end{fancybox}
+These features are essential for writing modern, generic, and efficient C++ code. They allow developers to write type-safe code that catches errors at compile time, avoid runtime overhead by processing data at compile time, write reusable code that works with any number of types or values, and create library-level abstractions that are both powerful and easy to use. They are used extensively throughout the C++ Standard Library (e.g., \idx{std::tuple}, \idx{std::variant}, \idx{std::any}), as well as in game engines, messaging systems, serialization libraries, high-performance systems, and embedded code.
+
+
+
+\section{Lvalues and Rvalues}
+In C++, every expression has both a type and a \idx{value category}. The two most important value categories are \idx{lvalue} and \idx{rvalue}. An \idx{lvalue} (``locator value'') is an expression that refers to a persistent object in memory - it has an address and can be assigned to. An \idx{rvalue} (``read value'') is a temporary value that does not persist beyond the expression that creates it - it can be read but not assigned to.
+\begin{lstlisting}
+int x = 10;
+int y = 20;
+
+x = y;       // x is an lvalue (has an address, can be assigned to).
+             // y is also an lvalue (used as the source of the value).
+
+x = x + y;   // x on the left is an lvalue.
+             // (x + y) is an rvalue (a temporary result, no address).
+
+int& ref = x;    // OK: An lvalue reference can bind to an lvalue.
+// int& bad = 5; // ERROR: An lvalue reference cannot bind to an rvalue.
+
+int&& rref = 5;  // OK: An rvalue reference can bind to an rvalue.
+rref = 10;       // OK: rref is now an lvalue (it has a name and address).
+\end{lstlisting}
+Understanding the distinction is essential for \idx{move semantics} and \idx{perfect forwarding}. When an rvalue is assigned to an \idx{rvalue reference} (a kind of \idx{reference} declared with \texttt{\&\&}), it signals that the value is temporary and its resources can be ``stolen'' (moved) rather than copied.
+
+\section{Move Semantics}
+Introduced in \idx{C++11}, \idx{move semantics} allow resources (e.g., heap memory, file handles) to be transferred from one object to another rather than copied. This avoids expensive deep copies of temporary objects. A \idx{move constructor} and \idx{move assignment operator} are invoked when the source is an \idx{rvalue}, allowing the destination to ``steal'' the internal pointer and leave the source in a valid but empty state. The \idx{std::move} function casts an lvalue to an rvalue reference, enabling the move.
+\begin{lstlisting}
+std::string a = "Hello, World!";
+
+// Without std::move: Copies the string data (expensive).
+std::string b = a;
+
+// With std::move: Transfers the internal buffer (cheap).
+// 'a' is left in a valid but unspecified state (usually empty).
+std::string c = std::move(a);
+\end{lstlisting}
+
+\section{Virtual Functions and the Vtable}
+When a class contains \idx{virtual} functions, the compiler implements \idx{dynamic dispatch} (runtime polymorphism) using a hidden data structure called a \idx{vtable} (virtual method table). Each class with virtual functions gets a single vtable containing pointers to the virtual function implementations for that class. Every instance of that class secretly holds a hidden pointer (the \idx{vptr}) to its class's vtable.
+\begin{lstlisting}
+class Base {
+public:
+    virtual void doWork() { std::cout << "Base" << std::endl; }
+};
+
+class Derived : public Base {
+public:
+    void doWork() override { std::cout << "Derived" << std::endl; }
+};
+
+int main() {
+    Base* obj = new Derived();
+    // At runtime, obj->vptr points to Derived's vtable.
+    // The vtable points to Derived::doWork.
+    obj->doWork(); // Output: Derived.
+    delete obj;
+    return 0;
+}
+\end{lstlisting}
+The key takeaway is that virtual calls incur a small runtime overhead (two pointer dereferences: one to get the vptr, one to get the function pointer from the vtable) compared to non-virtual calls. A virtual call also prevents the compiler from inlining the function. The \idx{override} keyword (C++11) is recommended to ensure the function actually overrides a base class virtual function, producing a compiler error if the signature does not match.
+
+\section{RAII (Resource Acquisition Is Initialization)}
+\idx{RAII} is a core C++ programming idiom where a resource's \idx{lifetime} is tied to the lifetime of an object. The resource (memory, file handle, socket, mutex) is acquired in the object's constructor and released in its destructor. Because C++ guarantees that destructors run when an object goes out of \idx{scope} (even via exceptions), RAII guarantees leak-free resource management without manual cleanup.
+\begin{lstlisting}
+#include <fstream>
+#include <mutex>
+
+void processData() {
+    // File is opened in the constructor.
+    std::ifstream file("data.txt");
+    if (!file) return;
+
+    // Mutex is locked in the constructor.
+    std::lock_guard<std::mutex> lock(my_mutex);
+
+    // ... do work ...
+
+    // No manual cleanup needed!
+    // 'lock' unlocks the mutex in its destructor when it goes out of scope.
+    // 'file' closes the file handle in its destructor.
+} // Destructors run here in reverse order of construction.
+\end{lstlisting}
+\idx{Smart pointers} (see Section on Smart Pointers) are themselves an application of RAII to dynamic memory.
+
+\section{SFINAE (Substitution Failure Is Not An Error)}
+\idx{SFINAE} is a C++ language rule that applies during \idx{overload resolution} for templates. If substituting a template parameter fails (e.g., a type does not have a required member), the compiler does not issue an error. Instead, it silently removes that template from the candidate list and continues checking other overloads. It is the mechanism that makes \idx{std::enable\_if\_t} work.
+\begin{lstlisting}
+#include <iostream>
+
+// This overload is removed via SFINAE if T does not have a 'size()' method.
+template<typename T>
+auto getSize(const T& val) -> decltype(val.size()) {
+    return val.size(); // Valid for std::vector, std::string, etc.
+}
+
+// This fallback overload is used when val.size() fails substitution.
+template<typename T>
+auto getSize(const T& val) -> decltype(sizeof(T)) {
+    return sizeof(val); // Falls back to byte size for int, double, etc.
+}
+
+int main() {
+    std::string s = "hello";
+    std::cout << getSize(s) << std::endl;    // Output: 5 (string length).
+
+    int x = 42;
+    std::cout << getSize(x) << std::endl;    // Output: 4 (sizeof int).
+    return 0;
+}
+\end{lstlisting}
+
+\section{auto and decltype}
+Introduced in \idx{C++11}, \idx{auto} lets the compiler deduce a variable's type from its initializer. \idx{decltype} inspects an expression's type at compile time. Both reduce verbosity, especially with complex iterator or template types, and keep code maintainable when types change.
+\begin{lstlisting}
+std::map<std::string, std::vector<int>> data;
+
+// auto deduces the complex iterator type.
+for (auto it = data.begin(); it != data.end(); ++it) {}
+
+// decltype extracts the type of an expression.
+int x = 5;
+decltype(x) y = 10; // y is deduced as int.
+\end{lstlisting}
+
+\section{constexpr and consteval}
+\idx{constexpr} (C++11) asserts that a function or variable can be evaluated at \idx{compile time}. If the inputs are constant expressions, the compiler computes the result during compilation rather than at runtime, inlining the final value directly into the binary.
+\idx{consteval} (C++20) is stricter: it forces the function to \emph{only} be evaluated at compile time. If called with runtime values, it produces a compiler error.
+\begin{lstlisting}
+// Can run at compile time or runtime.
+constexpr int square(int x) { return x * x; }
+
+// MUST run at compile time only.
+consteval int cube(int x) { return x * x * x; }
+
+int main() {
+    int runtime_val = 5;
+
+    int a = square(runtime_val);  // OK: Evaluated at runtime.
+    int b = square(5);            // OK: Evaluated at compile time.
+
+    int c = cube(5);              // OK: Evaluated at compile time.
+    // int d = cube(runtime_val); // ERROR: consteval requires compile-time input.
+    return 0;
+}
+\end{lstlisting}
+
+\section{nullptr}
+Introduced in \idx{C++11}, \idx{nullptr} is a strongly-typed null pointer constant. It replaces the traditional \texttt{NULL} (which is defined as \texttt{0} or \texttt{((void*)0)}). Using \texttt{nullptr} prevents ambiguity in function overload resolution, where \texttt{NULL} or \texttt{0} could be misinterpreted as an integer.
+\begin{lstlisting}
+void process(int x)   { std::cout << "Integer" << std::endl; }
+void process(int* p)  { std::cout << "Pointer" << std::endl; }
+
+int main() {
+    process(NULL);      // Ambiguous: Might call process(int).
+    process(nullptr);   // Unambiguous: Calls process(int*).
+    return 0;
+}
+\end{lstlisting}
+
+\section{User-Defined Type Conversions}
+C++ allows a class to define how it implicitly or explicitly converts to other types. An \idx{implicit conversion} is defined by a non-explicit constructor taking a single argument, or a \idx{conversion operator}. An \idx{explicit conversion} (C++11) requires an explicit cast or construction, preventing accidental silent conversions.
+\begin{lstlisting}
+class Meter {
+    double value;
+public:
+    // Allow implicit conversion from double to Meter.
+    Meter(double v) : value(v) {}
+
+    // Allow explicit conversion from Meter to double.
+    explicit operator double() const { return value; }
+};
+
+int main() {
+    Meter m = 5.5;             // Implicit conversion: double to Meter.
+    // double d = m;           // ERROR: 'operator double' is explicit.
+    double d = static_cast<double>(m); // OK: Explicit cast required.
+    return 0;
+}
+\end{lstlisting}
 
 
