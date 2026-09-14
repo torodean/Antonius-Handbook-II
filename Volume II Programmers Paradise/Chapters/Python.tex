@@ -453,7 +453,39 @@ PyRun_SimpleString(
 \end{lstlisting}
 The interpreter's state is not \idx{thread-safe}; construction and teardown of the interpreter should happen on a single thread. Appropriate GIL handling can be added to modify the above to become thread safe.
 
+\subsection{Threading and the GIL}
 
+Python serializes access to the interpreter with the \idx{Global Interpreter Lock} (\idx{GIL}): only one \idx{thread} may run Python code or touch Python objects at any moment. A C++ program which calls into the interpreter from more than one thread must acquire the GIL before doing so and release it afterward. The \idx{PyGILState\_Ensure}() and \idx{PyGILState\_Release}() pair does this safely from any thread, whether or not that thread has touched Python before.
+\begin{lstlisting}
+// A thread which wants to call into Python wraps all of its Python work
+// in an Ensure/Release pair.
+PyGILState_STATE state = PyGILState_Ensure();
+
+PythonWork();  // Any Python C API calls happen with the GIL held.
+
+PyGILState_Release(state);
+\end{lstlisting}
+\idx{PyGILState\_Ensure}() blocks until the GIL is available, so a thread which forgets to release it deadlocks every other Python-calling thread rather than failing loudly. Every reference a thread acquires should also be released while it still holds the GIL; releasing objects after \idx{PyGILState\_Release}() is undefined behavior, so scope the object handles to end before the release.
+\begin{lstlisting}
+PyGILState_STATE state = PyGILState_Ensure();
+
+PythonResult result;
+{
+    result = DoPythonWork();  // PyObject handles destroyed inside this scope.
+} // All acquired references are released here, while the GIL is still held.
+
+PyGILState_Release(state);
+\end{lstlisting}
+Initialization interacts with the GIL: \idx{Py\_Initialize}() leaves the GIL held by the thread which started the interpreter. A multi-threaded program therefore releases the GIL immediately after initialization with \idx{PyEval\_SaveThread}(), leaving the interpreter running but unlocked so other threads can acquire it with \idx{PyGILState\_Ensure}().
+\begin{lstlisting}
+// Start the interpreter, then hand the GIL back so any thread may use it.
+if (!Py_IsInitialized())
+{
+    Py_Initialize();
+    PyEval_SaveThread();
+}
+\end{lstlisting}
+The usual shape of a multi-threaded embedding is then: initialize once and release the GIL, construct modules on whichever thread needs them (each construction wrapped in its own Ensure/Release), and treat every call into Python the same way. The interpreter typically stays initialized for the life of the process; \idx{Py\_FinalizeEx}() is skipped when threads may still call in, since shutting down while another thread holds or waits on the GIL is not safe. Callers which keep no shared state can simply check \idx{Py\_IsInitialized}() instead of counting live module objects.
 
 
 
