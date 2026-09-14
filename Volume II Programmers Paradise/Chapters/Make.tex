@@ -108,3 +108,58 @@ include_directories(some/relative/path)
 // #include "some/relative/path/file.hpp" // No longer needed
 #include "file.hpp" // This replaces it
 \end{lstlisting}
+
+
+\subsection{Custom Functions}
+
+Repeated blocks of CMake code (e.g., install rules duplicated across many targets) can be wrapped in a custom \idx{function}. Functions are defined with the \idx{function}()/\idx{endfunction}() pair and can then be called by name anywhere after the definition. Arguments are accessed positionally through \idx{ARGV0}, \idx{ARGV1}, ..., with \idx{ARGN} holding all arguments past the named ones and \idx{ARGV} holding all of them. A common pattern is a wrapper around the \idx{install}() command so each target needs only one line.
+\begin{lstlisting}
+# Installs the given targets into the system directory on a system install,
+# or into the release directory when building a release.
+function( install_app )
+    if(SYSTEM_INSTALL)
+        install(TARGETS ${ARGV} DESTINATION ${APP_INSTALL_LOCATION})
+    elseif(RELEASE_BUILD)
+        install(TARGETS ${ARGV} DESTINATION ${RELEASE_INSTALL_LOCATION})
+    endif()
+endfunction()
+
+# Usage: any number of targets can be passed in one call.
+install_app( AppOne AppTwo )
+\end{lstlisting}
+
+Variables set inside a function are scoped to that function, so a function cannot accidentally overwrite a variable in the calling scope. When a function must communicate a result back, use \idx{set}(... PARENT\_SCOPE) or have the caller pass an output variable name as the first argument.
+
+\subsection{Optional Features with find\_package}
+
+\idx{find\_package} searches the system for an installed package and sets variables describing what was found (e.g., \texttt{Python3\_FOUND}, \texttt{Python3\_INCLUDE\_DIRS}, \texttt{Python3\_LIBRARIES}). The \idx{COMPONENTS} keyword restricts the search to specific parts of a package; the \idx{Development.Embed} component of the \idx{Python3} package is the one which provides \texttt{Python.h} and the libraries needed to \idx{embed} the interpreter in a C++ program. A feature which needs an optional dependency should be wrapped in a check on the found variable so the rest of the project still builds on machines without it.
+\begin{lstlisting}
+# Search for the Python development libraries needed for embedding.
+find_package(Python3 COMPONENTS Development.Embed)
+
+if (Python3_FOUND)
+    set(BUILD_PYTHON_FEATURES ON)
+    message(STATUS "Found Python development libraries. Building Python components!")
+else()
+    set(BUILD_PYTHON_FEATURES OFF)
+    message(STATUS "Python development libraries not found. Skipping Python components!")
+endif()
+\end{lstlisting}
+Every block of CMake which requires the optional feature is then wrapped in the flag, so those targets are only defined when the dependency exists.
+\begin{lstlisting}
+if(BUILD_PYTHON_FEATURES)
+    # Add executables/libraries which require python here.
+endif()
+\end{lstlisting}
+
+\subsection{Install Rules}
+
+The \idx{install}() command defines what happens during \texttt{cmake --install}. Targets installed with \idx{TARGETS} are placed in the destination directory; files installed with \idx{FILES} are copied verbatim. Both accept a list of items in one call.
+\begin{lstlisting}
+# Install a built target (executable or library).
+install(TARGETS MyProgram DESTINATION ${INSTALL_LOCATION})
+
+# Install loose files (e.g., python modules or config files).
+install(FILES MyModule.py MyOther.py DESTINATION ${INSTALL_LOCATION}/python)
+\end{lstlisting}
+When a project supports multiple build modes (e.g., system install versus a portable release), each install rule can be given per-mode destinations and wrapped in the corresponding flag so that exactly one path applies per build.
