@@ -280,6 +280,27 @@ plt.show()                  # Displays plot.
 plt.savefig("fileName.png") # Saves the figure as an image
 \end{lstlisting}
 
+A multi-line plot with per-line styles using the \idx{matplotlib.pyplot} module. Each \idx{plot}() call adds one line to the same axes, and keyword arguments control the appearance of that line individually.
+\begin{lstlisting}
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.array([0, 1, 2, 3, 4, 5, 6, 7])
+
+# Add each line with its own style, color, and width.
+plt.plot(x, np.array([0, 1, 3, 6, 10, 15, 21, 28]),
+         linestyle='-',  color='#336699', linewidth=4.0)  # Solid line.
+plt.plot(x, np.array([0, 1, 2, 4, 8, 16, 32, 64]),
+         linestyle='--', color='red',      linewidth=1.0)  # Dashed line.
+
+plt.title("Multi-line Plot")     # Creates a title.
+plt.xlabel("X Values")           # Creates a x-axis label.
+plt.ylabel("Y Values")           # Creates a y-axis label.
+plt.legend(['Exponential', 'Doubling'])  # One legend entry per line, in order.
+
+plt.show()  # Displays plot.
+\end{lstlisting}
+Valid \idx{linestyle} values are \texttt{'-'}, \texttt{':'}, \texttt{'--'}, and \texttt{'-.'} (solid, dotted, dashed, dash-dot). Colors accept any of the named colors or a \idx{hexadecimal color} string such as \texttt{'\#336699'}.
 
 
 
@@ -293,7 +314,144 @@ plt.savefig("fileName.png") # Saves the figure as an image
 
 
 
+\section{Module-Level Configuration Variables}
 
+A module which keeps \idx{configuration} state (verbosity flags, labels, accumulated data) can hold that state in \idx{module-level variables} and expose a setter for each one. Because assignment at function scope creates a new local variable, a function which writes to a module-level variable must declare that name \idx{global} first; reads work without the declaration.
+\begin{lstlisting}
+# Module-level configuration variables.
+verboseMode = False
+plotTitle = None
+linesToPlot = []
+
+def setVerbose(val):
+    """
+    Setter for the verboseMode variable.
+    """
+    global verboseMode     # Required so this assigns the module variable.
+    verboseMode = val
+
+    if verboseMode:
+        print(f"Verbose mode enabled.")
+
+def setLabels(title, xLabel, yLabel):
+    """
+    Setter for the title and axis labels.
+    """
+    global plotTitle, xAxisLabel, yAxisLabel
+    plotTitle = title
+    xAxisLabel = xLabel
+    yAxisLabel = yLabel
+
+def addLine(values):
+    """
+    Adds a line to the module's accumulated data.
+    """
+    linesToPlot.append(values)  # Mutation needs no global declaration.
+\end{lstlisting}
+Only assignment (and \idx{augmented assignment}) requires the \idx{global} declaration. Mutating a module-level object in place, such as calling \texttt{append}() on a list, does not, since the name is not being rebound. Reading a module-level variable also needs no declaration.
+\begin{lstlisting}
+def doWork():
+    if verboseMode:        # Reading is fine without 'global'.
+        print("Working...")
+
+def counter():
+    global count           # Without this, 'count = count + 1' raises
+    count = count + 1      # UnboundLocalError instead.
+\end{lstlisting}
+
+\section{Modifying the Module Search Path}
+
+The \idx{sys.path} list holds the directories Python searches when \idx{import}ing a module. Adding a directory at runtime lets a script import modules which do not live in its own directory or in \idx{site-packages}. \idx{insert}(0, ...) places the directory at the front of the list so it takes precedence over entries already present.
+\begin{lstlisting}
+import sys
+
+# Make modules in /path/to/modules importable by name.
+sys.path.insert(0, '/path/to/modules')
+
+import myModule  # Now resolvable, wherever it lives.
+\end{lstlisting}
+A raw string (\idx{r-string}) avoids problems with backslash paths on Windows, since escape sequences inside it are not processed.
+\begin{lstlisting}
+import sys
+sys.path.insert(0, r'C:\Users\name\modules')  # Raw string keeps the backslashes.
+\end{lstlisting}
+This is also how embedded interpreters (see the next section) make modules sitting next to a program importable: the host inserts the directory holding its files into \texttt{sys.path} before importing them.
+
+\section{Embedding Python in C/C++}
+
+The Python C API lets a \idx{C++} (or C) program initialize the \idx{interpreter}, import modules, call their functions, and convert values between the two languages. Building such a program requires the python \idx{development libraries} (\texttt{Python.h} plus the linker libraries); on Debian-based systems these come from the \texttt{python3-dev} package.
+
+\subsection{Interpreter and references}
+
+Every value in Python is a \idx{PyObject} managed by \idx{reference counting}. APIs which create an object return a \idx{new reference} that the caller must release with \idx{Py\_DECREF}; others return a \idx{borrowed reference} which the caller must not release. The interpreter itself is started once with \idx{Py\_Initialize}() and shut down with \idx{Py\_FinalizeEx}().
+\begin{lstlisting}[language=Bash, style=shellstyle]
+# Debian/Ubuntu package providing Python.h for embedding.
+sudo apt-get install python3-dev
+\end{lstlisting}
+
+\subsection{Running code and calling methods}
+
+The minimal flow is: initialize, import a module, get a callable attribute from it, call it with a \idx{tuple} of arguments, convert the result, then release every reference acquired.
+\begin{lstlisting}
+#include <Python.h>
+
+int main()
+{
+    Py_Initialize();
+
+    // Import the module (myModule.py on the module search path).
+    PyObject* module = PyImport_ImportModule("myModule");
+
+    // Get the function object from the module.
+    PyObject* func = PyObject_GetAttrString(module, "add");
+
+    // Pack the arguments into a tuple. PyTuple_Pack returns new references.
+    PyObject* args = PyTuple_Pack(2,
+        PyLong_FromLong(2),
+        PyLong_FromLong(3));
+
+    // Call the function and convert the result.
+    PyObject* result = PyObject_CallObject(func, args);
+    long value = PyLong_AsLong(result);
+
+    // Release every new reference acquired above.
+    Py_DECREF(args);
+    Py_DECREF(func);
+    Py_DECREF(module);
+    Py_DECREF(result);
+
+    Py_FinalizeEx();
+    return 0;  // value stores 5.
+}
+\end{lstlisting}
+A failed call returns \idx{NULL} and leaves a pending exception. \idx{PyErr\_Print}() prints the traceback to \idx{stderr}, while \idx{PyErr\_Fetch}() takes ownership of the exception objects so the message can be converted to a C++ string; either way, the error indicator must be cleared before the interpreter is used again.
+\begin{lstlisting}
+PyObject* result = PyObject_CallObject(func, args);
+if (!result)
+{
+    PyErr_Print();  // Prints e.g. "TypeError: add() missing 1 argument".
+}
+
+// Fetching the message instead of printing it.
+PyObject *type = nullptr, *value = nullptr, *traceback = nullptr;
+PyErr_Fetch(&type, &value, &traceback);  // Takes ownership of the objects.
+PyErr_NormalizeException(&type, &value, &traceback);
+Py_XDECREF(type);      // The traceback and type are usually not needed.
+Py_XDECREF(traceback);
+if (value)
+{
+    PyObject* message = PyObject_Str(value);  // Convert the exception to a str.
+    // message now holds the error text as a new reference.
+}
+\end{lstlisting}
+Because every acquisition needs a matching release, an embedding layer typically wraps each \idx{PyObject} pointer in a \idx{RAII} holder (e.g., a \idx{std::unique\_ptr} with a custom deleter, see section \ref{section:cpp_custom_deleters}) so references cannot leak on early returns. A clean way to run configuration code, such as inserting a directory into \idx{sys.path}, is \idx{PyRun\_SimpleString}(), which executes a string as a source program.
+\begin{lstlisting}
+// Make the modules next to the program importable by name.
+PyRun_SimpleString(
+    "import sys\n"
+    "sys.path.insert(0, './modules')\n");
+\end{lstlisting}
+The interpreter's state is not \idx{thread-safe}; construction and teardown of the interpreter should happen on a single thread. Appropriate GIL handling can be added to modify the above to become thread safe.
 
 
 
