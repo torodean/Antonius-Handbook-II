@@ -632,7 +632,7 @@ To define specific code to use on \idx{Windows} vs \idx{Linux} you can use the f
 
 
 \subsubsection{Inspecting Dynamic Symbols}
-The \idx{nm -D} command lists dynamic symbols in shared libraries or executables, useful for debugging \idx{linker} errors. It shows symbols a library provides or requires, marked as \texttt{T} (defined, e.g., functions) or \texttt{U} (undefined, to be resolved by another library). Use with \texttt{grep} to find specific symbols.
+The \idx{nm -D} command lists dynamic symbols in shared libraries or executables, useful for debugging \idx{linker} errors. It shows symbols a library provides or requires, marked as \texttt{Type} (defined, e.g., functions) or \texttt{U} (undefined, to be resolved by another library). Use with \texttt{grep} to find specific symbols.
 
 \begin{lstlisting}[style=terminalstyle]
 nm -D /usr/lib64/libmyLibrary.so | grep someMethod
@@ -766,10 +766,10 @@ C++ provides a feature called "\idx{template specialization}," which allows you 
 #include <iostream>
 
 // Generic template
-template <typename T>
+template <typename Type>
 struct MyTemplate {
     void print() {
-        std::cout << "Generic template: " << typeid(T).name() << std::endl;
+        std::cout << "Generic template: " << typeid(Type).name() << std::endl;
     }
 };
 
@@ -949,8 +949,8 @@ struct tag_int {};
 struct tag_float {};
 
 // General template for the function (does nothing by default).
-template <typename T, typename Tag>
-void process(T value, Tag tag) {
+template <typename Type, typename Tag>
+void process(Type value, Tag tag) {
     std::cout << "Generic processing" << std::endl;
 }
 
@@ -1207,6 +1207,35 @@ auto p2 = std::make_shared<int>(42);
 // std::shared_ptr<int> p2(new int(42));
 \end{lstlisting}
 
+\subsection{Custom Deleters}
+
+\idx{std::unique\_ptr} accepts an optional second template parameter: a \idx{deleter} type which replaces \idx{delete} as the thing done to the pointer when the \texttt{unique\_ptr} goes out of scope. This is needed whenever the resource is not owned through \texttt{delete}, such as a C API which requires a matching release call for every acquire call. The Python C API is a common example: every function which returns a \idx{PyObject} hands back a \idx{new reference} that the caller must later release with \idx{Py\_DECREF}, and \texttt{delete} cannot be used on such an object.
+\begin{lstlisting}
+#include <Python.h>
+#include <memory>
+
+// A callable type whose operator() releases one Python reference. Because the
+// struct has no data members, the unique_ptr costs the same as a raw pointer.
+struct PyObjectDeleter
+{
+    void operator()(PyObject* object) const
+    {
+        Py_DECREF(object);  // unique_ptr only calls this on non-null pointers.
+    }
+};
+
+// A unique_ptr for owned Python references.
+using PyObjectPtr = std::unique_ptr<PyObject, PyObjectDeleter>;
+
+void example() {
+    // Acquire a new reference...
+    PyObjectPtr value(PyLong_FromLong(42));
+    // ...and it is Py_DECREF'd automatically at the end of the scope.
+}
+\end{lstlisting}
+Only pointers the caller owns (new references) should be wrapped. Some C APIs return \idx{borrowed references}, which the caller must not release; wrapping one of those would free an object owned elsewhere. A type alias like \texttt{PyObjectPtr} above makes the ownership convention visible at every call site that uses it.
+
+
 \section{Type Aliases}
 C++ provides two ways to create alternative names for types. \idx{typedef} (inherited from C) and \idx{using} (introduced in \idx{C++11}). The \texttt{using} syntax is preferred in modern C++ because it is more readable and supports \idx{template aliasing}, which \texttt{typedef} cannot do.
 \begin{lstlisting}
@@ -1217,8 +1246,8 @@ typedef unsigned long ulong;
 using ulong = unsigned long;
 
 // Template aliasing -- only possible with 'using'
-template<typename T>
-using StringMap = std::map<std::string, T>;
+template<typename Type>
+using StringMap = std::map<std::string, Type>;
 
 StringMap<int> ages;  // std::map<std::string, int>
 \end{lstlisting}
@@ -1314,21 +1343,21 @@ auto [a, b, c] = arr;
 \section{Conditional Compilation with std::enable\_if\_t}
 Introduced in \idx{C++14} as a convenience alias for \idx{std::enable\_if::type}, \idx{std::enable\_if\_t} enables or disables a function template overload based on a compile-time condition. This is a cornerstone of \idx{SFINAE} (Substitution Failure Is Not An Error), a C++ rule that allows the compiler to silently ignore a template specialization if a substitution failure occurs during overload resolution, rather than treating it as an error. By leveraging SFINAE, \texttt{std::enable\_if\_t} allows the compiler to select the appropriate overload from a set of candidates based on type traits or other compile-time properties.
 
-In its general form, \texttt{std::enable\_if\_t<Condition, T>} evaluates \texttt{Condition} at compile time. If the condition is \texttt{true}, the expression evaluates to type \texttt{T} (which defaults to \texttt{void} if omitted), and the function template is enabled. If the condition is \texttt{false}, substitution fails and the overload is silently discarded.
+In its general form, \texttt{std::enable\_if\_t<Condition, Type>} evaluates \texttt{Condition} at compile time. If the condition is \texttt{true}, the expression evaluates to type \texttt{Type} (which defaults to \texttt{void} if omitted), and the function template is enabled. If the condition is \texttt{false}, substitution fails and the overload is silently discarded.
 \begin{lstlisting}
 #include <type_traits>
 
-// Only enabled when T is an integral type (int, long, char, etc.)
-template<typename T>
-std::enable_if_t<std::is_integral_v<T>, T>
-square(T x) {
+// Only enabled when Type is an integral type (int, long, char, etc.)
+template<typename Type>
+std::enable_if_t<std::is_integral_v<Type>, Type>
+square(Type x) {
     return x * x;
 }
 
-// Only enabled when T is a floating-point type (float, double, etc.)
-template<typename T>
-std::enable_if_t<std::is_floating_point_v<T>, T>
-square(T x) {
+// Only enabled when Type is a floating-point type (float, double, etc.)
+template<typename Type>
+std::enable_if_t<std::is_floating_point_v<Type>, Type>
+square(Type x) {
     return x * x;
 }
 \end{lstlisting}
@@ -1434,11 +1463,11 @@ bool allTrue(Args... args) {
 \end{lstlisting}
 
 \subsection{Perfect Forwarding}
-Introduced in \idx{C++11}, \idx{perfect forwarding} allows a function template to forward its arguments to another function while preserving the argument's value category (i.e., whether it is an \idx{lvalue} or \idx{rvalue}). This is achieved through \idx{forwarding references} (also known as \idx{universal references}), which are declared using \texttt{T\&\&} in a deduced context, combined with \idx{std::forward} to cast the argument appropriately.
+Introduced in \idx{C++11}, \idx{perfect forwarding} allows a function template to forward its arguments to another function while preserving the argument's value category (i.e., whether it is an \idx{lvalue} or \idx{rvalue}). This is achieved through \idx{forwarding references} (also known as \idx{universal references}), which are declared using \texttt{Type\&\&} in a deduced context, combined with \idx{std::forward} to cast the argument appropriately.
 \begin{lstlisting}
-template<typename T>
-void forwardArg(T&& arg) {
-    someFunction(std::forward<T>(arg)); // preserves lvalue/rvalue-ness
+template<typename Type>
+void forwardArg(Type&& arg) {
+    someFunction(std::forward<Type>(arg)); // preserves lvalue/rvalue-ness
 }
 \end{lstlisting}
 Perfect forwarding is essential for generic functions that accept any argument type, factory functions and wrappers that construct objects in-place, and avoiding unnecessary copies in template code. When combined with variadic templates, it enables functions to forward any number of arguments perfectly.
@@ -1547,20 +1576,61 @@ void processData() {
 \end{lstlisting}
 \idx{Smart pointers} (see Section on Smart Pointers) are themselves an application of RAII to dynamic memory.
 
+
+
+\section{Requires Clauses}
+Introduced in \idx{C++20}, a \idx{requires clause} constrains a template by attaching a compile-time condition to its declaration. The compiler checks the condition during overload resolution and silently removes the template from consideration when it fails, which makes it a lightweight alternative to \idx{SFINAE} with \idx{std::enable\_if\_t}. The simplest form applies a \idx{requires expression} or a type trait directly to a function template.
+\begin{lstlisting}
+#include <type_traits>
+
+// Only participates in overload resolution for integer types.
+template<typename Type> requires std::is_integral_v<Type>
+Type twice(Type value) { return value * 2; }
+
+// Only matches floating point types; without this clause the template above
+// would also match doubles and make the two overloads ambiguous.
+template<typename Type> requires std::is_floating_point_v<Type>
+Type twice(Type value) { return value * 2.0; }
+
+int main() {
+    int a = twice(4);        // Calls the integral overload. Stores 8.
+    double b = twice(1.5);   // Calls the floating point overload. Stores 3.0.
+    // twice("text");        // ERROR: no overload satisfies the requirements.
+    return 0;
+}
+\end{lstlisting}
+A \idx{requires expression} (the \texttt{requires (...) \{...\}} form) can state requirements on the operations a type must support, and a named \idx{concept} can be defined once and reused across templates.
+\begin{lstlisting}
+#include <concepts>
+
+// A named concept: any type which can be added to itself and compared.
+template<typename Type>
+concept Addable = requires(Type a, Type b) {
+    a + b;          // The expression must compile.
+    { a == b } -> std::convertible_to<bool>; // And must yield something bool-like.
+};
+
+template<Addable Type>
+Type combine(Type a, Type b) { return a + b; }
+\end{lstlisting}
+Where a trait check selects between numeric categories, a plain \texttt{requires std::is\_*\_v<Type>} clause is usually enough; reach for full \idx{concepts} when the requirement is a set of expressions rather than a single trait.
+
+
+
 \section{SFINAE (Substitution Failure Is Not An Error)}
 \idx{SFINAE} is a C++ language rule that applies during \idx{overload resolution} for templates. If substituting a template parameter fails (e.g., a type does not have a required member), the compiler does not issue an error. Instead, it silently removes that template from the candidate list and continues checking other overloads. It is the mechanism that makes \idx{std::enable\_if\_t} work.
 \begin{lstlisting}
 #include <iostream>
 
-// This overload is removed via SFINAE if T does not have a 'size()' method.
-template<typename T>
-auto getSize(const T& val) -> decltype(val.size()) {
+// This overload is removed via SFINAE if Type does not have a 'size()' method.
+template<typename Type>
+auto getSize(const Type& val) -> decltype(val.size()) {
     return val.size(); // Valid for std::vector, std::string, etc.
 }
 
 // This fallback overload is used when val.size() fails substitution.
-template<typename T>
-auto getSize(const T& val) -> decltype(sizeof(T)) {
+template<typename Type>
+auto getSize(const Type& val) -> decltype(sizeof(Type)) {
     return sizeof(val); // Falls back to byte size for int, double, etc.
 }
 
