@@ -1207,7 +1207,7 @@ auto p2 = std::make_shared<int>(42);
 // std::shared_ptr<int> p2(new int(42));
 \end{lstlisting}
 
-\subsection{Custom Deleters}
+\subsection{Custom Deleters}\label{section:cpp_custom_deleters}
 
 \idx{std::unique\_ptr} accepts an optional second template parameter: a \idx{deleter} type which replaces \idx{delete} as the thing done to the pointer when the \texttt{unique\_ptr} goes out of scope. This is needed whenever the resource is not owned through \texttt{delete}, such as a C API which requires a matching release call for every acquire call. The Python C API is a common example: every function which returns a \idx{PyObject} hands back a \idx{new reference} that the caller must later release with \idx{Py\_DECREF}, and \texttt{delete} cannot be used on such an object.
 \begin{lstlisting}
